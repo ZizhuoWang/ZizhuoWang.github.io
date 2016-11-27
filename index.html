@@ -105,7 +105,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     }
   };
 </script>
@@ -119,7 +119,7 @@
   <title> 为学 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
 
   
 
@@ -174,7 +174,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-            首页
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-            归档
+            Archives
           </a>
         </li>
       
@@ -190,7 +190,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -198,7 +198,7 @@
         <li class="menu-item menu-item-schedule">
           <a href="/schedule" rel="section">
             
-            日程
+            Schedule
           </a>
         </li>
       
@@ -241,6 +241,124 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/27/设计模式之代理模式/" itemprop="url">
+                  设计模式之代理模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-11-27T21:13:45+08:00" content="2016-11-27">
+              2016-11-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>老司机开车</p>
+<p>#定义<br>代理模式的定义：Provide a surrogate or placeholder for another object to controlaccess to it(为其他对象提供一种代理以控制对这个对象的访问)。</p>
+<p>#意义<br>使用代理模式创建代理对象，让代理对象控制目标对象的访问(目标对象可以是远程的对象、创建开销大的对象或需要安全控制的对象),并且可以在不改变目标对象的情况下添加一些额外的功能。</p>
+<p>#UML<br><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/DesignPattern/proxyUML.jpg?raw=true" alt="ProxyUML"></p>
+<p>#角色及职责</p>
+<ul>
+<li><p>Subject：抽象主题角色，抽象主题类可以是抽象类，也可以是接口，是一个最普通的业务类型定义，无特殊要求。</p>
+</li>
+<li><p>RealSubject：具体主题角色，也叫被委托角色、被代理角色。是业务逻辑的具体执行者。</p>
+</li>
+<li><p>Proxy：代理主题角色，也叫委托类、代理类。它把所有抽象主题类定义的方法给具体主题角色实现，并且在具体主题角色处理完毕前后做预处理和善后工作。</p>
+</li>
+</ul>
+<p>#应用场景举例(老司机发车咯)</p>
+<p>代理模式好有一比。比从何来？好比西门庆找潘金莲，让王婆做代理。(营养跟不上的请自觉下车233)<br><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/DesignPattern/%E5%88%AB%E5%BC%80%E8%BD%A6.jpg?raw=true" alt="别开车"><br>首先，我们先定义这种女人。一种类型嘛，肯定要是接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">KindWoman</span> </span>&#123;  </div><div class="line">      </div><div class="line">    <span class="comment">//这种女人能做什么事情呢？  </span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEyesWithMan</span><span class="params">()</span></span>;<span class="comment">//抛媚眼  </span></div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyWithMan</span><span class="params">()</span></span>;<span class="comment">//你懂得 </span></div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>之后，我们要有潘金莲</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PanJinLian</span>  <span class="keyword">implements</span> <span class="title">KindWoman</span></span>&#123;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"潘金莲和男人你懂得..."</span>);  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEyesWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"潘金莲抛媚眼..."</span>);  </div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后王婆登场</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WangPo</span> <span class="keyword">implements</span> <span class="title">KindWoman</span> </span>&#123;  </div><div class="line">      </div><div class="line">    <span class="keyword">private</span> KindWoman kindWoman;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WangPo</span><span class="params">()</span></span>&#123;  </div><div class="line">        <span class="comment">//默认的话是潘金莲的代理  </span></div><div class="line">        <span class="keyword">this</span>.kindWoman = <span class="keyword">new</span> PanJinLian();  </div><div class="line">    &#125;  </div><div class="line">    <span class="comment">//她可以是KindWomam的任何一个女人的代理，只要你是这一类型  </span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WangPo</span><span class="params">(KindWoman kindWoman)</span></span>&#123;  </div><div class="line">        <span class="keyword">this</span>.kindWoman = kindWoman;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="comment">//自己老了，但可以叫年轻的代替。  </span></div><div class="line">        <span class="keyword">this</span>.kindWoman.happyWithMan();  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEyesWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="comment">//王婆年纪大了，谁看她抛媚眼啊  </span></div><div class="line">        <span class="keyword">this</span>.kindWoman.makeEyesWithMan();  </div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>女主角都上场了，接下来该男主角西门大官人了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  *水浒传是这样写的：西门庆被潘金莲用竹竿敲了一下，</div><div class="line">  *西门庆看痴迷了，被王婆看到了，就开始撮合两人好事，</div><div class="line">  *王婆作为潘金莲的代理人收了不少好处费</div><div class="line">  */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XiMenQing</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="comment">/** </span></div><div class="line">     * <span class="doctag">@param</span> args </div><div class="line">     */  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        WangPo wangPo;  </div><div class="line">        <span class="comment">//把王婆叫出来  </span></div><div class="line">         wangPo = <span class="keyword">new</span> WangPo();  </div><div class="line">        <span class="comment">//然后西门庆说，我要和潘金莲你懂得，然后王婆就安排了西门庆丢筷子那出戏：  </span></div><div class="line">        wangPo.makeEyesWithMan();  </div><div class="line">        <span class="comment">//看到没有表面是王婆在做，其实爽的是潘金莲  </span></div><div class="line">        wangPo.happyWithMan();  </div><div class="line">  </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后再来个玉堂春吧233，虽然不是一个时代(详见《三堂会审玉堂春》)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YuTangChun</span> <span class="keyword">implements</span> <span class="title">KindWoman</span></span>&#123;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"玉堂春和男人你懂得..."</span>);  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEyesWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"玉堂春抛媚眼..."</span>);  </div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这之后，西门庆可以勾搭玉堂春<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  *水浒传是这样写的：西门庆被潘金莲用竹竿敲了一下，</div><div class="line">  *西门庆看痴迷了，被王婆看到了，就开始撮合两人好事，</div><div class="line">  *王婆作为潘金莲的代理人收了不少好处费</div><div class="line">  */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XiMenQing</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="comment">/** </span></div><div class="line">     * <span class="doctag">@param</span> args </div><div class="line">     */  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        WangPo wangPo;  </div><div class="line">        <span class="comment">//把王婆叫出来  </span></div><div class="line">         wangPo = <span class="keyword">new</span> WangPo();  </div><div class="line">        <span class="comment">//然后西门庆说，我要和潘金莲你懂得，然后王婆就安排了西门庆丢筷子那出戏：  </span></div><div class="line">        wangPo.makeEyesWithMan();  </div><div class="line">        <span class="comment">//看到没有，表面是王婆在做，其实爽的是潘金莲  </span></div><div class="line">        wangPo.happyWithMan();  </div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//西门庆勾搭玉堂春  </span></div><div class="line">        YuTangChun yuTangChun = <span class="keyword">new</span> YuTangChun();  </div><div class="line">        wangPo = <span class="keyword">new</span> WangPo(yuTangChun);  </div><div class="line">        wangPo.makeEyesWithMan();  </div><div class="line">        wangPo.happyWithMan(); </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#故事背后深层含义(车到站了哦)<br>代理模式主要使用了java的多态，干活的是被代理类，代理类主要是接活，你让我干活，好，我交给幕后的类去干，你满意就成，那怎么知道被代理类能不能干呢？同根就成，大家知根知底，你能做啥，我能做啥都清楚得很，同样一个接口呗。<br>今天老司机就开到这里吧，红红火火恍恍惚惚。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/22/线索二叉树的遍历方法/" itemprop="url">
                   线索二叉树的遍历方法
                 </a>
@@ -254,7 +372,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">发表于</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-22T23:23:27+08:00" content="2016-11-22">
               2016-11-22
             </time>
@@ -361,7 +479,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">发表于</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-01T21:24:25+08:00" content="2016-11-01">
               2016-11-01
             </time>
@@ -392,7 +510,8 @@
       
         
           
-            <p>只是关于UML基础知识部分的翻译<br>[TOC]</p>
+            <p>只是关于UML基础知识部分的翻译</p>
+<p>[TOC]</p>
 <h1 id="UML基础"><a href="#UML基础" class="headerlink" title="UML基础"></a>UML基础</h1><h2 id="关于UML"><a href="#关于UML" class="headerlink" title="关于UML"></a>关于UML</h2><p>这一章节会给你一个UML基础知识的概览。一定要记住，这不是一个综合的UML教程，而只是一个可以当做UML教程的对UML的简要介绍。<br>统一建模语言(UML)是一个图表语言，或者说是用来指定、可视化和文档化面向对象软件的模型的标记法。<br>UML不是一种开发方法，这也就意味着它不会一五一十地告诉你每一步要做什么和如何设计你的系统，但是它可以帮助你可视化你的设计和与他人沟通。<br>UML为面向对象程序设计而生，对其他编程模式作用有限。<br>UML由许多模板元素组成，这些模板元素代表着软件系统的不同部分。UML的元素被用来创建示意图，这些示意图代表着一个软件系统的一部分或者一个方面。Umbrello支持以下的这些表：</p>
 <ul>
 <li>用例图：展示演员（系统的用户）、用例（用户使用系统的情形）以及他们之间的关系。</li>
@@ -550,7 +669,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">发表于</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-30T19:46:52+08:00" content="2016-10-30">
               2016-10-30
             </time>
@@ -663,7 +782,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">发表于</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-30T19:13:12+08:00" content="2016-10-30">
               2016-10-30
             </time>
@@ -779,7 +898,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">发表于</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-28T22:39:53+08:00" content="2016-10-28">
               2016-10-28
             </time>
@@ -911,8 +1030,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">日志</span>
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -921,8 +1040,8 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">标签</span>
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -966,11 +1085,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
