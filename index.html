@@ -262,6 +262,15 @@
 
           
           
+             <span id="/2016/12/09/归一化谷歌距离的计算方法/" class="leancloud_visitors" data-flag-title="归一化谷歌距离的计算方法">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
 
           
         </div>
@@ -377,6 +386,15 @@
 
           
           
+             <span id="/2016/12/07/设计模式之代理模式-第二版/" class="leancloud_visitors" data-flag-title="设计模式之代理模式(第二版)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
 
           
         </div>
@@ -399,9 +417,9 @@
 <li>售票员Conductor也是德云社一员，他可以是任何德云社的售票员。并且他知道每个剧场能坐三个人，超过三人禁止进入。</li>
 <li>观众Audience都有名字，可以进入任意的德云社。观众必须经过售票员，售票员是哪个德云社的代理，观众就进入哪一个。</li>
 </ul>
-<h2 id="实际代码"><a href="#实际代码" class="headerlink" title="实际代码"></a>实际代码</h2><h3 id="德云社接口"><a href="#德云社接口" class="headerlink" title="德云社接口"></a>德云社接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="南京德云社"><a href="#南京德云社" class="headerlink" title="南京德云社"></a>南京德云社</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NanJingDeYunShe</span> <span class="keyword">implements</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span> </span>&#123;</div><div class="line">		System.out.println(audience.getName()+<span class="string">" entered!"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="售票员"><a href="#售票员" class="headerlink" title="售票员"></a>售票员</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Conductor</span> <span class="keyword">implements</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX = <span class="number">3</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> audiences=<span class="number">0</span>;</div><div class="line">	<span class="keyword">private</span> DeYunShe dys;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Conductor</span><span class="params">(DeYunShe dys)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.dys = dys;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (audiences&lt;MAX) &#123;</div><div class="line">			dys.enter(audience);</div><div class="line">			audiences++;</div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(audience.getName()+<span class="string">" is not allowed to enter!"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实际代码"><a href="#实际代码" class="headerlink" title="实际代码"></a>实际代码</h2><h3 id="德云社接口"><a href="#德云社接口" class="headerlink" title="德云社接口"></a>德云社接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">getSeats</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="南京德云社"><a href="#南京德云社" class="headerlink" title="南京德云社"></a>南京德云社</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NanJingDeYunShe</span> <span class="keyword">implements</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> seats=<span class="number">3</span>;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span> </span>&#123;</div><div class="line">		System.out.println(audience.getName()+<span class="string">" entered!"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSeats</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> seats;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="售票员"><a href="#售票员" class="headerlink" title="售票员"></a>售票员</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Conductor</span> <span class="keyword">implements</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> max=<span class="number">0</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> audiences=<span class="number">0</span>;</div><div class="line">	<span class="keyword">private</span> DeYunShe dys;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Conductor</span><span class="params">(DeYunShe dys)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.dys = dys;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSeats</span><span class="params">()</span> </span>&#123;</div><div class="line">		max = dys.getSeats();</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (audiences&lt;max) &#123;</div><div class="line">			dys.enter(audience);</div><div class="line">			audiences++;</div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(audience.getName()+<span class="string">" is not allowed to enter!"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="观众"><a href="#观众" class="headerlink" title="观众"></a>观众</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Audience</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Audience</span><span class="params">(String n)</span> </span>&#123;</div><div class="line">		name = n;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Conductor proxy = <span class="keyword">new</span> Conductor(<span class="keyword">new</span> NanJingDeYunShe());</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">5</span>;i++)&#123;</div><div class="line">			proxy.enter(<span class="keyword">new</span> Audience(<span class="string">"Audience"</span>+i));</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/DesignPattern/Proxy/result.png" alt=""></p>
@@ -483,6 +501,15 @@
           
 
           
+          
+             <span id="/2016/12/04/太平歌词白蛇传/" class="leancloud_visitors" data-flag-title="太平歌词白蛇传">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -582,6 +609,15 @@
           
 
           
+          
+             <span id="/2016/11/27/设计模式之代理模式/" class="leancloud_visitors" data-flag-title="设计模式之代理模式">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -698,6 +734,15 @@
 
           
           
+             <span id="/2016/11/22/线索二叉树的遍历方法/" class="leancloud_visitors" data-flag-title="线索二叉树的遍历方法">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
 
           
         </div>
@@ -804,6 +849,15 @@
           
 
           
+          
+             <span id="/2016/11/01/Umbrello-UML-文档个人翻译/" class="leancloud_visitors" data-flag-title="Umbrello UML 文档个人翻译">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -995,6 +1049,15 @@
 
           
           
+             <span id="/2016/10/30/Linux命令-3-chgrp/" class="leancloud_visitors" data-flag-title="Linux命令(3) chgrp">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
 
           
         </div>
@@ -1107,6 +1170,15 @@
           
 
           
+          
+             <span id="/2016/10/30/Linux命令-2-chattr/" class="leancloud_visitors" data-flag-title="Linux命令(2) chattr">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -1223,6 +1295,15 @@
           
 
           
+          
+             <span id="/2016/10/28/Linux命令-1-cat/" class="leancloud_visitors" data-flag-title="Linux命令(1) cat">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -1491,6 +1572,113 @@
   
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("oNJjTL7jM33iRBxHld63N3z1-gzGzoHsz", "uqK0i0RTln8eoNQgV71yGxLy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
