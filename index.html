@@ -233,6 +233,152 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/13/使用阿里云服务器搭建PPTP协议的VPN/" itemprop="url">
+                  使用阿里云服务器搭建PPTP协议的VPN
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-13T16:13:02+08:00" content="2016-12-13">
+              2016-12-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/13/使用阿里云服务器搭建PPTP协议的VPN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/使用阿里云服务器搭建PPTP协议的VPN/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/13/使用阿里云服务器搭建PPTP协议的VPN/" class="leancloud_visitors" data-flag-title="使用阿里云服务器搭建PPTP协议的VPN">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>作为运维，我手上现在有一个位于美国硅谷的阿里云ECS服务器。秉承物尽其用的原则，正好搭建一个VPN服务器。</p>
+<h1 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h1><ul>
+<li>CPU：1核心Haswell架构的处理器</li>
+<li>内存：1GB+自己配置的4GB的Swapfile(相当于虚拟内存)</li>
+<li>操作系统：Ubuntu14.04LTS 64位</li>
+</ul>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="Linux平台准备"><a href="#Linux平台准备" class="headerlink" title="Linux平台准备"></a>Linux平台准备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//安装openssh-client</div><div class="line">sudo apt install openssh-client</div><div class="line">//连接服务器</div><div class="line">//例如</div><div class="line">ssh root@127.0.0.1 //ssh 用户名@服务器的公网IP</div></pre></td></tr></table></figure>
+<h2 id="Windows平台准备"><a href="#Windows平台准备" class="headerlink" title="Windows平台准备"></a>Windows平台准备</h2><ol>
+<li>安装PuTTY或者XShell，想要更傻瓜操作一点可以安装WinSCP供后续使用</li>
+<li>使用PuTTY或者XShell连接服务器</li>
+</ol>
+<h2 id="安卓平台准备"><a href="#安卓平台准备" class="headerlink" title="安卓平台准备"></a>安卓平台准备</h2><p>我就是用我的小米4C上软工课无聊配置得VPN哈哈哈哈，所以我也写一下好了</p>
+<ol>
+<li>安装connectBot(详见<a href="https://github.com/connectbot/connectbot" target="_blank" rel="external">GitHub</a>)</li>
+<li>使用connectBot连接服务器</li>
+</ol>
+<h1 id="安装有关软件"><a href="#安装有关软件" class="headerlink" title="安装有关软件"></a>安装有关软件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//服务器上</div><div class="line">sudo apt install ppp iptables pptpd</div></pre></td></tr></table></figure>
+<p>炒鸡简单是吧</p>
+<h1 id="更改相关配置"><a href="#更改相关配置" class="headerlink" title="更改相关配置"></a>更改相关配置</h1><h2 id="更改使用的工具"><a href="#更改使用的工具" class="headerlink" title="更改使用的工具"></a>更改使用的工具</h2><h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vi /file //或者vim</div><div class="line">//用上下键移动光标到需要修改的那一行，按“i”键进入插入编辑状态，修改完成之后，按“esc”键退出编辑，直接在键盘上输入“:wq&quot;即可保存退出。</div><div class="line"></div><div class="line">//好在不一定要用vi/vim，用nano也OK</div><div class="line">nano /file</div><div class="line">//上下左右都能移动光标，除了不能用鼠标以外没什么难度。修改完成按Ctrl+X，问是否保存按Y，之后保存名称不用改直接回车。找不到就按Ctrl+W查找就是。</div></pre></td></tr></table></figure>
+<p>nano的具体操作可以看<a href="http://codingstandards.iteye.com/blog/802593" target="_blank" rel="external">我使用过的Linux命令之nano - 比vi简单易用的文本编辑器</a></p>
+<h3 id="图形化"><a href="#图形化" class="headerlink" title="图形化"></a>图形化</h3><p>使用WinSCP以root用户登录，使用WinSCP提供的文本编辑功能双击修改即可。修改完成之后Ctrl+S保存，问你是否覆盖，选是即可。</p>
+<h2 id="修改配置文件-以使用nano为例"><a href="#修改配置文件-以使用nano为例" class="headerlink" title="修改配置文件(以使用nano为例)"></a>修改配置文件(以使用nano为例)</h2><h3 id="编辑pptpd-conf"><a href="#编辑pptpd-conf" class="headerlink" title="编辑pptpd.conf"></a>编辑pptpd.conf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nano /etc/pptpd.conf</div><div class="line">//找到#localip 192.168.0.1</div><div class="line">//   #remoteip 192.168.0.234-238,192.168.0.245</div><div class="line">//删去#号即可</div></pre></td></tr></table></figure>
+<h3 id="编辑options"><a href="#编辑options" class="headerlink" title="编辑options"></a>编辑options</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nano /etc/ppp/options</div><div class="line"></div><div class="line">//搜索ms-dns，去掉搜索到的两行ms-dns前面的#，并修改为下面的字段</div><div class="line">//ms-dns 8.8.8.8</div><div class="line">//ms-dns 8.8.4.4</div></pre></td></tr></table></figure>
+<h3 id="编辑chap-secrets"><a href="#编辑chap-secrets" class="headerlink" title="编辑chap-secrets"></a>编辑chap-secrets</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nano /etc/ppp/chap-secrets</div><div class="line">//添加一行，按照下面格式输入：</div><div class="line">//用户名 pptpd 密码 *</div><div class="line">//比如 zizhuo pptpd zizhuo *</div><div class="line">//*的含义是不限制连接者的IP地址，想要限制的话改成那个IP即可</div></pre></td></tr></table></figure>
+<h3 id="编辑sysctl-conf-内核文件"><a href="#编辑sysctl-conf-内核文件" class="headerlink" title="编辑sysctl.conf(内核文件)"></a>编辑sysctl.conf(内核文件)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nano /etc/sysctl.conf</div><div class="line"></div><div class="line">//将net.ipv4.ip_forward=0</div><div class="line">//改成net.ipv4.ip_forward=1</div></pre></td></tr></table></figure>
+<h2 id="添加iptables转发规则"><a href="#添加iptables转发规则" class="headerlink" title="添加iptables转发规则"></a>添加iptables转发规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth1 -j MASQUERADE</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>--table    -t table    table to manipulate (default: `filter’)</li>
+<li>--append  -A chain        Append to chain</li>
+<li>--source    -s address[/mask][…] source specification</li>
+<li>--out-interface -o output name[+] &emsp;network interface name &emsp;eth1是阿里云服务器的连接外网的网卡，可以用ifconfig看一下哪一块网卡是外网IP就可以</li>
+<li>–jump    -j target &emsp;&emsp;target for rule (may load target extension)</li>
+</ul>
+<h2 id="启动pptpd"><a href="#启动pptpd" class="headerlink" title="启动pptpd"></a>启动pptpd</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo service pptpd restart</div><div class="line">//或者</div><div class="line">/etc/init.d/pptpd restart</div></pre></td></tr></table></figure>
+<h2 id="设置开机自启"><a href="#设置开机自启" class="headerlink" title="设置开机自启"></a>设置开机自启</h2><p>貌似现在默认就可以，不过我还是说一下吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//Ubutnu没有chkconfig，可以用rcconf</div><div class="line">sudo apt install rcconf</div><div class="line">rcconf on</div><div class="line">//之后会看到菜单，按空格选择开启/关闭，Tab键跳出选择OK/Cancel</div></pre></td></tr></table></figure></p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>去看看所谓的“真实世界”吧2333，下篇文章再见。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/09/归一化谷歌距离的计算方法/" itemprop="url">
                   归一化谷歌距离的计算方法
                 </a>
@@ -1487,7 +1633,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1497,7 +1643,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
