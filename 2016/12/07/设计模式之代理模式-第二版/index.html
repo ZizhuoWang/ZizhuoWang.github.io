@@ -96,7 +96,7 @@
 意义使用代理模式创建代理对象，让代理对象控制目标对象的访问(目标对象可以是远程的对象、创建开销大的对象或需要安全控制的对象)">
 <meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/DesignPattern/Proxy/%E5%BE%B7%E4%BA%91%E7%A4%BE.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/DesignPattern/Proxy/result.png">
-<meta property="og:updated_time" content="2016-12-12T03:35:49.134Z">
+<meta property="og:updated_time" content="2016-12-15T06:12:08.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之代理模式(第二版)">
 <meta name="twitter:description" content="之前的例子可能不太恰当，于是我就又想了一个例子。
@@ -323,7 +323,7 @@
 <h2 id="大体思路"><a href="#大体思路" class="headerlink" title="大体思路"></a>大体思路</h2><ul>
 <li>德云社有很多分社，遍布大江南北。人们每每提到德云社，总是对一种剧场的总称。因此德云社是一种接口。它有enter进入方法。</li>
 <li>南京德云社是全国的德云社之一，每当有人enter进入就会提示。</li>
-<li>售票员Conductor也是德云社一员，他可以是任何德云社的售票员。并且他知道每个剧场能坐三个人，超过三人禁止进入。</li>
+<li>售票员Conductor也是德云社一员，他可以是任何德云社的售票员。并且他知道每个剧场能坐max个人，超过max人禁止进入。</li>
 <li>观众Audience都有名字，可以进入任意的德云社。观众必须经过售票员，售票员是哪个德云社的代理，观众就进入哪一个。</li>
 </ul>
 <h2 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h2><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/DesignPattern/Proxy/%E5%BE%B7%E4%BA%91%E7%A4%BE.png" alt=""></p>
