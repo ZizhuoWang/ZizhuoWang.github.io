@@ -3,6 +3,20 @@
   
     
     <entry>
+      <title><![CDATA[AMD New Horizon]]></title>
+      <url>%2F2016%2F12%2F17%2FAMD-New-Horizon%2F</url>
+      <content type="text"><![CDATA[]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[设计模式之代理模式(第三版)]]></title>
+      <url>%2F2016%2F12%2F15%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-%E7%AC%AC%E4%B8%89%E7%89%88%2F</url>
+      <content type="text"><![CDATA[综述&emsp;&emsp;广泛意义上讲，代理是一种类，它的作用是作为其他东西的接口。代理可以成为任何东西的接口：网络连接、内存中的大型对象、文件或者是其他不可复制或复制代价很大的资源。简短来说，代理是被客户端调用，用来访问隐藏的实体服务对象的封装类或代理对象。&emsp;&emsp;代理可以简单地直接调用实体对象，也可以添加额外的逻辑。代理可以提供额外的功能，例如对资源敏感的实体对象进行缓存，或者在调用实体对象之前进行前提检查。&emsp;&emsp;对于客户端而言，使用代理对象和使用实体对象是相似的，因为二者都实现了同一个接口。 可能的应用场景远程代理&emsp;&emsp;在分布式对象通信中，本地对象是远程对象的代理对象。本地对象的方法调用的结果是远程对象的方法被调用。典型例子是ATM，ATM持有远程服务器的实体对象的代理对象。 虚拟代理&emsp;&emsp;在一些情况下，用一个大体框架来代替复杂庞大的对象的优势是很明显的。比如当一幅图片很大时用一个虚拟代理替换它，之后按需加载。 保护代理&emsp;&emsp;保护代理被用来基于访问权限，控制资源的访问。 #]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[使用阿里云服务器搭建PPTP协议的VPN]]></title>
       <url>%2F2016%2F12%2F13%2F%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAPPTP%E5%8D%8F%E8%AE%AE%E7%9A%84VPN%2F</url>
       <content type="text"><![CDATA[作为运维，我手上现在有一个位于美国硅谷的阿里云ECS服务器。秉承物尽其用的原则，正好搭建一个VPN服务器。 环境介绍 CPU：1核心Haswell架构的处理器 内存：1GB+自己配置的4GB的Swapfile(相当于虚拟内存) 操作系统：Ubuntu14.04LTS 64位 准备工作Linux平台准备12345//安装openssh-clientsudo apt install openssh-client//连接服务器//例如ssh root@127.0.0.1 //ssh 用户名@服务器的公网IP Windows平台准备 安装PuTTY或者XShell，想要更傻瓜操作一点可以安装WinSCP供后续使用 使用PuTTY或者XShell连接服务器 安卓平台准备我就是用我的小米4C上软工课无聊配置得VPN哈哈哈哈，所以我也写一下好了 安装connectBot(详见GitHub) 使用connectBot连接服务器 安装有关软件12//服务器上sudo apt install ppp iptables pptpd 炒鸡简单是吧 更改相关配置更改使用的工具命令行123456vi /file //或者vim//用上下键移动光标到需要修改的那一行，按“i”键进入插入编辑状态，修改完成之后，按“esc”键退出编辑，直接在键盘上输入“:wq&quot;即可保存退出。//好在不一定要用vi/vim，用nano也OKnano /file//上下左右都能移动光标，除了不能用鼠标以外没什么难度。修改完成按Ctrl+X，问是否保存按Y，之后保存名称不用改直接回车。找不到就按Ctrl+W查找就是。 nano的具体操作可以看我使用过的Linux命令之nano - 比vi简单易用的文本编辑器 图形化使用WinSCP以root用户登录，使用WinSCP提供的文本编辑功能双击修改即可。修改完成之后Ctrl+S保存，问你是否覆盖，选是即可。 修改配置文件(以使用nano为例)编辑pptpd.conf1234nano /etc/pptpd.conf//找到#localip 192.168.0.1// #remoteip 192.168.0.234-238,192.168.0.245//删去#号即可 编辑options12345nano /etc/ppp/options//搜索ms-dns，去掉搜索到的两行ms-dns前面的#，并修改为下面的字段//ms-dns 8.8.8.8//ms-dns 8.8.4.4 编辑chap-secrets12345nano /etc/ppp/chap-secrets//添加一行，按照下面格式输入：//用户名 pptpd 密码 *//比如 zizhuo pptpd zizhuo *//*的含义是不限制连接者的IP地址，想要限制的话改成那个IP即可 编辑sysctl.conf(内核文件)1234nano /etc/sysctl.conf//将net.ipv4.ip_forward=0//改成net.ipv4.ip_forward=1 添加iptables转发规则1iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth1 -j MASQUERADE 说明： --table -t table table to manipulate (default: `filter’) --append -A chain Append to chain --source -s address[/mask][…] source specification --out-interface -o output name[+] &emsp;network interface name &emsp;eth1是阿里云服务器的连接外网的网卡，可以用ifconfig看一下哪一块网卡是外网IP就可以 –jump -j target &emsp;&emsp;target for rule (may load target extension) 启动pptpd123sudo service pptpd restart//或者/etc/init.d/pptpd restart 设置开机自启貌似现在默认就可以，不过我还是说一下吧1234//Ubutnu没有chkconfig，可以用rcconfsudo apt install rcconfrcconf on//之后会看到菜单，按空格选择开启/关闭，Tab键跳出选择OK/Cancel 结束去看看所谓的“真实世界”吧2333，下篇文章再见。]]></content>
