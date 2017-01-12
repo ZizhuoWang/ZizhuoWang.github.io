@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[最简单地安装PyQt5+Eric6+Sip+QScintilla2]]></title>
+      <url>%2F2017%2F01%2F12%2F%E6%9C%80%E7%AE%80%E5%8D%95%E5%9C%B0%E5%AE%89%E8%A3%85PyQt5-Eric6-Sip-QScintilla2%2F</url>
+      <content type="text"><![CDATA[对编译安装说不&emsp;&emsp;编译安装不利于后续升级，也有可能在编译过程中出现各种奇怪的问题，最主要还有对于低端机来说很慢。。。 Ubuntu安装1234567891011sudo apt install python3.5 python3-pip //基础sudo pip3 install qscintilla //这一步会安装PyQt5、Sip、QScintilla2sudo apt install qt4-designer //Eric会用它来创建界面//到官网上下载Eric的压缩包，解压缩，cd到解压目录sudo python3 install.py //安装Eric6sudo python3 install-i18n.py //安装语言包sudo python3 install-debugclients.py //不知道是干嘛的，安装上没坏处sudo pip3 install pyenchant //Python检查拼写的插件，Eric会用上//之后就完成了，比我看到的任何教程都简单。。。//好好研究一下PyQt5吧]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Java大作业说明文档]]></title>
       <url>%2F2017%2F01%2F07%2FJava%E5%A4%A7%E4%BD%9C%E4%B8%9A%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3%2F</url>
       <content type="text"><![CDATA[GitHub ATM机设计文档71115115 王子卓 效果 &emsp;&emsp;服务器的守护进程启动之后可以显示在线人数和各个用户的账户总金额。&emsp;&emsp;ATM机界面在没有登录的时候不可以点击存取款、查询等按钮，金额、编号文本框不可编辑。登陆之后，注册和登录按钮不可点击，用户名、密码文本框不可编辑。 测试方法&emsp;&emsp;修改Server.java中getConnection函数中的dbURL，将&amp;user=root&amp;password=******修改成您的MySQL用户名和密码。 程序结构 &emsp;&emsp;这不是一个标准的UML类图。&emsp;&emsp;活期账户、半年期、一年期、五年期存款和贷款都实现了同一个Balance接口，Balance接口继承了Runnable类。活期账户、半年期、一年期、五年期存款和贷款都聚合到User类中。客户端Client和服务器Server都有User类的成员对象。&emsp;&emsp;客户端Client和服务器守护进程ServerDaemon连接，由ServerDaemon动态创建Server线程。&emsp;&emsp;每一笔存款自身都是线程，服务器打开之后，线程自动运行，实现加息。利息每季度结算，每季度利息是年利率开四次方。&emsp;&emsp;客户端和服务器之间信息传递依靠对象输入输出流，信息载体是Command类对象和User类对象。&emsp;&emsp;数据库的操作由Server类完成。&emsp;&emsp;大部分对象都实现了可序列化Serializable接口，以便存入数据库。&emsp;&emsp;采用了UTF-8编解码，所以支持中文。 数据库结构 数据库名：atm 数据表名：user 数据表字段： name：varchar(200),非空，不可重复 object：longblob，非空 字段作用：name负责存储用户的用户名。object负责存储用户类的对象，该对象中保存有包括用户密码在内的各种用户信息。 优点：在一定程度上减少数据库的读取、写入次数。用户的信息并不以明文方式呈现，在一定程度上有加密的作用。 程序使用流程]]></content>
