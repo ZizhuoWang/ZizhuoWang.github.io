@@ -254,6 +254,182 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/15/操作系统实验一/" itemprop="url">
+                  操作系统实验一
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-15T08:13:27+08:00" content="2017-03-15">
+              2017-03-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/15/操作系统实验一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/操作系统实验一/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/15/操作系统实验一/" class="leancloud_visitors" data-flag-title="操作系统实验一">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="向Linux内核增加一个系统调用"><a href="#向Linux内核增加一个系统调用" class="headerlink" title="向Linux内核增加一个系统调用"></a>向Linux内核增加一个系统调用</h1><h2 id="71115115-王子卓-2017年3月14日"><a href="#71115115-王子卓-2017年3月14日" class="headerlink" title="71115115 王子卓 2017年3月14日"></a>71115115 王子卓 2017年3月14日</h2><h2 id="一-实验目的"><a href="#一-实验目的" class="headerlink" title="一.实验目的"></a>一.实验目的</h2><p>  通过实验，熟悉Linux操作系统的使用，掌握构建与启动Linux内核的方法；掌握用户程序如何利用系统调用与操作系统内核实现通信的方法，加深对系统调用机制的理解；进一步掌握如何向操作系统内核增加新的系统调用的方法，以扩展操作系统的功能。 </p>
+<h2 id="二-实验内容"><a href="#二-实验内容" class="headerlink" title="二.实验内容"></a>二.实验内容</h2><ol>
+<li>Linux环境下的C或C++编译和调试工具的使用。</li>
+<li>向Linux内核增加新的系统调用，系统调用名称和功能自行定义，但必须实现如下输出功能：“My Student No. is 71115115，and My Name is 王子卓”。</li>
+<li>Linux新内核的编译、安装和配置。</li>
+<li>编写应用程序以测试新的系统调用并输出测试结果。</li>
+</ol>
+<h2 id="三-实验步骤"><a href="#三-实验步骤" class="headerlink" title="三.实验步骤"></a>三.实验步骤</h2><ol>
+<li><p>下载Linux内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install linux-source-4.4.0</div></pre></td></tr></table></figure>
+<p>下载完的内核放在<code>/usr/src/</code>里，等待解压。</p>
+</li>
+<li><p>解压内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/src/</div><div class="line">sudo tar -xvf ./linux-source-4.4.0.tar.bz2</div></pre></td></tr></table></figure>
+<p>解压完成之后增添系统调用</p>
+</li>
+<li><p>增添系统调用</p>
+<p>编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano ./arch/x86/entry/syscalls/syscall_64.tbl</div></pre></td></tr></table></figure>
+<p>我添加了546号系统调用sys_hello</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">546     64      hello                   sys_hello</div></pre></td></tr></table></figure>
+</li>
+<li><p>声明系统函数调用原型</p>
+<p>编辑<code>include/linux/syscalls.h</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano include/linux/syscalls.h</div></pre></td></tr></table></figure>
+<p>添加系统调用函数原型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_hello</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加系统调用函数的定义</p>
+<p>编辑<code>kernel/sys.c</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano kernel/sys.c</div></pre></td></tr></table></figure>
+<p>添加系统调用函数的定义</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_hello</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">	printk(<span class="string">"My student NO. is 71115115, and my name is 王子卓"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译内核</p>
+<p>首先要安装编译所需工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install libncurses-dev libssl-dev</div></pre></td></tr></table></figure>
+<p>安装完开始编译内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo make menuconfig</div><div class="line">sudo make bzImage //在bzImage之前加上 -j2 、 -j4等选项可以选择编译的线程数</div><div class="line">sudo make modules</div><div class="line">sudo make modules_install</div><div class="line">sudo make install //引导自动添加</div><div class="line">sudo update-grub //保险起见再次更新grub2</div><div class="line">sudo restart</div></pre></td></tr></table></figure>
+<p>重启后进入新内核。</p>
+</li>
+<li><p>测试系统调用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//syscall.cpp</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;linux/kernel.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/syscall.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">int</span> call = syscall(<span class="number">546</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"System call sys_hello returned %ld\n"</span>,call);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="四-主要数据结构及其说明"><a href="#四-主要数据结构及其说明" class="headerlink" title="四.主要数据结构及其说明"></a>四.主要数据结构及其说明</h2><ul>
+<li>系统调用表<code>syscall_64.tbl</code>，记录着所有系统调用号。</li>
+<li>系统调用头文件<code>syscalls.h</code>，记录着所有系统调用的函数原型。</li>
+<li>系统调用定义文件<code>sys.c</code>，记录着所有系统调用的函数实现。</li>
+</ul>
+<h2 id="五-程序运行结果"><a href="#五-程序运行结果" class="headerlink" title="五.程序运行结果"></a>五.程序运行结果</h2><p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:53:02.png?raw=true" alt="1"></p>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:54:47.png?raw=true" alt="2"></p>
+<h2 id="六-实验体会"><a href="#六-实验体会" class="headerlink" title="六.实验体会"></a>六.实验体会</h2><ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">scripts/sign-file.c:23:30: fatal error: openssl/opensslv.h: No such file or directory</div><div class="line">compilation terminated.</div><div class="line">scripts/Makefile.host:91: recipe for target &apos;scripts/sign-file&apos; failed</div><div class="line">make[1]: *** [scripts/sign-file] Error 1</div><div class="line">make[1]: *** Waiting for unfinished jobs....</div><div class="line">  CC      arch/x86/purgatory/purgatory.o</div><div class="line">  AS      arch/x86/purgatory/stack.o</div><div class="line">  AS      arch/x86/purgatory/setup-x86_64.o</div><div class="line">  CC      arch/x86/purgatory/sha256.o</div><div class="line">Makefile:566: recipe for target &apos;scripts&apos; failed</div><div class="line">make: *** [scripts] Error 2</div><div class="line">make: *** Waiting for unfinished jobs....</div><div class="line">  AS      arch/x86/purgatory/entry64.o</div><div class="line">  CC      arch/x86/purgatory/string.o</div><div class="line">  LD      arch/x86/purgatory/purgatory.ro</div><div class="line">  BIN2C   arch/x86/purgatory/kexec-purgatory.c</div></pre></td></tr></table></figure>
+<ul>
+<li><p>这是因为缺少编译所需的<code>libssl-dev</code>库</p>
+<p>解决方法：<code>sudo apt install libssl-dev</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">***</div><div class="line">*** Configuration file &quot;.config&quot; not found!</div><div class="line">***</div><div class="line">*** Please run some configurator (e.g. &quot;make oldconfig&quot; or</div><div class="line">*** &quot;make menuconfig&quot; or &quot;make xconfig&quot;).</div><div class="line">***</div></pre></td></tr></table></figure>
+<p>这是在编译之前没有执行<code>sudo make menuconfig</code>生成<code>.config</code>文件。</p>
+</li>
+</ul>
+<h2 id="七-源程序"><a href="#七-源程序" class="headerlink" title="七.源程序"></a>七.源程序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">sudo nano ./arch/x86/entry/syscalls/syscall_64.tbl</div><div class="line"><span class="comment">//末尾添加</span></div><div class="line"><span class="number">546</span>     <span class="number">64</span>      hello                   sys_hello</div><div class="line"></div><div class="line">sudo nano include/linux/syscalls.h</div><div class="line"><span class="comment">//任意位置添加</span></div><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_hello</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div><div class="line"></div><div class="line">sudo nano kernel/sys.c</div><div class="line"><span class="comment">//任意位置添加</span></div><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_hello</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">	printk(<span class="string">"My student NO. is 71115115, and my name is 王子卓"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//测试系统调用</span></div><div class="line"><span class="comment">//syscall.cpp</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;linux/kernel.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/syscall.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">int</span> call = syscall(<span class="number">546</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"System call sys_hello returned %ld\n"</span>,call);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/12/最简单地安装PyQt5-Eric6-Sip-QScintilla2/" itemprop="url">
                   最简单地安装PyQt5+Eric6+Sip+QScintilla2
                 </a>
@@ -1354,125 +1530,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/22/线索二叉树的遍历方法/" itemprop="url">
-                  线索二叉树的遍历方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-22T23:23:27+08:00" content="2016-11-22">
-              2016-11-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/22/线索二叉树的遍历方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/22/线索二叉树的遍历方法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/11/22/线索二叉树的遍历方法/" class="leancloud_visitors" data-flag-title="线索二叉树的遍历方法">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>求各种次序线索树非叶子结点的前驱和后继的方法：</p>
-<ul>
-<li>前序线索树非叶子结点p的前驱：p的双亲结点；</li>
-<li>前序线索树非叶子结点p的后继：若p有左孩子，则后继为其左孩子，否则后继是其右孩子。</li>
-<li>后序线索树非叶子结点p的前驱：若p有右孩子，则后继为其右孩子；否则后继是其左孩子。</li>
-<li>后序线索树非叶子结点p的后继：若p为根结点，则其后继为空；若p为其双亲结点的右孩子，或p为左孩子且其双亲结点无右孩子，则p的后继为其双亲结点；</li>
-<li>若p为左孩子，且其双亲结点有右孩子，则其后继为双亲结点右子树的第一个结点（最左边结点）。</li>
-<li>中序线索树非叶子结点p的前驱：左子树的最后一个结点（最右边的结点）。</li>
-<li>中序线索树非叶子结点p的后继：右子树的第一个结点（最左边结点）。 </li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1518,7 +1575,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

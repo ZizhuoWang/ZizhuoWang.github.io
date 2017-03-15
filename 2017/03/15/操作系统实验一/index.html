@@ -1,0 +1,926 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="向Linux内核增加一个系统调用71115115 王子卓 2017年3月14日一.实验目的  通过实验，熟悉Linux操作系统的使用，掌握构建与启动Linux内核的方法；掌握用户程序如何利用系统调用与操作系统内核实现通信的方法，加深对系统调用机制的理解；进一步掌握如何向操作系统内核增加新的系统调用的方法，以扩展操作系统的功能。 
+二.实验内容
+Linux环境下的C或C++编译和调试工具的使用。
+向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统实验一">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/操作系统实验一/index.html">
+<meta property="og:site_name" content="为学日益，为道日损">
+<meta property="og:description" content="向Linux内核增加一个系统调用71115115 王子卓 2017年3月14日一.实验目的  通过实验，熟悉Linux操作系统的使用，掌握构建与启动Linux内核的方法；掌握用户程序如何利用系统调用与操作系统内核实现通信的方法，加深对系统调用机制的理解；进一步掌握如何向操作系统内核增加新的系统调用的方法，以扩展操作系统的功能。 
+二.实验内容
+Linux环境下的C或C++编译和调试工具的使用。
+向">
+<meta property="og:image" content="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:53:02.png?raw=true">
+<meta property="og:image" content="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:54:47.png?raw=true">
+<meta property="og:updated_time" content="2017-03-15T00:15:08.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统实验一">
+<meta name="twitter:description" content="向Linux内核增加一个系统调用71115115 王子卓 2017年3月14日一.实验目的  通过实验，熟悉Linux操作系统的使用，掌握构建与启动Linux内核的方法；掌握用户程序如何利用系统调用与操作系统内核实现通信的方法，加深对系统调用机制的理解；进一步掌握如何向操作系统内核增加新的系统调用的方法，以扩展操作系统的功能。 
+二.实验内容
+Linux环境下的C或C++编译和调试工具的使用。
+向">
+<meta name="twitter:image" content="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:53:02.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/15/操作系统实验一/"/>
+
+
+  <title> 操作系统实验一 | 为学日益，为道日损 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">为学日益，为道日损</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">欲路上事，勿乐其便而姑为染指，一染指便深入万仞。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                操作系统实验一
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-15T08:13:27+08:00" content="2017-03-15">
+              2017-03-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/15/操作系统实验一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/操作系统实验一/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/15/操作系统实验一/" class="leancloud_visitors" data-flag-title="操作系统实验一">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="向Linux内核增加一个系统调用"><a href="#向Linux内核增加一个系统调用" class="headerlink" title="向Linux内核增加一个系统调用"></a>向Linux内核增加一个系统调用</h1><h2 id="71115115-王子卓-2017年3月14日"><a href="#71115115-王子卓-2017年3月14日" class="headerlink" title="71115115 王子卓 2017年3月14日"></a>71115115 王子卓 2017年3月14日</h2><h2 id="一-实验目的"><a href="#一-实验目的" class="headerlink" title="一.实验目的"></a>一.实验目的</h2><p>  通过实验，熟悉Linux操作系统的使用，掌握构建与启动Linux内核的方法；掌握用户程序如何利用系统调用与操作系统内核实现通信的方法，加深对系统调用机制的理解；进一步掌握如何向操作系统内核增加新的系统调用的方法，以扩展操作系统的功能。 </p>
+<h2 id="二-实验内容"><a href="#二-实验内容" class="headerlink" title="二.实验内容"></a>二.实验内容</h2><ol>
+<li>Linux环境下的C或C++编译和调试工具的使用。</li>
+<li>向Linux内核增加新的系统调用，系统调用名称和功能自行定义，但必须实现如下输出功能：“My Student No. is 71115115，and My Name is 王子卓”。</li>
+<li>Linux新内核的编译、安装和配置。</li>
+<li>编写应用程序以测试新的系统调用并输出测试结果。</li>
+</ol>
+<h2 id="三-实验步骤"><a href="#三-实验步骤" class="headerlink" title="三.实验步骤"></a>三.实验步骤</h2><ol>
+<li><p>下载Linux内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install linux-source-4.4.0</div></pre></td></tr></table></figure>
+<p>下载完的内核放在<code>/usr/src/</code>里，等待解压。</p>
+</li>
+<li><p>解压内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/src/</div><div class="line">sudo tar -xvf ./linux-source-4.4.0.tar.bz2</div></pre></td></tr></table></figure>
+<p>解压完成之后增添系统调用</p>
+</li>
+<li><p>增添系统调用</p>
+<p>编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano ./arch/x86/entry/syscalls/syscall_64.tbl</div></pre></td></tr></table></figure>
+<p>我添加了546号系统调用sys_hello</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">546     64      hello                   sys_hello</div></pre></td></tr></table></figure>
+</li>
+<li><p>声明系统函数调用原型</p>
+<p>编辑<code>include/linux/syscalls.h</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano include/linux/syscalls.h</div></pre></td></tr></table></figure>
+<p>添加系统调用函数原型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_hello</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加系统调用函数的定义</p>
+<p>编辑<code>kernel/sys.c</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano kernel/sys.c</div></pre></td></tr></table></figure>
+<p>添加系统调用函数的定义</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_hello</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">	printk(<span class="string">"My student NO. is 71115115, and my name is 王子卓"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译内核</p>
+<p>首先要安装编译所需工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install libncurses-dev libssl-dev</div></pre></td></tr></table></figure>
+<p>安装完开始编译内核</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo make menuconfig</div><div class="line">sudo make bzImage //在bzImage之前加上 -j2 、 -j4等选项可以选择编译的线程数</div><div class="line">sudo make modules</div><div class="line">sudo make modules_install</div><div class="line">sudo make install //引导自动添加</div><div class="line">sudo update-grub //保险起见再次更新grub2</div><div class="line">sudo restart</div></pre></td></tr></table></figure>
+<p>重启后进入新内核。</p>
+</li>
+<li><p>测试系统调用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//syscall.cpp</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;linux/kernel.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/syscall.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">int</span> call = syscall(<span class="number">546</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"System call sys_hello returned %ld\n"</span>,call);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="四-主要数据结构及其说明"><a href="#四-主要数据结构及其说明" class="headerlink" title="四.主要数据结构及其说明"></a>四.主要数据结构及其说明</h2><ul>
+<li>系统调用表<code>syscall_64.tbl</code>，记录着所有系统调用号。</li>
+<li>系统调用头文件<code>syscalls.h</code>，记录着所有系统调用的函数原型。</li>
+<li>系统调用定义文件<code>sys.c</code>，记录着所有系统调用的函数实现。</li>
+</ul>
+<h2 id="五-程序运行结果"><a href="#五-程序运行结果" class="headerlink" title="五.程序运行结果"></a>五.程序运行结果</h2><p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:53:02.png?raw=true" alt="1"></p>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:54:47.png?raw=true" alt="2"></p>
+<h2 id="六-实验体会"><a href="#六-实验体会" class="headerlink" title="六.实验体会"></a>六.实验体会</h2><ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">scripts/sign-file.c:23:30: fatal error: openssl/opensslv.h: No such file or directory</div><div class="line">compilation terminated.</div><div class="line">scripts/Makefile.host:91: recipe for target &apos;scripts/sign-file&apos; failed</div><div class="line">make[1]: *** [scripts/sign-file] Error 1</div><div class="line">make[1]: *** Waiting for unfinished jobs....</div><div class="line">  CC      arch/x86/purgatory/purgatory.o</div><div class="line">  AS      arch/x86/purgatory/stack.o</div><div class="line">  AS      arch/x86/purgatory/setup-x86_64.o</div><div class="line">  CC      arch/x86/purgatory/sha256.o</div><div class="line">Makefile:566: recipe for target &apos;scripts&apos; failed</div><div class="line">make: *** [scripts] Error 2</div><div class="line">make: *** Waiting for unfinished jobs....</div><div class="line">  AS      arch/x86/purgatory/entry64.o</div><div class="line">  CC      arch/x86/purgatory/string.o</div><div class="line">  LD      arch/x86/purgatory/purgatory.ro</div><div class="line">  BIN2C   arch/x86/purgatory/kexec-purgatory.c</div></pre></td></tr></table></figure>
+<ul>
+<li><p>这是因为缺少编译所需的<code>libssl-dev</code>库</p>
+<p>解决方法：<code>sudo apt install libssl-dev</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">***</div><div class="line">*** Configuration file &quot;.config&quot; not found!</div><div class="line">***</div><div class="line">*** Please run some configurator (e.g. &quot;make oldconfig&quot; or</div><div class="line">*** &quot;make menuconfig&quot; or &quot;make xconfig&quot;).</div><div class="line">***</div></pre></td></tr></table></figure>
+<p>这是在编译之前没有执行<code>sudo make menuconfig</code>生成<code>.config</code>文件。</p>
+</li>
+</ul>
+<h2 id="七-源程序"><a href="#七-源程序" class="headerlink" title="七.源程序"></a>七.源程序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">sudo nano ./arch/x86/entry/syscalls/syscall_64.tbl</div><div class="line"><span class="comment">//末尾添加</span></div><div class="line"><span class="number">546</span>     <span class="number">64</span>      hello                   sys_hello</div><div class="line"></div><div class="line">sudo nano include/linux/syscalls.h</div><div class="line"><span class="comment">//任意位置添加</span></div><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_hello</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div><div class="line"></div><div class="line">sudo nano kernel/sys.c</div><div class="line"><span class="comment">//任意位置添加</span></div><div class="line"><span class="function">asmlinkage <span class="keyword">long</span> <span class="title">sys_hello</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</div><div class="line">	printk(<span class="string">"My student NO. is 71115115, and my name is 王子卓"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//测试系统调用</span></div><div class="line"><span class="comment">//syscall.cpp</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;linux/kernel.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;sys/syscall.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">int</span> call = syscall(<span class="number">546</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"System call sys_hello returned %ld\n"</span>,call);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/12/最简单地安装PyQt5-Eric6-Sip-QScintilla2/" rel="next" title="最简单地安装PyQt5+Eric6+Sip+QScintilla2">
+                <i class="fa fa-chevron-left"></i> 最简单地安装PyQt5+Eric6+Sip+QScintilla2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/操作系统实验一/"
+           data-title="操作系统实验一" data-url="http://yoursite.com/2017/03/15/操作系统实验一/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/22298419?v=3&u=12cc559f5bea926634e500e76e8e3da9b699c959&s=400"
+               alt="王子卓" />
+          <p class="site-author-name" itemprop="name">王子卓</p>
+          <p class="site-description motion-element" itemprop="description">理路上事，勿惮其难而稍为退步，一退步便远隔千山。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#向Linux内核增加一个系统调用"><span class="nav-number">1.</span> <span class="nav-text">向Linux内核增加一个系统调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#71115115-王子卓-2017年3月14日"><span class="nav-number">1.1.</span> <span class="nav-text">71115115 王子卓 2017年3月14日</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一-实验目的"><span class="nav-number">1.2.</span> <span class="nav-text">一.实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-实验内容"><span class="nav-number">1.3.</span> <span class="nav-text">二.实验内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-实验步骤"><span class="nav-number">1.4.</span> <span class="nav-text">三.实验步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-主要数据结构及其说明"><span class="nav-number">1.5.</span> <span class="nav-text">四.主要数据结构及其说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-程序运行结果"><span class="nav-number">1.6.</span> <span class="nav-text">五.程序运行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-实验体会"><span class="nav-number">1.7.</span> <span class="nav-text">六.实验体会</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七-源程序"><span class="nav-number">1.8.</span> <span class="nav-text">七.源程序</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王子卓</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zizhuowang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("oNJjTL7jM33iRBxHld63N3z1-gzGzoHsz", "uqK0i0RTln8eoNQgV71yGxLy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
