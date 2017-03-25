@@ -98,7 +98,7 @@ Linux环境下的C或C++编译和调试工具的使用。
 向">
 <meta property="og:image" content="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:53:02.png?raw=true">
 <meta property="og:image" content="https://github.com/ZizhuoWang/ImageBed/blob/master/OSExperiment/Screenshot%20at%202017-03-14%2020:54:47.png?raw=true">
-<meta property="og:updated_time" content="2017-03-15T00:15:08.651Z">
+<meta property="og:updated_time" content="2017-03-25T16:39:57.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统实验一">
 <meta name="twitter:description" content="向Linux内核增加一个系统调用71115115 王子卓 2017年3月14日一.实验目的  通过实验，熟悉Linux操作系统的使用，掌握构建与启动Linux内核的方法；掌握用户程序如何利用系统调用与操作系统内核实现通信的方法，加深对系统调用机制的理解；进一步掌握如何向操作系统内核增加新的系统调用的方法，以扩展操作系统的功能。 
@@ -338,7 +338,7 @@ Linux环境下的C或C++编译和调试工具的使用。
 </li>
 <li><p>增添系统调用</p>
 <p>编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo nano ./arch/x86/entry/syscalls/syscall_64.tbl</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ./linux-source-4.4.0/</div><div class="line">sudo nano ./arch/x86/entry/syscalls/syscall_64.tbl</div></pre></td></tr></table></figure>
 <p>我添加了546号系统调用sys_hello</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">546     64      hello                   sys_hello</div></pre></td></tr></table></figure>
 </li>
