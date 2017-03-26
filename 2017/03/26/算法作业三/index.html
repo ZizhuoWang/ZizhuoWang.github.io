@@ -1,0 +1,897 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="第三次作业71115115 王子卓3-11234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class ZuiChangDanDiaoDiZengZiXuLie &amp;#123;	public int[] ZCDDZDZXL(int[] a)&amp;#123;		int i=1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法作业三">
+<meta property="og:url" content="http://yoursite.com/2017/03/26/算法作业三/index.html">
+<meta property="og:site_name" content="为学日益，为道日损">
+<meta property="og:description" content="第三次作业71115115 王子卓3-11234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class ZuiChangDanDiaoDiZengZiXuLie &amp;#123;	public int[] ZCDDZDZXL(int[] a)&amp;#123;		int i=1">
+<meta property="og:image" content="https://github.com/ZizhuoWang/ImageBed/blob/master/Algorithm/ZCDDDZZXL.png?raw=true">
+<meta property="og:updated_time" content="2017-03-26T15:56:36.328Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法作业三">
+<meta name="twitter:description" content="第三次作业71115115 王子卓3-11234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class ZuiChangDanDiaoDiZengZiXuLie &amp;#123;	public int[] ZCDDZDZXL(int[] a)&amp;#123;		int i=1">
+<meta name="twitter:image" content="https://github.com/ZizhuoWang/ImageBed/blob/master/Algorithm/ZCDDDZZXL.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/26/算法作业三/"/>
+
+
+  <title> 算法作业三 | 为学日益，为道日损 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">为学日益，为道日损</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">欲路上事，勿乐其便而姑为染指，一染指便深入万仞。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                算法作业三
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-26T23:55:58+08:00" content="2017-03-26">
+              2017-03-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/26/算法作业三/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/26/算法作业三/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/26/算法作业三/" class="leancloud_visitors" data-flag-title="算法作业三">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h1><h2 id="71115115-王子卓"><a href="#71115115-王子卓" class="headerlink" title="71115115 王子卓"></a>71115115 王子卓</h2><h3 id="3-1"><a href="#3-1" class="headerlink" title="3-1"></a>3-1</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZuiChangDanDiaoDiZengZiXuLie</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] ZCDDZDZXL(<span class="keyword">int</span>[] a)&#123;</div><div class="line">		<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>,k=<span class="number">0</span>,n=a.length;</div><div class="line">		<span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[n]; </div><div class="line">		<span class="comment">//b数组的各个元素负责存储以a数组中序号对应的各个元素为结尾的最长单调子序列长度</span></div><div class="line">		b[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(;i&lt;n;i++)&#123;</div><div class="line">			<span class="keyword">for</span>(;j&lt;i;j++)&#123; </div><div class="line">				<span class="keyword">if</span>(a[j]&lt;=a[i]&amp;&amp;k&lt;b[j])</div><div class="line">					k=b[j];</div><div class="line">			&#125;</div><div class="line">			b[i] = k+<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> maxLength(n, b);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] maxLength(<span class="keyword">int</span> n,<span class="keyword">int</span>[] b)&#123;</div><div class="line">		<span class="keyword">int</span> temp=<span class="number">0</span>,i=<span class="number">0</span>,flag=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(;i&lt;n;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(b[i]&gt;temp)&#123;</div><div class="line">				temp=b[i];</div><div class="line">				flag = i;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span>[] msg = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">		msg[<span class="number">0</span>] = flag;</div><div class="line">		msg[<span class="number">1</span>] = temp;</div><div class="line">		<span class="keyword">return</span> msg;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		ZuiChangDanDiaoDiZengZiXuLie xuLie = <span class="keyword">new</span> ZuiChangDanDiaoDiZengZiXuLie();</div><div class="line">		<span class="keyword">int</span>[] a = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</div><div class="line">		<span class="keyword">int</span>[] length = xuLie.ZCDDZDZXL(a);</div><div class="line">		System.out.println(<span class="string">"子序列末尾元素角标"</span>+length[<span class="number">0</span>]+<span class="string">"\n最长单调递增子序列长度"</span>+length[<span class="number">1</span>]);</div><div class="line">		<span class="keyword">int</span> biggest=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length[<span class="number">0</span>]+<span class="number">1</span>;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</div><div class="line">				System.out.println(a[i]);</div><div class="line">				biggest = a[i];</div><div class="line">			&#125;<span class="keyword">else</span></div><div class="line">				<span class="keyword">if</span>(a[i]&gt;=biggest)&#123;</div><div class="line">					System.out.println(a[i]);</div><div class="line">					biggest = a[i];</div><div class="line">				&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/Algorithm/ZCDDDZZXL.png?raw=true" alt=""></p>
+<h3 id="3-2"><a href="#3-2" class="headerlink" title="3-2"></a>3-2</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedZCDDDZZXL</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">LIS</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</div><div class="line">		b[<span class="number">1</span>] = a[<span class="number">0</span>];</div><div class="line">		<span class="keyword">int</span> k = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;a.length;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(a[i]&gt;=b[k])&#123;</div><div class="line">				b[++k] = a[i];</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				b[binary(i, k, a, b)] = a[i];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> k;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binary</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> k,<span class="keyword">int</span>[] a,<span class="keyword">int</span>[] b)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(a[i]&lt;b[<span class="number">1</span>])</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> j=k;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> h=<span class="number">1</span>;h!=j-<span class="number">1</span>;)&#123;</div><div class="line">			<span class="keyword">if</span>(b[k=(h+j)/<span class="number">2</span>]&lt;=a[i])</div><div class="line">				h=k;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				j=k;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> j;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-4"><a href="#3-4" class="headerlink" title="3-4"></a>3-4</h3><ul>
+<li><p>该问题是二维0-1背包问题。</p>
+</li>
+<li><p>对于给定的$$c&gt;0,d&gt;0,\omega_i&gt;0,b_i&gt;0,v_i&gt;0, 1\le{i}\le{n}$$</p>
+</li>
+<li><p>要求找出<em>n</em>元0-1向量$$(x_1,x_2,…,x_n),x<em>i\in{0,1},1\le{i}\le{n}$$使得$$\sum</em>{i=1}^{n}\omega_ix<em>i\le{c}, \sum</em>{i=1}^nb_ix<em>i\le{d}$$而且使$$\sum</em>{i=1}^nv_ix_i$$达到最大值。</p>
+</li>
+<li><p>由此可知，二维0-1背包问题是整数规划问题。<br>$$<br>max\sum_{i=1}^{n}v_ix<em>i\<br>\left{<br>\begin{array}\<br>\sum</em>{i=1}^{n}\omega_ix<em>i\le{c}\<br>\sum</em>{i=1}^{n}b_ix_i\le{d}\<br>x_i\in{0,1},1\le{i}\le{n}<br>\end{array}<br>\right.<br>$$</p>
+</li>
+</ul>
+<ul>
+<li>该问题具有最优子结构性质。设该问题的子问题<br>$$<br>max\sum_{t=i}^{n}v_tx<em>t\<br>\left{<br>\begin{array}\<br>\sum</em>{t=i}^{n}\omega_tx<em>t\le{j}\<br>\sum</em>{t=i}^{n}b_tx_t\le{k}\<br>x_i\in{0,1},i\le{t}\le{n}<br>\end{array}<br>\right.<br>$$</li>
+</ul>
+<p>  的最优解为$$m(i,j,k)$$，背包容量为<em>j</em>，容积为<em>k</em>，可选择的物品为$$i,i+1,…,n$$时该问题的最优值。</p>
+<ul>
+<li>由二维0-1背包问题的最优子结构性质，可得：<br>$$<br>m(i,j,k)=\left{<br>\begin{array}\<br>max{m(i+1,j),m(i+1,j-\omega_i,k-b_i)+v_i}\ \ \ \ j\ge\omega_i且k\ge{b_i}\<br>m(i+1,j)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\le{j}\le{\omega_i}或0\le{k}\le{b_i}<br>\end{array}<br>\right.<br>$$</li>
+</ul>
+<p>$$<br>m(n,j,k) =<br>\left{<br>\begin{array}\<br>v_n \ \ \ \ \ j\ge{\omega_n}且k\ge{b_n}\<br>0 \ \ \ \ \ \ \ 0\le{j}&lt;{\omega_n}或0\le{k}&lt;b_n<br>\end{array}<br>\right.<br>$$</p>
+<ul>
+<li>由上式可知$$m(n,c,d)$$为最优值。算法所需的计算时间为$$O(ncd)$$。</li>
+</ul>
+<h3 id="4-1"><a href="#4-1" class="headerlink" title="4-1"></a>4-1</h3><ul>
+<li>设变量$$x_i=1$$表示将$$l_i$$存放在$$T_1$$上，并且$$T_1$$的检索时间短于$$T<em>2$$<br>$$<br>\sum</em>{i=1}^{n}l_ix<em>i\le\sum</em>{i=1}^{n}l_i(1-x<em>i)\<br>\sum</em>{i=1}^{n}l_ix<em>i\le\frac{1}{2}\sum</em>{i=1}^{n}l_i<br>$$</li>
+</ul>
+<p>$$T<em>1$$的检索时间应取最大值，即<br>$$<br>max\sum</em>{i=1}^{n}l_ix<em>i\<br>使得\sum</em>{i=1}^{n}l_ix<em>i\le\frac{1}{2}\sum</em>{i=1}^{n}l_i<br>$$</p>
+<h3 id="最小生成树算法的正确性"><a href="#最小生成树算法的正确性" class="headerlink" title="最小生成树算法的正确性"></a>最小生成树算法的正确性</h3><h4 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h4><p>  Prim算法的思路是，从任意一个顶点开始，把这个顶点作为最初的最小生成树的子树，通过逐步地为当前的子树添加新边来生成最终的最小生成树，添加的策略是，每次只添加从外部连接到该子树的所有边中的最短边。</p>
+<p>  对于任意一个顶点vi，连接到该顶点的所有边中的一条最短边$$(v_i,v_j)$$必然属于最小生成树。</p>
+<p>  假设最小生成树已经建成，$$(v_i,v_j)$$是连接到顶点vi的最短边，在最小生成树中取出vi，断开连接到vi的边，则生成树被拆分成</p>
+<ol>
+<li>顶点$$v_i$$</li>
+<li>顶点$$v_j$$所在的连通分量（单独一个顶点也看作一个独立的连通分量）</li>
+<li>其余若干个连通分量（个数大于等于0）</li>
+</ol>
+<p>  三个部分</p>
+<p>  现在要重建生成树，就要重新连接之前被断开的各边。</p>
+<p>  虽然不知道之前被断开的都是哪几条边，但是可以通过这样一个简单的策略来重建连接：将$$v_i$$分别以最小的成本逐个连接到这若干个互相分离的连通分量。具体来说，就是要分别遍历顶点$$v_i$$到某个连通分量中的所有顶点的连接，然后选择其中最短的边来连接$$v_i$$和该连通分量；而要将$$v_i$$连接到$$v_j$$所在的连通分量，显然通过边$$(v_i,v_j)$$连接的成本最低，所以边$$(v_i,v_j)$$必然属于最小生成树（如果连接到$$v_i$$的最短边不止一条，只要任意挑选其中的一条$$(v_i,v_j)$$即可，以上的证明对于这种情况同样适用）。这样我们就为原来只有一个顶点$$v_i$$的子树添加了一个新的顶点vj及新边$$(v_i,v_j)$$。接下来只要将这棵新子树作为一个连通子图，并且用这个连通子图替换顶点$$v_i$$重复以上的分析，迭代地为子树逐个地添加新顶点和新边即可。</p>
+<h4 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h4><p>  Kruskal算法通过从小到大遍历边集，每次尝试为最小生成树加入当前最短的边，加入成功的条件是该边不会在当前已构建的图中造成回路，当加入的边的数目达到n-1，遍历结束。</p>
+<p>  Kruskal算法每次为当前的图添加一条不会造成回路的新边，其本质是逐步地连接当前彼此分散的各个连通分量（单个顶点也算作一个连通分量），而连接的策略是每次只用最小的成本连接任意两个连通分量。这个策略之所以能够实现，是因为每加入一条边之后只会出现两种结果：</p>
+<ol>
+<li>在已有的连通分量中形成回路</li>
+<li>连接两个彼此独立的连通分量</li>
+</ol>
+<p>  所以，通过从小到大遍历边集，判断是否会造成回路，然后逐条添加新边就可以实现上诉的连接策略。</p>
+<p>  如果某个连通图属于最小生成树，那么所有从外部连接到该连通图的边中的一条最短的边必然属于最小生成树当最小生成树被拆分成彼此独立的若干个连通分量的时候，因为该边必然是这两个连通分量的可以连接到外部的最短边，所以所有能够连接任意两个连通分量的边中的一条最短边必然属于最小生成树。</p>
+<p>  由此也就证明了，Kruskal算法通过每次以最小的成本来连接两个连通分量的策略确实可以正确地生成最小生成树。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/26/算法作业二/" rel="next" title="算法作业二">
+                <i class="fa fa-chevron-left"></i> 算法作业二
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/26/算法作业三/"
+           data-title="算法作业三" data-url="http://yoursite.com/2017/03/26/算法作业三/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/22298419?v=3&u=12cc559f5bea926634e500e76e8e3da9b699c959&s=400"
+               alt="王子卓" />
+          <p class="site-author-name" itemprop="name">王子卓</p>
+          <p class="site-description motion-element" itemprop="description">理路上事，勿惮其难而稍为退步，一退步便远隔千山。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三次作业"><span class="nav-number">1.</span> <span class="nav-text">第三次作业</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#71115115-王子卓"><span class="nav-number">1.1.</span> <span class="nav-text">71115115 王子卓</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">3-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2"><span class="nav-number">1.1.2.</span> <span class="nav-text">3-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4"><span class="nav-number">1.1.3.</span> <span class="nav-text">3-4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1"><span class="nav-number">1.1.4.</span> <span class="nav-text">4-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树算法的正确性"><span class="nav-number">1.1.5.</span> <span class="nav-text">最小生成树算法的正确性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Prim算法"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">Prim算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kruskal算法"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">Kruskal算法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王子卓</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zizhuowang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("oNJjTL7jM33iRBxHld63N3z1-gzGzoHsz", "uqK0i0RTln8eoNQgV71yGxLy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

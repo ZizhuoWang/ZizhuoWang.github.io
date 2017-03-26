@@ -254,6 +254,421 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/26/算法作业三/" itemprop="url">
+                  算法作业三
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-26T23:55:58+08:00" content="2017-03-26">
+              2017-03-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/26/算法作业三/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/26/算法作业三/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/26/算法作业三/" class="leancloud_visitors" data-flag-title="算法作业三">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h1><h2 id="71115115-王子卓"><a href="#71115115-王子卓" class="headerlink" title="71115115 王子卓"></a>71115115 王子卓</h2><h3 id="3-1"><a href="#3-1" class="headerlink" title="3-1"></a>3-1</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZuiChangDanDiaoDiZengZiXuLie</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] ZCDDZDZXL(<span class="keyword">int</span>[] a)&#123;</div><div class="line">		<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>,k=<span class="number">0</span>,n=a.length;</div><div class="line">		<span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[n]; </div><div class="line">		<span class="comment">//b数组的各个元素负责存储以a数组中序号对应的各个元素为结尾的最长单调子序列长度</span></div><div class="line">		b[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(;i&lt;n;i++)&#123;</div><div class="line">			<span class="keyword">for</span>(;j&lt;i;j++)&#123; </div><div class="line">				<span class="keyword">if</span>(a[j]&lt;=a[i]&amp;&amp;k&lt;b[j])</div><div class="line">					k=b[j];</div><div class="line">			&#125;</div><div class="line">			b[i] = k+<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> maxLength(n, b);</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] maxLength(<span class="keyword">int</span> n,<span class="keyword">int</span>[] b)&#123;</div><div class="line">		<span class="keyword">int</span> temp=<span class="number">0</span>,i=<span class="number">0</span>,flag=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(;i&lt;n;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(b[i]&gt;temp)&#123;</div><div class="line">				temp=b[i];</div><div class="line">				flag = i;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span>[] msg = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</div><div class="line">		msg[<span class="number">0</span>] = flag;</div><div class="line">		msg[<span class="number">1</span>] = temp;</div><div class="line">		<span class="keyword">return</span> msg;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		ZuiChangDanDiaoDiZengZiXuLie xuLie = <span class="keyword">new</span> ZuiChangDanDiaoDiZengZiXuLie();</div><div class="line">		<span class="keyword">int</span>[] a = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</div><div class="line">		<span class="keyword">int</span>[] length = xuLie.ZCDDZDZXL(a);</div><div class="line">		System.out.println(<span class="string">"子序列末尾元素角标"</span>+length[<span class="number">0</span>]+<span class="string">"\n最长单调递增子序列长度"</span>+length[<span class="number">1</span>]);</div><div class="line">		<span class="keyword">int</span> biggest=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length[<span class="number">0</span>]+<span class="number">1</span>;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</div><div class="line">				System.out.println(a[i]);</div><div class="line">				biggest = a[i];</div><div class="line">			&#125;<span class="keyword">else</span></div><div class="line">				<span class="keyword">if</span>(a[i]&gt;=biggest)&#123;</div><div class="line">					System.out.println(a[i]);</div><div class="line">					biggest = a[i];</div><div class="line">				&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/Algorithm/ZCDDDZZXL.png?raw=true" alt=""></p>
+<h3 id="3-2"><a href="#3-2" class="headerlink" title="3-2"></a>3-2</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedZCDDDZZXL</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">LIS</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[a.length];</div><div class="line">		b[<span class="number">1</span>] = a[<span class="number">0</span>];</div><div class="line">		<span class="keyword">int</span> k = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;a.length;i++)&#123;</div><div class="line">			<span class="keyword">if</span>(a[i]&gt;=b[k])&#123;</div><div class="line">				b[++k] = a[i];</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				b[binary(i, k, a, b)] = a[i];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> k;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binary</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> k,<span class="keyword">int</span>[] a,<span class="keyword">int</span>[] b)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(a[i]&lt;b[<span class="number">1</span>])</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> j=k;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> h=<span class="number">1</span>;h!=j-<span class="number">1</span>;)&#123;</div><div class="line">			<span class="keyword">if</span>(b[k=(h+j)/<span class="number">2</span>]&lt;=a[i])</div><div class="line">				h=k;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				j=k;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> j;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-4"><a href="#3-4" class="headerlink" title="3-4"></a>3-4</h3><ul>
+<li><p>该问题是二维0-1背包问题。</p>
+</li>
+<li><p>对于给定的$$c&gt;0,d&gt;0,\omega_i&gt;0,b_i&gt;0,v_i&gt;0, 1\le{i}\le{n}$$</p>
+</li>
+<li><p>要求找出<em>n</em>元0-1向量$$(x_1,x_2,…,x_n),x<em>i\in{0,1},1\le{i}\le{n}$$使得$$\sum</em>{i=1}^{n}\omega_ix<em>i\le{c}, \sum</em>{i=1}^nb_ix<em>i\le{d}$$而且使$$\sum</em>{i=1}^nv_ix_i$$达到最大值。</p>
+</li>
+<li><p>由此可知，二维0-1背包问题是整数规划问题。<br>$$<br>max\sum_{i=1}^{n}v_ix<em>i\<br>\left{<br>\begin{array}\<br>\sum</em>{i=1}^{n}\omega_ix<em>i\le{c}\<br>\sum</em>{i=1}^{n}b_ix_i\le{d}\<br>x_i\in{0,1},1\le{i}\le{n}<br>\end{array}<br>\right.<br>$$</p>
+</li>
+</ul>
+<ul>
+<li>该问题具有最优子结构性质。设该问题的子问题<br>$$<br>max\sum_{t=i}^{n}v_tx<em>t\<br>\left{<br>\begin{array}\<br>\sum</em>{t=i}^{n}\omega_tx<em>t\le{j}\<br>\sum</em>{t=i}^{n}b_tx_t\le{k}\<br>x_i\in{0,1},i\le{t}\le{n}<br>\end{array}<br>\right.<br>$$</li>
+</ul>
+<p>  的最优解为$$m(i,j,k)$$，背包容量为<em>j</em>，容积为<em>k</em>，可选择的物品为$$i,i+1,…,n$$时该问题的最优值。</p>
+<ul>
+<li>由二维0-1背包问题的最优子结构性质，可得：<br>$$<br>m(i,j,k)=\left{<br>\begin{array}\<br>max{m(i+1,j),m(i+1,j-\omega_i,k-b_i)+v_i}\ \ \ \ j\ge\omega_i且k\ge{b_i}\<br>m(i+1,j)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\le{j}\le{\omega_i}或0\le{k}\le{b_i}<br>\end{array}<br>\right.<br>$$</li>
+</ul>
+<p>$$<br>m(n,j,k) =<br>\left{<br>\begin{array}\<br>v_n \ \ \ \ \ j\ge{\omega_n}且k\ge{b_n}\<br>0 \ \ \ \ \ \ \ 0\le{j}&lt;{\omega_n}或0\le{k}&lt;b_n<br>\end{array}<br>\right.<br>$$</p>
+<ul>
+<li>由上式可知$$m(n,c,d)$$为最优值。算法所需的计算时间为$$O(ncd)$$。</li>
+</ul>
+<h3 id="4-1"><a href="#4-1" class="headerlink" title="4-1"></a>4-1</h3><ul>
+<li>设变量$$x_i=1$$表示将$$l_i$$存放在$$T_1$$上，并且$$T_1$$的检索时间短于$$T<em>2$$<br>$$<br>\sum</em>{i=1}^{n}l_ix<em>i\le\sum</em>{i=1}^{n}l_i(1-x<em>i)\<br>\sum</em>{i=1}^{n}l_ix<em>i\le\frac{1}{2}\sum</em>{i=1}^{n}l_i<br>$$</li>
+</ul>
+<p>$$T<em>1$$的检索时间应取最大值，即<br>$$<br>max\sum</em>{i=1}^{n}l_ix<em>i\<br>使得\sum</em>{i=1}^{n}l_ix<em>i\le\frac{1}{2}\sum</em>{i=1}^{n}l_i<br>$$</p>
+<h3 id="最小生成树算法的正确性"><a href="#最小生成树算法的正确性" class="headerlink" title="最小生成树算法的正确性"></a>最小生成树算法的正确性</h3><h4 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h4><p>  Prim算法的思路是，从任意一个顶点开始，把这个顶点作为最初的最小生成树的子树，通过逐步地为当前的子树添加新边来生成最终的最小生成树，添加的策略是，每次只添加从外部连接到该子树的所有边中的最短边。</p>
+<p>  对于任意一个顶点vi，连接到该顶点的所有边中的一条最短边$$(v_i,v_j)$$必然属于最小生成树。</p>
+<p>  假设最小生成树已经建成，$$(v_i,v_j)$$是连接到顶点vi的最短边，在最小生成树中取出vi，断开连接到vi的边，则生成树被拆分成</p>
+<ol>
+<li>顶点$$v_i$$</li>
+<li>顶点$$v_j$$所在的连通分量（单独一个顶点也看作一个独立的连通分量）</li>
+<li>其余若干个连通分量（个数大于等于0）</li>
+</ol>
+<p>  三个部分</p>
+<p>  现在要重建生成树，就要重新连接之前被断开的各边。</p>
+<p>  虽然不知道之前被断开的都是哪几条边，但是可以通过这样一个简单的策略来重建连接：将$$v_i$$分别以最小的成本逐个连接到这若干个互相分离的连通分量。具体来说，就是要分别遍历顶点$$v_i$$到某个连通分量中的所有顶点的连接，然后选择其中最短的边来连接$$v_i$$和该连通分量；而要将$$v_i$$连接到$$v_j$$所在的连通分量，显然通过边$$(v_i,v_j)$$连接的成本最低，所以边$$(v_i,v_j)$$必然属于最小生成树（如果连接到$$v_i$$的最短边不止一条，只要任意挑选其中的一条$$(v_i,v_j)$$即可，以上的证明对于这种情况同样适用）。这样我们就为原来只有一个顶点$$v_i$$的子树添加了一个新的顶点vj及新边$$(v_i,v_j)$$。接下来只要将这棵新子树作为一个连通子图，并且用这个连通子图替换顶点$$v_i$$重复以上的分析，迭代地为子树逐个地添加新顶点和新边即可。</p>
+<h4 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h4><p>  Kruskal算法通过从小到大遍历边集，每次尝试为最小生成树加入当前最短的边，加入成功的条件是该边不会在当前已构建的图中造成回路，当加入的边的数目达到n-1，遍历结束。</p>
+<p>  Kruskal算法每次为当前的图添加一条不会造成回路的新边，其本质是逐步地连接当前彼此分散的各个连通分量（单个顶点也算作一个连通分量），而连接的策略是每次只用最小的成本连接任意两个连通分量。这个策略之所以能够实现，是因为每加入一条边之后只会出现两种结果：</p>
+<ol>
+<li>在已有的连通分量中形成回路</li>
+<li>连接两个彼此独立的连通分量</li>
+</ol>
+<p>  所以，通过从小到大遍历边集，判断是否会造成回路，然后逐条添加新边就可以实现上诉的连接策略。</p>
+<p>  如果某个连通图属于最小生成树，那么所有从外部连接到该连通图的边中的一条最短的边必然属于最小生成树当最小生成树被拆分成彼此独立的若干个连通分量的时候，因为该边必然是这两个连通分量的可以连接到外部的最短边，所以所有能够连接任意两个连通分量的边中的一条最短边必然属于最小生成树。</p>
+<p>  由此也就证明了，Kruskal算法通过每次以最小的成本来连接两个连通分量的策略确实可以正确地生成最小生成树。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/26/算法作业二/" itemprop="url">
+                  算法作业二
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-26T23:55:02+08:00" content="2017-03-26">
+              2017-03-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/26/算法作业二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/26/算法作业二/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/26/算法作业二/" class="leancloud_visitors" data-flag-title="算法作业二">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第二次作业"><a href="#第二次作业" class="headerlink" title="第二次作业"></a>第二次作业</h1><h2 id="71115115-王子卓"><a href="#71115115-王子卓" class="headerlink" title="71115115 王子卓"></a>71115115 王子卓</h2><h3 id="2-2"><a href="#2-2" class="headerlink" title="2-2"></a>2-2</h3><h4 id="1-left和right游标的调整不正确，应改为："><a href="#1-left和right游标的调整不正确，应改为：" class="headerlink" title="(1)left和right游标的调整不正确，应改为："></a>(1)left和right游标的调整不正确，应改为：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(x&gt;a[middle]) left = middle+<span class="number">1</span>;</div><div class="line"><span class="keyword">else</span> right = middle<span class="number">-1</span>;</div></pre></td></tr></table></figure>
+<h4 id="2-left和right游标的调整不正确，查找元素为x-a-n-1-时错误。"><a href="#2-left和right游标的调整不正确，查找元素为x-a-n-1-时错误。" class="headerlink" title="(2)left和right游标的调整不正确，查找元素为x=a[n-1]时错误。"></a>(2)left和right游标的调整不正确，查找元素为x=a[n-1]时错误。</h4><h4 id="3-同上，查找元素为x-a-n-1-时错误。"><a href="#3-同上，查找元素为x-a-n-1-时错误。" class="headerlink" title="(3)同上，查找元素为x=a[n-1]时错误。"></a>(3)同上，查找元素为x=a[n-1]时错误。</h4><h4 id="4-left和right游标的调整不正确，查找大于中值的数时可能进入死循环。"><a href="#4-left和right游标的调整不正确，查找大于中值的数时可能进入死循环。" class="headerlink" title="(4)left和right游标的调整不正确，查找大于中值的数时可能进入死循环。"></a>(4)left和right游标的调整不正确，查找大于中值的数时可能进入死循环。</h4><h4 id="5-没什么问题"><a href="#5-没什么问题" class="headerlink" title="(5)没什么问题"></a>(5)没什么问题</h4><h4 id="6-left和right游标的调整不正确，查找元素为x-a-n-1-时错误。"><a href="#6-left和right游标的调整不正确，查找元素为x-a-n-1-时错误。" class="headerlink" title="(6)left和right游标的调整不正确，查找元素为x=a[n-1]时错误。"></a>(6)left和right游标的调整不正确，查找元素为x=a[n-1]时错误。</h4><h4 id="7-left和right游标的调整不正确，查找元素为x-a-0-时错误。"><a href="#7-left和right游标的调整不正确，查找元素为x-a-0-时错误。" class="headerlink" title="(7)left和right游标的调整不正确，查找元素为x=a[0]时错误。"></a>(7)left和right游标的调整不正确，查找元素为x=a[0]时错误。</h4><h3 id="2-3"><a href="#2-3" class="headerlink" title="2-3"></a>2-3</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(T a[], <span class="keyword">const</span> T &amp;x, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> &amp;i, <span class="keyword">int</span> j)</span></span></div><div class="line">  &#123;</div><div class="line">    <span class="keyword">int</span> middle;</div><div class="line">  	<span class="keyword">while</span>(left&lt;=right)&#123;</div><div class="line">      middle = (left+right)/<span class="number">2</span>;</div><div class="line">      <span class="keyword">if</span>(x==a[middle])&#123;</div><div class="line">        i=middle;j=middle;<span class="keyword">return</span> middle;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>(x&gt;a[middle]) left = middle+<span class="number">1</span>;</div><div class="line">      <span class="keyword">else</span> right = middle<span class="number">-1</span>;</div><div class="line">  	&#125;</div><div class="line">  	i=right;j=left;<span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="2-4"><a href="#2-4" class="headerlink" title="2-4"></a>2-4</h3><p>当m远小于n时，可以将大整数v分成n/m个长度为m的小段。计算u*v需要计算n/m次m位乘法，每一次m位乘法采用分治法计算，需要$$O(m^{log_23})$$时间。总时间为$$O(\frac{n}{m}<em>m^{log_23})=O(n</em>m^{log_2{\frac{3}{2}}})$$</p>
+<h3 id="算法实现2-6"><a href="#算法实现2-6" class="headerlink" title="算法实现2-6"></a>算法实现2-6</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.BufferedWriter;</div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.FileOutputStream;</div><div class="line"><span class="keyword">import</span> java.io.FileReader;</div><div class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Zidianxu</span> </span>&#123;</div><div class="line">	String input = <span class="string">"/home/wang/input.txt"</span>;</div><div class="line">	String output = <span class="string">"/home/wang/output.txt"</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String string)</span></span>&#123; </div><div class="line">		<span class="comment">//作用就是将传入的字符串写入指定的文件</span></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			FileOutputStream fileOutputStream = </div><div class="line">					<span class="keyword">new</span> FileOutputStream(output,<span class="keyword">false</span>);<span class="comment">//覆写模式</span></div><div class="line">			OutputStreamWriter outputStreamWriter = </div><div class="line">					<span class="keyword">new</span> OutputStreamWriter(fileOutputStream,<span class="string">"UTF-8"</span>);</div><div class="line">			BufferedWriter bufferedWriter =</div><div class="line">					<span class="keyword">new</span> BufferedWriter(outputStreamWriter);</div><div class="line">			bufferedWriter.write(string);</div><div class="line">			bufferedWriter.flush();</div><div class="line">			bufferedWriter.close();</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">jieCheng</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</div><div class="line">		<span class="comment">//求阶乘</span></div><div class="line">		<span class="keyword">int</span> result=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=i;j++)&#123;</div><div class="line">			result*=j;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">char</span>[] next(<span class="keyword">char</span>[] s)&#123;</div><div class="line">		<span class="comment">//求下一个排列</span></div><div class="line">		<span class="keyword">char</span>[] result=s;</div><div class="line">		<span class="keyword">int</span> last = s.length-<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=last-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">			<span class="keyword">if</span>(s[i]&lt;s[last])&#123;</div><div class="line">				<span class="comment">//最右边的数，从右往左，遇到第一个比它小的数时，</span></div><div class="line">				<span class="comment">//排列到这个数的前面，这个数以后依次后移一位。</span></div><div class="line">				<span class="keyword">char</span> temp = s[last];</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=last-<span class="number">1</span>;j&gt;=i;j--)&#123;</div><div class="line">					result[j+<span class="number">1</span>] = result[j];</div><div class="line">				&#125;</div><div class="line">				result[i] = temp;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			File file = <span class="keyword">new</span> File(input);</div><div class="line">			BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(file));</div><div class="line">			String string = <span class="keyword">null</span>,out = <span class="string">""</span>;</div><div class="line">			</div><div class="line">			<span class="keyword">int</span> i=<span class="number">0</span>,nums=<span class="number">0</span>,value=<span class="number">0</span>,current=<span class="number">0</span>,nums2=<span class="number">0</span>;</div><div class="line">			<span class="comment">//i是行数计数，nums是排列的长度，value是字典序值</span></div><div class="line">			<span class="comment">//current是当前指向的数字，nums2只是复制一下nums</span></div><div class="line">			<span class="keyword">while</span>((string = reader.readLine()) != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</div><div class="line">					nums = Integer.parseInt(string);</div><div class="line">					nums2=nums;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span>&#123;</div><div class="line">					<span class="comment">//以26458173为例，选定一个数</span></div><div class="line">					<span class="comment">//看后面有几个比当前数小的，比如2后面比2小的只有1个，</span></div><div class="line">					<span class="comment">//6后面比6小的有4个，4后面比4小的有2个</span></div><div class="line">					<span class="comment">//8227=1*7!+4*6!+2*5!+...</span></div><div class="line">					<span class="keyword">char</span>[] array = string.toCharArray();</div><div class="line">					<span class="keyword">for</span>(;current&lt;nums-<span class="number">1</span>;current++)&#123;</div><div class="line">						<span class="comment">//从零下标开始依次往后扫描</span></div><div class="line">						<span class="comment">//counter用来数比这个数小的有几个数</span></div><div class="line">						<span class="keyword">int</span> scan = current+<span class="number">1</span>,counter=<span class="number">0</span>;</div><div class="line">						<span class="keyword">for</span>(;scan&lt;nums;scan++)&#123;</div><div class="line">							<span class="keyword">if</span>(array[current]&gt;array[scan])&#123;</div><div class="line">								counter++;</div><div class="line">							&#125;</div><div class="line">						&#125;</div><div class="line">						value+=counter*jieCheng(nums2-<span class="number">1</span>-current);</div><div class="line">					&#125;</div><div class="line">					out+=value+<span class="string">"\n"</span>;</div><div class="line">					<span class="keyword">char</span>[] result = next(array);</div><div class="line">					String result2 = String.valueOf(result);</div><div class="line">					out+=result2;</div><div class="line">				&#125;</div><div class="line">				i++;</div><div class="line">			&#125;</div><div class="line">			write(out);<span class="comment">//写出</span></div><div class="line">			reader.close();<span class="comment">//关闭BufferedReader</span></div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;		</div><div class="line">		Zidianxu zidianxu = <span class="keyword">new</span> Zidianxu();</div><div class="line">		zidianxu.read();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/26/算法作业一/" itemprop="url">
+                  算法作业一
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-26T23:53:54+08:00" content="2017-03-26">
+              2017-03-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/26/算法作业一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/26/算法作业一/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/26/算法作业一/" class="leancloud_visitors" data-flag-title="算法作业一">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第一次作业"><a href="#第一次作业" class="headerlink" title="第一次作业"></a>第一次作业</h1><h2 id="71115115-王子卓"><a href="#71115115-王子卓" class="headerlink" title="71115115 王子卓"></a>71115115 王子卓</h2><h3 id="1-1-求下列函数的渐进表达式"><a href="#1-1-求下列函数的渐进表达式" class="headerlink" title="1-1 求下列函数的渐进表达式"></a>1-1 求下列函数的渐进表达式</h3><p>$$<br>3n^2 + 10n = O(n^2)<br>$$</p>
+<p>$$<br>\frac{n^2}{10} + 2^n = O(2^n)<br>$$</p>
+<p>$$<br>21 + \frac{1}{n} = O(1)<br>$$</p>
+<p>$$<br>log(n^3) = O(logn)<br>$$</p>
+<p>$$<br>10log3^n = O(n)<br>$$</p>
+<h3 id="1-4"><a href="#1-4" class="headerlink" title="1-4"></a>1-4</h3><h4 id="1"><a href="#1" class="headerlink" title="(1)"></a>(1)</h4><p>设在这台新机器上用同一算法在 <em>t</em> 秒内能解规模为$$n_1$$的问题<br>$$<br>3<em>2^n</em>64 = 3*2^{n_1}<br>$$</p>
+<p>$$<br>n_1 = n + 6<br>$$</p>
+<h4 id="2"><a href="#2" class="headerlink" title="(2)"></a>(2)</h4><p>设在这台新机器上用同一算法在 <em>t</em> 秒内能解规模为$$n_2$$的问题<br>$$<br>n^2*64 = n_2^2<br>$$</p>
+<p>$$<br>n_2 = 8*n<br>$$</p>
+<h4 id="3"><a href="#3" class="headerlink" title="(3)"></a>(3)</h4><p><em>T(n) = 8</em>与<em>n</em>无关，所以可以解输入规模任意大的问题。</p>
+<h3 id="1-6"><a href="#1-6" class="headerlink" title="1-6"></a>1-6</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="(1)"></a>(1)</h4><p>$$<br>f(n) = logn^2 = 2*logn<br>$$</p>
+<p>$$<br>g(n) = logn+5<br>$$</p>
+<p><em>f(n)</em>与<em>g(n)</em>同阶，因此<br>$$<br>f(n) = \theta(g(n))<br>$$</p>
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="(2)"></a>(2)</h4><p>$$<br>f(n) = logn^2 = 2*logn<br>$$</p>
+<p>$$<br>g(n) = \sqrt[2]{n} = n^{\frac{1}{2}}<br>$$</p>
+<p>$$log_2n$$的反函数为$$2^n$$，而$$\sqrt[2]{n}$$的反函数为$$n^2$$，$$2^n$$的增长速度远高于$$n^2$$，因此$$log_2n$$的增长速度远小于$$\sqrt[2]{n}$$.因此<em>f(n)</em>的阶不高于<em>g(n)</em>的阶，也就是<br>$$<br>f(n) = O(g(n))<br>$$</p>
+<h4 id="3-1"><a href="#3-1" class="headerlink" title="(3)"></a>(3)</h4><p>$$<br>f(n) = n<br>$$</p>
+<p>$$<br>g(n) = log^2n<br>$$</p>
+<p>$$<br>O(1)&lt;O(log_2n)&lt;O(n)&lt;O(log_2^2n)&lt;O(nlog_2n)<br>$$</p>
+<p>$$<br>f(n) = \Omega(g(n))<br>$$</p>
+<h4 id="4"><a href="#4" class="headerlink" title="(4)"></a>(4)</h4><p>$$<br>f(n) = nlog_2n + n = O(nlog_2n)<br>$$</p>
+<p>$$<br>g(n) = log_2n = O(log_2n)<br>$$</p>
+<p><em>f(n)</em>的阶不低于<em>g(n)</em>的阶，因此<br>$$<br>f(n) = \Omega(g(n))<br>$$</p>
+<h4 id="5"><a href="#5" class="headerlink" title="(5)"></a>(5)</h4><p>$$<br>f(n) = 10 = O(1)<br>$$</p>
+<p>$$<br>g(n) = log10 = O(1)<br>$$</p>
+<p><em>f(n)</em>与<em>g(n)</em>同阶，因此<br>$$<br>f(n) = \theta(g(n))<br>$$</p>
+<h4 id="6"><a href="#6" class="headerlink" title="(6)"></a>(6)</h4><p>$$<br>f(n) = O(log^2n)<br>$$</p>
+<p>$$<br>g(n) = O(logn)<br>$$</p>
+<p><em>f(n)</em>的阶不低于<em>g(n)</em>的阶，因此<br>$$<br>f(n) = \Omega(g(n))<br>$$</p>
+<h4 id="7"><a href="#7" class="headerlink" title="(7)"></a>(7)</h4><p>$$<br>f(n) = 2^n = O(2^n)<br>$$</p>
+<p>$$<br>g(n) = 100n^2 = O(n^2)<br>$$</p>
+<p><em>f(n)</em>的阶不低于<em>g(n)</em>的阶，因此<br>$$<br>f(n) = \Omega(g(n))<br>$$</p>
+<h4 id="8"><a href="#8" class="headerlink" title="(8)"></a>(8)</h4><p>$$<br>f(n) = O(2^n)<br>$$</p>
+<p>$$<br>g(n) = O(3^n)<br>$$</p>
+<p><em>f(n)</em>的阶不高于<em>g(n)</em>的阶，因此<br>$$<br>f(n) = O(g(n))<br>$$</p>
+<h3 id="算法实现1-2"><a href="#算法实现1-2" class="headerlink" title="算法实现1-2"></a>算法实现1-2</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> first;</div><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.BufferedWriter;</div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.FileOutputStream;</div><div class="line"><span class="keyword">import</span> java.io.FileReader;</div><div class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZiDianXuShengXu</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> lines=<span class="number">0</span>,count=<span class="number">0</span>;</div><div class="line">	String input = <span class="string">"/home/wang/dict.txt"</span>;</div><div class="line">	String output = <span class="string">"/home/wang/dict2.txt"</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String string)</span></span>&#123; <span class="comment">//作用就是将传入的字符串写入指定的文件</span></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(output,<span class="keyword">false</span>);<span class="comment">//覆写模式</span></div><div class="line">			OutputStreamWriter outputStreamWriter = <span class="keyword">new</span> OutputStreamWriter(fileOutputStream,<span class="string">"UTF-8"</span>);</div><div class="line">			BufferedWriter bufferedWriter = <span class="keyword">new</span> BufferedWriter(outputStreamWriter);</div><div class="line">			bufferedWriter.write(string);</div><div class="line">			bufferedWriter.flush();</div><div class="line">			bufferedWriter.close();</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			File file = <span class="keyword">new</span> File(input);</div><div class="line">			BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(file));</div><div class="line">			String string = <span class="keyword">null</span>,out = <span class="string">""</span>;</div><div class="line">			</div><div class="line">			<span class="keyword">int</span> i=<span class="number">0</span>,lines=<span class="number">0</span>;</div><div class="line">			<span class="keyword">while</span>((string = reader.readLine()) != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">if</span>(i==<span class="number">0</span>)</div><div class="line">					lines = Integer.parseInt(string); <span class="comment">//我想了想，好像不需要，所以就没用</span></div><div class="line">				<span class="keyword">else</span>&#123;</div><div class="line">					<span class="keyword">int</span> sum=<span class="number">0</span>;</div><div class="line">					<span class="keyword">char</span> temp = string.charAt(string.length()-<span class="number">1</span>);<span class="comment">//取出字符串最后一位</span></div><div class="line">					sum = temp - <span class="number">96</span> - string.length() + <span class="number">1</span>;<span class="comment">//先把最后一位加上</span></div><div class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;string.length()-<span class="number">1</span>;j++)&#123;<span class="comment">//分别计算每一位</span></div><div class="line">						temp = string.charAt(j);</div><div class="line">						sum += (temp-<span class="number">96</span>-j)*(<span class="number">26</span>-j);<span class="comment">//每一位进制不同</span></div><div class="line">					&#125;</div><div class="line">					out+=sum+<span class="string">"\n"</span>;</div><div class="line">				&#125;</div><div class="line">				i++;</div><div class="line">			&#125;</div><div class="line">			write(out);<span class="comment">//写出所有的编码</span></div><div class="line">			reader.close();<span class="comment">//关闭BufferedReader</span></div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		ZiDianXuShengXu ziDianXuShengXu = <span class="keyword">new</span> ZiDianXuShengXu();</div><div class="line">		ziDianXuShengXu.read();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/15/操作系统实验一/" itemprop="url">
                   操作系统实验一
                 </a>
@@ -1158,378 +1573,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/07/设计模式之代理模式-第二版/" itemprop="url">
-                  设计模式之代理模式(第二版)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-07T21:45:15+08:00" content="2016-12-07">
-              2016-12-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/07/设计模式之代理模式-第二版/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/07/设计模式之代理模式-第二版/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/07/设计模式之代理模式-第二版/" class="leancloud_visitors" data-flag-title="设计模式之代理模式(第二版)">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>之前的例子可能不太恰当，于是我就又想了一个例子。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>代理模式的定义：Provide a surrogate or placeholder for another object to control access to it(为其他对象提供一种代理以控制对这个对象的访问)。</p>
-<h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>使用代理模式创建代理对象，让代理对象控制目标对象的访问(目标对象可以是远程的对象、创建开销大的对象或需要安全控制的对象),并且可以在不改变目标对象的情况下添加一些额外的功能。</p>
-<h2 id="大体思路"><a href="#大体思路" class="headerlink" title="大体思路"></a>大体思路</h2><ul>
-<li>德云社有很多分社，遍布大江南北。人们每每提到德云社，总是对一种剧场的总称。因此德云社是一种接口。它有enter进入方法。</li>
-<li>南京德云社是全国的德云社之一，每当有人enter进入就会提示。</li>
-<li>售票员Conductor也是德云社一员，他可以是任何德云社的售票员。售票员会提前咨询场馆有多少座位，max由剧场座位数seats决定。超过max人就禁止观众进入。</li>
-<li>观众Audience都有名字，可以进入任意的德云社。观众必须经过售票员，售票员是哪个德云社的代理，观众就进入哪一个。</li>
-</ul>
-<h2 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h2><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/DesignPattern/Proxy/%E5%BE%B7%E4%BA%91%E7%A4%BE.png" alt=""></p>
-<h2 id="实际代码"><a href="#实际代码" class="headerlink" title="实际代码"></a>实际代码</h2><h3 id="德云社接口"><a href="#德云社接口" class="headerlink" title="德云社接口"></a>德云社接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">getSeats</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="南京德云社"><a href="#南京德云社" class="headerlink" title="南京德云社"></a>南京德云社</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NanJingDeYunShe</span> <span class="keyword">implements</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> seats=<span class="number">3</span>;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span> </span>&#123;</div><div class="line">		System.out.println(audience.getName()+<span class="string">" entered!"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSeats</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> seats;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="售票员"><a href="#售票员" class="headerlink" title="售票员"></a>售票员</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Conductor</span> <span class="keyword">implements</span> <span class="title">DeYunShe</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> max=<span class="number">0</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> audiences=<span class="number">0</span>;</div><div class="line">	<span class="keyword">private</span> DeYunShe dys;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Conductor</span><span class="params">(DeYunShe dys)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.dys = dys;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSeats</span><span class="params">()</span> </span>&#123;</div><div class="line">		max = dys.getSeats();</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enter</span><span class="params">(Audience audience)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (audiences&lt;max) &#123;</div><div class="line">			dys.enter(audience);</div><div class="line">			audiences++;</div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			System.out.println(audience.getName()+<span class="string">" is not allowed to enter!"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="观众"><a href="#观众" class="headerlink" title="观众"></a>观众</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Audience</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Audience</span><span class="params">(String n)</span> </span>&#123;</div><div class="line">		name = n;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Conductor proxy = <span class="keyword">new</span> Conductor(<span class="keyword">new</span> NanJingDeYunShe());</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">5</span>;i++)&#123;</div><div class="line">			proxy.enter(<span class="keyword">new</span> Audience(<span class="string">"Audience"</span>+i));</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/DesignPattern/Proxy/result.png" alt=""></p>
-<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>请将本例补充完整，并且增加北京德云社，让这个售票员做它的代理。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/04/太平歌词白蛇传/" itemprop="url">
-                  太平歌词白蛇传
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-04T08:34:37+08:00" content="2016-12-04">
-              2016-12-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/04/太平歌词白蛇传/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/太平歌词白蛇传/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/04/太平歌词白蛇传/" class="leancloud_visitors" data-flag-title="太平歌词白蛇传">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>太平歌词白蛇传唱词个人整理</li>
-<li>我认为应该这样停顿，就简单的画了一下</li>
-<li>我爱这门艺术，不希望它完了</li>
-</ul>
-<p>杭州/美景/盖世无双<br>西湖岸/奇花异草/四（了）季（个）清香<br>春游/苏堤/桃红柳绿<br>那夏赏/荷花/映满了池塘<br>这秋观/明月/如同碧水<br>冬看/瑞雪/铺满了山岗<br>我表的是/峨眉山白蛇下界<br>在这上天/怒恼了张玉皇<br>怒冲冲/差法海/临了凡界<br>在这金山/寺内把这方丈当<br>这一天/许汉文/烧香还愿<br>老法海/拦去路/有语开腔<br>我算定/你的妻/多了年的怪蟒<br>缠绕你/结连理/盗取真阳<br>有许仙/闻此言/魂飞魄散<br>留在了/文殊院/未转钱塘<br>青白蛇/一怒就找到了寺院<br>那手指/山门骂和尚<br>放出来/儿夫还则罢了<br>若不然/青锋剑下秃头命亡<br>众僧人/急忙忙/把这山门关上<br>那抱头/鼠窜/往内藏<br>小青儿/拘来了/这个虾兵蟹将<br>众水族/显神通/水淹佛堂<br>老法海/坐在了莲台/掐诀念咒<br>那水也涨/庙也长/漫不了山墙<br>钱塘县的/众黎民/遭了涂炭<br>数十万/生灵在水内亡<br>半悬空/又来了/天兵天将<br>那金吒木吒哪吒太子/托塔的天王<br>四值/功曹/二十八宿<br>那梅山/六将/灌口的杨二郎<br>李天王/一怒就祭起了宝塔<br>脸森森/要把这白蛇来伤<br>魁星爷/发恻隐/放她逃走<br>只因她/腹内怀有状元郎<br>老法海唤过了许仙/开言道<br>我赐你/佛钵/去把妖降<br>许汉文/接过了佛钵/心肠硬<br>扭回/头来/够奔了钱塘<br>在这一(呀)路上/点点/飘散/桃杏雨<br>潇潇/不断/柳风扬<br>顾不得/连理枝儿/狂风吹散<br>顾不得/比翼鸟儿/棍下伤亡<br>玉碎/珠沉人何在<br>(哎这)镜花/水月两分张<br>穿大街/过小巷/来的多么快<br>启珠帘/走进来这负心郎<br>白娘子/见佛钵/得得得得颤<br>战兢兢/玉体/粉了面的娇惶<br>尊丈夫/高抬手/把奴容让<br>止不住/秋波儿/泪(了)洒胸膛<br>曾记得/游湖借伞百般恩爱<br>曾记得/那红罗帐下/会鸳鸯<br>那五月/初五/端阳日<br>大不该/夫妻对坐饮雄黄<br>三杯酒/下咽喉/醉倒在绡金帐(嘞嘿)<br>现原形/吓得儿夫/命见阎王<br>奴为你/长寿山/盗来了还阳草<br>还与那/守山的神将/是大战了一场<br>多亏了/寿星爷/发了恻隐<br>赠了那/保命丹/我这转回了家乡<br>我进门来呀/用金丹那/撬牙关/把这金丹灌下<br>搭救/儿夫你转还阳<br>我只说/到金山/你是烧香还愿<br>有谁知/飞灾横祸落在身旁<br>到如今你手托佛钵/回家转<br>口口/声声要把妖降<br>看起来/红颜薄命/真命苦<br>空叫我/眼泪流干/寸断了肝肠<br>奴好比/月当空被这乌云遮上<br>奴好比/瓦上霜我是难见日光<br>奴好比/弓断弦我是回天无术<br>奴好比/泥牛入海隐入汪洋<br>我这看起来/人生苦短无药救<br>不由得/两泪流干散落胸膛<br>忙把娇儿怀中抱<br>为娘我/有句话/细听端详<br>再吃口/为娘断肠的乳<br>从今/往后离了亲娘<br>埋怨/休把娘埋怨<br>埋怨/你父丧尽了天良<br>回头来/忙把这青儿叫<br>你与我/扶养这小儿郎<br>忙把娇儿递过去<br>这刷拉拉/佛钵放了豪光<br>白娘子/压在了这雷峰塔<br>终朝每日/受凄凉<br>好可叹/十八年/灾数才满<br>许梦娇/中状元/雷峰塔下见了亲娘<br>我一言/唱不尽这白蛇传/我是愿诸位/合家欢乐是福寿绵长</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/27/设计模式之代理模式/" itemprop="url">
-                  设计模式之代理模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-27T21:13:45+08:00" content="2016-11-27">
-              2016-11-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/27/设计模式之代理模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/27/设计模式之代理模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/11/27/设计模式之代理模式/" class="leancloud_visitors" data-flag-title="设计模式之代理模式">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>代理模式的定义：Provide a surrogate or placeholder for another object to control access to it(为其他对象提供一种代理以控制对这个对象的访问)。</p>
-<h1 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h1><p>使用代理模式创建代理对象，让代理对象控制目标对象的访问(目标对象可以是远程的对象、创建开销大的对象或需要安全控制的对象),并且可以在不改变目标对象的情况下添加一些额外的功能。</p>
-<h1 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h1><p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/DesignPattern/proxyUML.jpg?raw=true" alt="ProxyUML"></p>
-<h1 id="角色及职责"><a href="#角色及职责" class="headerlink" title="角色及职责"></a>角色及职责</h1><ul>
-<li><p>Subject：抽象主题角色，抽象主题类可以是抽象类，也可以是接口，是一个最普通的业务类型定义，无特殊要求。</p>
-</li>
-<li><p>RealSubject：具体主题角色，也叫被委托角色、被代理角色。是业务逻辑的具体执行者。</p>
-</li>
-<li><p>Proxy：代理主题角色，也叫委托类、代理类。它把所有抽象主题类定义的方法给具体主题角色实现，并且在具体主题角色处理完毕前后做预处理和善后工作。</p>
-</li>
-</ul>
-<h1 id="应用场景举例-老司机发车咯"><a href="#应用场景举例-老司机发车咯" class="headerlink" title="应用场景举例(老司机发车咯)"></a>应用场景举例(老司机发车咯)</h1><p>代理模式好有一比。比从何来？好比西门庆找潘金莲，让王婆做代理。(营养跟不上的请自觉下车233)<br><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/DesignPattern/%E5%88%AB%E5%BC%80%E8%BD%A6.jpg?raw=true" alt="别开车"><br>首先，我们先定义这种女人。一种类型嘛，肯定要是接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">KindWoman</span> </span>&#123;  </div><div class="line">      </div><div class="line">    <span class="comment">//这种女人能做什么事情呢？  </span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEyesWithMan</span><span class="params">()</span></span>;<span class="comment">//抛媚眼  </span></div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyWithMan</span><span class="params">()</span></span>;<span class="comment">//你懂得 </span></div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>之后，我们要有潘金莲</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PanJinLian</span>  <span class="keyword">implements</span> <span class="title">KindWoman</span></span>&#123;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"潘金莲和男人你懂得..."</span>);  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEyesWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"潘金莲抛媚眼..."</span>);  </div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后王婆登场</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WangPo</span> <span class="keyword">implements</span> <span class="title">KindWoman</span> </span>&#123;  </div><div class="line">      </div><div class="line">    <span class="keyword">private</span> KindWoman kindWoman;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WangPo</span><span class="params">()</span></span>&#123;  </div><div class="line">        <span class="comment">//默认的话是潘金莲的代理  </span></div><div class="line">        <span class="keyword">this</span>.kindWoman = <span class="keyword">new</span> PanJinLian();  </div><div class="line">    &#125;  </div><div class="line">    <span class="comment">//她可以是KindWoman的任何一个女人的代理，只要你是这一类型  </span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WangPo</span><span class="params">(KindWoman kindWoman)</span></span>&#123;  </div><div class="line">        <span class="keyword">this</span>.kindWoman = kindWoman;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="comment">//自己老了，但可以叫年轻的代替。  </span></div><div class="line">        <span class="keyword">this</span>.kindWoman.happyWithMan();  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEyesWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="comment">//王婆年纪大了，谁看她抛媚眼啊  </span></div><div class="line">        <span class="keyword">this</span>.kindWoman.makeEyesWithMan();  </div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>女主角都上场了，接下来该男主角西门大官人了</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  *水浒传是这样写的：西门庆被潘金莲用竹竿敲了一下，</div><div class="line">  *西门庆看痴迷了，被王婆看到了，就开始撮合两人好事，</div><div class="line">  *王婆作为潘金莲的代理人收了不少好处费</div><div class="line">  */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XiMenQing</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="comment">/** </span></div><div class="line">     * <span class="doctag">@param</span> args </div><div class="line">     */  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        WangPo wangPo;  </div><div class="line">        <span class="comment">//把王婆叫出来  </span></div><div class="line">         wangPo = <span class="keyword">new</span> WangPo();  </div><div class="line">        <span class="comment">//然后西门庆说，我要和潘金莲你懂得，然后王婆就安排了西门庆丢筷子那出戏：  </span></div><div class="line">        wangPo.makeEyesWithMan();  </div><div class="line">        <span class="comment">//看到没有表面是王婆在做，其实爽的是潘金莲  </span></div><div class="line">        wangPo.happyWithMan();  </div><div class="line">  </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>之后再来个玉堂春吧233，虽然不是一个时代(详见《三堂会审玉堂春》)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YuTangChun</span> <span class="keyword">implements</span> <span class="title">KindWoman</span></span>&#123;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">happyWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"玉堂春和男人你懂得..."</span>);  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeEyesWithMan</span><span class="params">()</span> </span>&#123;  </div><div class="line">        System.out.println(<span class="string">"玉堂春抛媚眼..."</span>);  </div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这之后，西门庆可以勾搭玉堂春<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  *水浒传是这样写的：西门庆被潘金莲用竹竿敲了一下，</div><div class="line">  *西门庆看痴迷了，被王婆看到了，就开始撮合两人好事，</div><div class="line">  *王婆作为潘金莲的代理人收了不少好处费</div><div class="line">  */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XiMenQing</span> </span>&#123;  </div><div class="line">  </div><div class="line">    <span class="comment">/** </span></div><div class="line">     * <span class="doctag">@param</span> args </div><div class="line">     */  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">        WangPo wangPo;  </div><div class="line">        <span class="comment">//把王婆叫出来  </span></div><div class="line">         wangPo = <span class="keyword">new</span> WangPo();  </div><div class="line">        <span class="comment">//然后西门庆说，我要和潘金莲你懂得，然后王婆就安排了西门庆丢筷子那出戏：  </span></div><div class="line">        wangPo.makeEyesWithMan();  </div><div class="line">        <span class="comment">//看到没有，表面是王婆在做，其实爽的是潘金莲  </span></div><div class="line">        wangPo.happyWithMan();  </div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//西门庆勾搭玉堂春  </span></div><div class="line">        YuTangChun yuTangChun = <span class="keyword">new</span> YuTangChun();  </div><div class="line">        wangPo = <span class="keyword">new</span> WangPo(yuTangChun);  </div><div class="line">        wangPo.makeEyesWithMan();  </div><div class="line">        wangPo.happyWithMan(); </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="故事背后深层含义-车到站了哦"><a href="#故事背后深层含义-车到站了哦" class="headerlink" title="故事背后深层含义(车到站了哦)"></a>故事背后深层含义(车到站了哦)</h1><p>代理模式主要使用了java的多态，干活的是被代理类，代理类主要是接活，你让我干活，好，我交给幕后的类去干，你满意就成，那怎么知道被代理类能不能干呢？同根就成，大家知根知底，你能做啥，我能做啥都清楚得很，同样一个接口呗。<br>今天老司机就开到这里吧，红红火火恍恍惚惚。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1575,7 +1618,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1585,7 +1628,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
