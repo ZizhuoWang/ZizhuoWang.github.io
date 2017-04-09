@@ -254,6 +254,923 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/10/软件体系结构复习/" itemprop="url">
+                  软件体系结构复习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-10T00:37:41+08:00" content="2017-04-10">
+              2017-04-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/10/软件体系结构复习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/10/软件体系结构复习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/10/软件体系结构复习/" class="leancloud_visitors" data-flag-title="软件体系结构复习">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="软件系统设计与体系结构"><a href="#软件系统设计与体系结构" class="headerlink" title="软件系统设计与体系结构"></a>软件系统设计与体系结构</h1><h2 id="一-基于软件重用的设计方法学"><a href="#一-基于软件重用的设计方法学" class="headerlink" title="一.基于软件重用的设计方法学"></a>一.基于软件重用的设计方法学</h2><h3 id="1-软件重用"><a href="#1-软件重用" class="headerlink" title="1.软件重用"></a>1.软件重用</h3><h4 id="1-定义"><a href="#1-定义" class="headerlink" title="(1)定义"></a>(1)定义</h4><ul>
+<li>软件重用是一种由预先构造好的、以重用为目的而设计的软件构件来建立或组装软件系统的过程。</li>
+</ul>
+<h4 id="2-重用方法"><a href="#2-重用方法" class="headerlink" title="(2)重用方法"></a>(2)重用方法</h4><ol>
+<li>代码复用</li>
+<li>设计复用</li>
+<li>分析复用</li>
+<li>测试信息复用</li>
+</ol>
+<h4 id="3-优缺点"><a href="#3-优缺点" class="headerlink" title="(3)优缺点"></a>(3)优缺点</h4><ul>
+<li>优点:在已有工作的基础上，充分利用以前系统开发中积累的知识和经验 ，将开发的重点转移到现有系统的特有构成成分。</li>
+<li>缺点: <ul>
+<li>过程方面：缺少支持软件重用的软件开发过程</li>
+<li>工程方面：缺乏支持实施软件重用的工具、没有构件重用库或库信息很快过时</li>
+<li>组织方面：管理者轻视</li>
+<li>资金方面：初期投入大</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-原则"><a href="#4-原则" class="headerlink" title="(4)原则"></a>(4)原则</h4><ul>
+<li>在已有工作的基础上，充分利用以前系统开发中积累的知识和经验 ，将开发的重点转移到现有系统的特有构成成分。</li>
+</ul>
+<h4 id="5-判断题"><a href="#5-判断题" class="headerlink" title="(5)判断题"></a>(5)判断题</h4><ol>
+<li>启动软件重用仅仅是为了引入合适的技术(X)</li>
+<li>软件重用可能会有用，但太昂贵(√)</li>
+<li>采用OO的程序设计语言会导致系统化的重用(X)</li>
+<li>只能将重用局限在代码构件上(X)</li>
+<li>开发人员要从数以万计的小构件中选取要重用的构件(X)</li>
+<li>只要建立可重用构件库就会促使构件重用(X)</li>
+<li>启动软件重用仅仅是为了引入合适的技术(X)</li>
+</ol>
+<h3 id="2-构件技术"><a href="#2-构件技术" class="headerlink" title="2.构件技术"></a>2.构件技术</h3><h4 id="1-定义-1"><a href="#1-定义-1" class="headerlink" title="(1)定义"></a>(1)定义</h4><ul>
+<li>语义完整、语法正确和有重用价值的软件单元，是软件重用过程中可明确辨识的成分。</li>
+</ul>
+<h4 id="2-获取途径"><a href="#2-获取途径" class="headerlink" title="(2)获取途径"></a>(2)获取途径</h4><ol>
+<li>从现有构件中获得（★提倡）</li>
+<li>通过遗留工程</li>
+<li>现成的商业构件</li>
+<li>开发新构件</li>
+</ol>
+<h4 id="3-好处"><a href="#3-好处" class="headerlink" title="(3)好处"></a>(3)好处</h4><p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/1-1.png?raw=true" alt="a"></p>
+<p>​                         <img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/1-2.png?raw=true" alt="b"></p>
+<h4 id="4-人员划分"><a href="#4-人员划分" class="headerlink" title="(4)人员划分"></a>(4)人员划分</h4><ul>
+<li>通过实现构件库管理系统，软件开发人员被分为两类：构件开发人员和构件组装人员，实现了软件开发人员的合理分工。</li>
+</ul>
+<h2 id="二-软件体系架构SA的概念"><a href="#二-软件体系架构SA的概念" class="headerlink" title="二.软件体系架构SA的概念"></a>二.软件体系架构SA的概念</h2><h3 id="1-发展历程"><a href="#1-发展历程" class="headerlink" title="1.发展历程"></a>1.发展历程</h3><h4 id="1-发展历程-1"><a href="#1-发展历程-1" class="headerlink" title="(1)发展历程"></a>(1)发展历程</h4><ul>
+<li><p>“无体系结构”设计阶段：汇编语言，规模小，无需建模</p>
+</li>
+<li><p>萌芽阶段——程序结构设计阶段：高级程序语言，SA的概念被明确</p>
+</li>
+<li><p>初级阶段——模块结构阶段：OO技术，从多角度对系统建模（如UML）</p>
+</li>
+<li><p>高级阶段——构件结构阶段：以Kruchten提出的“4+1”模型为标志</p>
+<p>尽管目前仍存在许多问题，但地位已经迅速上升。</p>
+</li>
+</ul>
+<h4 id="2-重用粒度的提升"><a href="#2-重用粒度的提升" class="headerlink" title="(2)重用粒度的提升"></a>(2)重用粒度的提升</h4><p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/2-1.png?raw=true" alt=""></p>
+<ul>
+<li>重用粒度提升的原因：<ol>
+<li>软件系统规模和复杂度的提升</li>
+<li>软件行业开发经验的积累及相关理论的提出</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-SA的定义"><a href="#3-SA的定义" class="headerlink" title="(3)SA的定义"></a>(3)SA的定义</h4><ul>
+<li>尽管目前有很多对SA的定义，但我们倾向于更容易被理解的Garlan &amp; Shaw 模型</li>
+<li>SA={Component, Connectors, Constrains}  软件体系架构=构件+连接件+约束（配置）</li>
+</ul>
+<h3 id="2-SA的构成要素"><a href="#2-SA的构成要素" class="headerlink" title="2.SA的构成要素"></a>2.SA的构成要素</h3><h4 id="1-软件构件"><a href="#1-软件构件" class="headerlink" title="(1)软件构件"></a>(1)软件构件</h4><ul>
+<li>强调三点：<ul>
+<li>构件的粒度</li>
+<li>构件内部</li>
+<li>端口</li>
+</ul>
+</li>
+<li>补充一点：<ul>
+<li>还要关注构件的进化能力，它是系统进化的基础。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-连接件"><a href="#2-连接件" class="headerlink" title="(2)连接件"></a>(2)连接件</h4><ul>
+<li><p>用来建立构件间的交互，以及支配这些交互规则的体系结构的构造模块。</p>
+</li>
+<li><p>常见的连接件：</p>
+<p>|   体系结构    |   连接件名称   |<br>| :——-: | :——-: |<br>| “客户机/服务器” | 通信协议或通信机制 |<br>| “管道-过滤器”  | 管道（Pipe）  |</p>
+</li>
+</ul>
+<h4 id="3-约束-配置"><a href="#3-约束-配置" class="headerlink" title="(3)约束(配置)"></a>(3)约束(配置)</h4><ul>
+<li>描述了体系结构的构件与连接件的连接图，它一般是对象连接时的规则，或指明构件连接的势态或条件。</li>
+</ul>
+<h2 id="三-SA风格"><a href="#三-SA风格" class="headerlink" title="三.SA风格"></a>三.SA风格</h2><h3 id="1-SA定义"><a href="#1-SA定义" class="headerlink" title="1.SA定义"></a>1.SA定义</h3><ul>
+<li>一般意义上，SA模式=SA风格，没有本质区别，因此可以从理解SA模式来理解SA风格。</li>
+<li>模式——抽取重复问题，描述解决方案的核心。</li>
+<li>SA模式：意图+上下文+问题+解决方案</li>
+<li>两者也有少许区别：<ul>
+<li>SA风格描述系统总体框架，而SA模式描述得更广</li>
+<li>SA风格相对独立，而模式彼此依赖性较强</li>
+<li>SA风格侧重抽取总体结构，模式更面向问题</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-经典风格的优缺点、应用场景"><a href="#2-经典风格的优缺点、应用场景" class="headerlink" title="2.经典风格的优缺点、应用场景"></a>2.经典风格的优缺点、应用场景</h3><h4 id="1-管道-过滤器"><a href="#1-管道-过滤器" class="headerlink" title="(1)管道-过滤器"></a>(1)管道-过滤器</h4><ul>
+<li>过滤器——过滤器接收数据输入，进行转化后输出。</li>
+<li>管道——负责连接各个过滤器，负责它们之间的交互。</li>
+<li>有三种常见变种:<ol>
+<li>流水线模式——批处理、Unix shell、编译器;</li>
+<li>有界管道——限制数据量(带宽);</li>
+<li>类型管道——限制数据类型通过。</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/2-1*.png?raw=true" alt=""></p>
+<ul>
+<li>优点：<ol>
+<li>软构件具有隐蔽性、高内聚、低耦合★</li>
+<li>支持并行执行★</li>
+<li>易于理解——系统行为=多个过滤器的行为</li>
+<li>支持软件重用</li>
+<li>易维护、增强系统性能简单(体现在增删中)</li>
+<li>易于分析吞吐量、死锁等属性</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>系统性能下降，且增加编写过滤器的复杂性★</li>
+<li>导致进程成为批处理的结构</li>
+<li>不适合处理交互的应用</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-数据抽象和面向对象风格"><a href="#2-数据抽象和面向对象风格" class="headerlink" title="(2)数据抽象和面向对象风格"></a>(2)数据抽象和面向对象风格</h4><ul>
+<li>这种风格建立在数据抽象和面向对象的基础上。</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/2-3.png?raw=true" alt=""></p>
+<ul>
+<li>优点：<ol>
+<li>易分解——可将数据存取操作分解为一些交互的代理程序的集合 ★</li>
+<li>易维护——改变一个对象内部的表示，不会影响其他对象(封装)</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>过程调用依赖于对象标识的确定★</li>
+<li>不同对象的操作关联性弱，尤其是发生在多个对象同时访问一个对象时。</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-基于事件的隐式调用风格"><a href="#3-基于事件的隐式调用风格" class="headerlink" title="(3)基于事件的隐式调用风格"></a>(3)基于事件的隐式调用风格</h4><ul>
+<li>构件不直接调用一个过程，而是触发或广播一个或多个事件。</li>
+<li>一个事件的触发=&gt;另一个模块中所有过程的调用</li>
+<li>构成要素：<ul>
+<li>构件——是一些模块，既可以是一些过程，又可以是一些事件的集合。</li>
+<li>连接件——触发信息、广播信息</li>
+<li>约束——触发模块与过程执行模块间的联系规则</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/2-4.png?raw=true" alt=""></p>
+<ul>
+<li>优点：<ol>
+<li>为软件重用提供了强大的支持★</li>
+<li>为改进带来了方便。</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>构件放弃了对系统计算的控制★</li>
+<li>数据交换成问题(对于利用共享数据进行交互不利)</li>
+<li>很难对系统的正确性进行推理(需要人的参与)</li>
+</ol>
+</li>
+<li>应用领域：<ol>
+<li>编辑器中支持语法检查——触发报警★</li>
+<li>数据库系统中用于检查一致性约束条件等</li>
+</ol>
+</li>
+</ul>
+<h4 id="4-层次系统风格"><a href="#4-层次系统风格" class="headerlink" title="(4)层次系统风格"></a>(4)层次系统风格</h4><ul>
+<li>每一层为它的上层提供服务，并作为下层的客户，不能跨层调用。</li>
+<li>由于每一层最多只影响两层，同时只要给相邻层提供相同的接口，允许每层用不同的方法实现，同样<em>为软件重用提供了强大的支持</em>。</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/2-5.png?raw=true" alt=""></p>
+<ul>
+<li>优点：<ol>
+<li>支持基于抽象程度递增的系统设计★</li>
+<li>支持重用★</li>
+<li>支持功能增强，改实现不改接口</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>一些系统不易被分层★</li>
+<li>很难找到一个合适的、正确的层次抽象方法</li>
+</ol>
+</li>
+<li>应用领域：<ol>
+<li>分层通信协议(OSI-ISO)</li>
+<li>OS</li>
+<li>数据库系统</li>
+<li>TCP/IP协议栈</li>
+</ol>
+</li>
+</ul>
+<h4 id="5-仓库风格和黑板风格"><a href="#5-仓库风格和黑板风格" class="headerlink" title="(5)仓库风格和黑板风格"></a>(5)仓库风格和黑板风格</h4><ul>
+<li>两种构件组成：<ul>
+<li>一个中央数据结构——当前状态</li>
+<li>一批独立构件的集合——与中央数据结构交互</li>
+</ul>
+</li>
+<li>两类控制策略：<ol>
+<li>传统数据库(12306)</li>
+<li>黑板体系结构(BBS)</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/2-6.png?raw=true" alt=""></p>
+<ul>
+<li>优点：<ol>
+<li>便于多客户共享大量数据★</li>
+<li>添加知识源和扩展黑板数据结构都很方便</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>要保证数据结构的完整和一致——系统复杂度增加(同步/加锁)★</li>
+<li>不同知识源代理对共享数据结构要一致——修改难(通过安装控件保持更新)</li>
+</ol>
+</li>
+</ul>
+<h4 id="6-模型-视图-控制器风格MVC"><a href="#6-模型-视图-控制器风格MVC" class="headerlink" title="(6)模型-视图-控制器风格MVC"></a>(6)模型-视图-控制器风格MVC</h4><ul>
+<li>MVC风格将交互式应用划分为3种构件：<ol>
+<li>模型(Model)</li>
+<li>视图(View)</li>
+<li>控制器(Controller)</li>
+</ol>
+</li>
+<li>最重要的一点：用户只操作控制器构件，看视图构件的显示，不去碰模型构件里面的应用程序核心代码。</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/2-7.png?raw=true" alt=""></p>
+<ul>
+<li>优点：<ol>
+<li>改变界面影响小，易于演化，可维护性好★</li>
+<li>分而治之，简化设计，保证了可扩展性</li>
+<li>易于改变，动态机制良好</li>
+</ol>
+</li>
+<li>缺点：<ul>
+<li>仅局限在应用软件的用户界面开发领域中★</li>
+</ul>
+</li>
+<li>应用领域：<ol>
+<li>Windows应用程序的文档视图结构</li>
+<li>Java Swing应用程序等</li>
+</ol>
+</li>
+</ul>
+<h4 id="7-解释器风格"><a href="#7-解释器风格" class="headerlink" title="(7)解释器风格"></a>(7)解释器风格</h4><ul>
+<li>创建了一个软件虚拟出来的机器。该系统的4个构件：<ul>
+<li>1个状态机——执行引擎</li>
+<li>3个存储器<ul>
+<li>正在被解释的程序</li>
+<li>被解释的程序的当前状态</li>
+<li>执行引擎的当前状态</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/2-8.png?raw=true" alt=""></p>
+<ul>
+<li>优点：<ol>
+<li>对未实现的硬件进行仿真★</li>
+<li>提升程序设计语言的跨平台能力</li>
+<li>有助于应用程序的可移植性</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>额外的间接层次带来了系统性能的下降★</li>
+</ol>
+</li>
+<li>应用领域：<ol>
+<li>虚拟机★</li>
+<li>程序设计语言的编译器</li>
+<li>基于规则的系统</li>
+<li>脚本语言</li>
+</ol>
+</li>
+</ul>
+<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><ol>
+<li><p>“构件不直接调用一个过程，而是触发或广播一个或多个事件”是那种SA风格？</p>
+<p>基于事件的隐式调用风格</p>
+</li>
+<li><p>采用OO的程序设计语言会导致系统化的重用(X系统化)</p>
+</li>
+<li><p>不应该将重用只局限在代码构件上(√)</p>
+</li>
+</ol>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><table>
+<thead>
+<tr>
+<th>数据流风格</th>
+<th>共享数据</th>
+<th>抽象数据类型</th>
+<th>隐式调用</th>
+<th>管道-过滤器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算法变更</td>
+<td>–</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>数据表示变更</td>
+<td>–</td>
+<td>++</td>
+<td>-</td>
+<td>–</td>
+</tr>
+<tr>
+<td>功能变更</td>
+<td>+</td>
+<td>-</td>
+<td>++</td>
+<td>+</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>++</td>
+<td>-（*）</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td>重用</td>
+<td>–</td>
+<td>++</td>
+<td>-</td>
+<td>+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-B-S-架构、C-S两层、三层架构"><a href="#3-B-S-架构、C-S两层、三层架构" class="headerlink" title="3.B/S 架构、C/S两层、三层架构"></a>3.B/S 架构、C/S两层、三层架构</h3><h4 id="1-B-S风格"><a href="#1-B-S风格" class="headerlink" title="(1)B/S风格"></a>(1)B/S风格</h4><ul>
+<li>WWW浏览器技术——客户端</li>
+<li>应用程序以网页形式存放于Web服务器上</li>
+<li>用户通过键入URL，调用应用程序，对数据库进行操作</li>
+<li>优点：<ul>
+<li>浏览器与Web服务器真正的连接时间很短，因此Web服务器可以为更多的用户提供服务。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>数据的动态交互性不强（尤其是一些需要及时响应的，经常交互的）——会“卡”,怎么办？————混合SA，即二层C/S+B/S</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-二层C-S风格"><a href="#2-二层C-S风格" class="headerlink" title="(2)二层C/S风格"></a>(2)二层C/S风格</h4><ul>
+<li>C/S体系结构的三个主要组成部分：<ol>
+<li>数据库服务器</li>
+<li>客户应用程序</li>
+<li>网络</li>
+</ol>
+</li>
+<li>服务器、客户应用程序的主要任务：<ol>
+<li>服务器——DB的安全性、控制并发、全局数据完整性规则、备份与恢复</li>
+<li>客户应用程序——提供交互界面、提交用户请求并接收反馈、处理存在于客户端的数据</li>
+<li>网络通信软件——完成数据库服务器和客户应用程序之间的数据传输</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/3-1.png?raw=true" alt=""></p>
+<ul>
+<li>优点：<ol>
+<li>灵活</li>
+<li>可扩展</li>
+<li>通过合理地分解任务，可以使应用成本降低</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>开发成本较高</li>
+<li>客户端程序设计复杂</li>
+<li>软件维护很麻烦</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-三层C-S风格"><a href="#3-三层C-S风格" class="headerlink" title="(3)三层C/S风格"></a>(3)三层C/S风格</h4><h5 id="①二层C-S风格的局限性"><a href="#①二层C-S风格的局限性" class="headerlink" title="①二层C/S风格的局限性"></a>①二层C/S风格的局限性</h5><ul>
+<li>二层C/S结构以单一服务器、局域网为核心的，难以扩展至大型企业广域网和Internet</li>
+<li>软硬件结合以及集成能力有限</li>
+<li>服务器负荷太重，性能低</li>
+<li>数据安全性差，因为客户端程序可以访问数据库服务器，所以其他程序也可以使用类似的方法访问。</li>
+</ul>
+<h5 id="②三层C-S风格的三个层次"><a href="#②三层C-S风格的三个层次" class="headerlink" title="②三层C/S风格的三个层次"></a>②三层C/S风格的三个层次</h5><ol>
+<li>表示层：应用的用户接口，担负着用户与应用间对话的功能。</li>
+<li>功能层：应用的本体，是程序中具体的业务处理逻辑。</li>
+<li>数据层：DBMS数据库管理系统，负责对数据库的读写。</li>
+</ol>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/3-2.png?raw=true" alt=""></p>
+<h5 id="③优点"><a href="#③优点" class="headerlink" title="③优点"></a>③优点</h5><ol>
+<li>提高系统和软件的可维护性和可扩展性</li>
+<li>可灵活选用相应的平台和硬件系统</li>
+<li>高效地进行开发，且便于维护</li>
+<li>为严格的安全管理奠定了坚实的基础</li>
+</ol>
+<blockquote>
+<p>基本上符合软件设计关注的四大质量属性：可修改性、性能、安全性、可用性</p>
+</blockquote>
+<h3 id="4-异构结构风格"><a href="#4-异构结构风格" class="headerlink" title="4.异构结构风格"></a>4.异构结构风格</h3><h4 id="1-使用异构风格的原因"><a href="#1-使用异构风格的原因" class="headerlink" title="(1)使用异构风格的原因"></a>(1)使用异构风格的原因</h4><ol>
+<li>不同的结构都同时具有优缺点</li>
+<li>关于软件包、框架、通信的标准的变动</li>
+<li>遗留工程与遗留代码的使用</li>
+<li>解释或表示习惯上的不同</li>
+</ol>
+<h4 id="2-典型的异构体系结构——C-S与B-S的混合SA"><a href="#2-典型的异构体系结构——C-S与B-S的混合SA" class="headerlink" title="(2)典型的异构体系结构——C/S与B/S的混合SA"></a>(2)典型的异构体系结构——C/S与B/S的混合SA</h4><ol>
+<li>企业内部C/S结构+企业外部B/S结构(“内外有别”)</li>
+<li>修改数据C/S结构+查询数据B/S结构(“改查有别”)</li>
+</ol>
+<blockquote>
+<p>都是对安全性和动态交互性能的权衡</p>
+</blockquote>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/3-3.png?raw=true" alt=""></p>
+<h2 id="四-SA描述"><a href="#四-SA描述" class="headerlink" title="四.SA描述"></a>四.SA描述</h2><h3 id="1-SA描述方法及典型描述语言"><a href="#1-SA描述方法及典型描述语言" class="headerlink" title="1.SA描述方法及典型描述语言"></a>1.SA描述方法及典型描述语言</h3><blockquote>
+<p>SA风格是对经典应用系统的特征抽象,SA描述是对真正软件系统的具体展现</p>
+</blockquote>
+<ul>
+<li>目前通用的描述SA的方法——非形式化的图和文本<ul>
+<li>缺点：<ol>
+<li>不能描述系统构件之间的接口</li>
+<li>难于进行形式化分析和模拟</li>
+<li>缺乏相应的支持工具帮助设计师完成设计工作</li>
+<li>不能分析其一致性和完整性等特性</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-SA的描述方法"><a href="#1-SA的描述方法" class="headerlink" title="(1)SA的描述方法"></a>(1)SA的描述方法</h4><ul>
+<li>SA的描述方法——软件体系结构描述语言（Architecture Description Language，ADL）</li>
+<li>SA的三个最基本的构成元素=&gt;ADL的三个基本构成要素<ol>
+<li>构件：基本计算单元、数据存储单元</li>
+<li>连接件：用来建立构件间的交互，以及支配这些交互规则的体系结构构造模块</li>
+<li>体系结构配置：描述1和2的连接图，提供信息来确定构件是否正确连接、接口是否匹配、连接件构成的通信是否正确，并说明实现要求行为的组合语义——澄清系统结构</li>
+</ol>
+</li>
+<li>★好的ADL能够起到承上启下的作用<ul>
+<li>需求分析=&gt;SA设计（ADL）=&gt;软件设计</li>
+<li>SA设计——桥梁</li>
+<li>SA描述——效果图（建模）</li>
+<li>ADL——画效果图的工具（建模工具）</li>
+<li>一个好的ADL——可以让SA描述方便地转换为其它设计文档，同时可利用需求分析成果直接生成系统的体系结构说明。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-典型SA描述语言"><a href="#2-典型SA描述语言" class="headerlink" title="(2)典型SA描述语言"></a>(2)典型SA描述语言</h4><ul>
+<li>主要的SA描述语言<ol>
+<li>UniCon——支持异构的构件和连接件类型，并提供了关于体系结构的高层编译器</li>
+<li>C2——支持构件重置与GUI重用</li>
+<li>Wright——连接件=协议，协议刻画构件行为专注于抽象行为的精确表达，以及为架构师提供结构化表达系统信息的方法</li>
+<li>ACME——是一种交互式ADL，它旨在为开发工具与环境提供交互格式。</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>总之，这些ADL都强调了体系结构的不同侧面，大部分ADL都是与领域相关，不利于对不同领域的体系结构进行分析。多种ADL并存的局面正在演化为几种通用的ADL。</p>
+</blockquote>
+<h3 id="2-4-1模型"><a href="#2-4-1模型" class="headerlink" title="2. 4+1模型"></a>2. 4+1模型</h3><h4 id="1-组成"><a href="#1-组成" class="headerlink" title="(1)组成"></a>(1)组成</h4><p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/4-1.png?raw=true" alt=""></p>
+<h4 id="2-作用"><a href="#2-作用" class="headerlink" title="(2)作用"></a>(2)作用</h4><h5 id="①4-1模型"><a href="#①4-1模型" class="headerlink" title="①4+1模型"></a>①4+1模型</h5><ul>
+<li>使得有不同需求的人员能够得到他们想要了解的SA的某一方面。</li>
+</ul>
+<h5 id="②逻辑视图"><a href="#②逻辑视图" class="headerlink" title="②逻辑视图"></a>②逻辑视图</h5><ul>
+<li>当采用面向对象的设计方法时，逻辑试图即是对象模型。</li>
+</ul>
+<h5 id="③过程视图"><a href="#③过程视图" class="headerlink" title="③过程视图"></a>③过程视图</h5><ul>
+<li>描述系统的并发和同步方面的设计。</li>
+</ul>
+<h5 id="④物理视图"><a href="#④物理视图" class="headerlink" title="④物理视图"></a>④物理视图</h5><ul>
+<li>描述软件与硬件之间的映射关系，反映系统在分布方面的设计。</li>
+</ul>
+<h5 id="⑤开发视图"><a href="#⑤开发视图" class="headerlink" title="⑤开发视图"></a>⑤开发视图</h5><ul>
+<li>描述软件在开发环境下的静态组织结构。</li>
+</ul>
+<h5 id="⑥场景视图"><a href="#⑥场景视图" class="headerlink" title="⑥场景视图"></a>⑥场景视图</h5><ul>
+<li>场景是用例的集合，这些用例对SA加以说明。</li>
+</ul>
+<h4 id="3-关注点"><a href="#3-关注点" class="headerlink" title="(3)关注点"></a>(3)关注点</h4><ul>
+<li><p>逻辑视图</p>
+<p>SA的组成以实现功能需求，即提供什么样的服务（OO的分解：子系统、模块名称）</p>
+</li>
+<li><p>过程视图</p>
+<p>非功能需求，过程分解（并发、进程、通讯、容错…）</p>
+</li>
+<li><p>物理视图</p>
+<p>从软件到硬件的映射（硬件部署）</p>
+</li>
+<li><p>开发视图</p>
+<p>子系统组件的类型（开发所得部件的显示）</p>
+</li>
+<li><p>场景视图</p>
+<p>汇总，用例的实例（软件产品对架构的需求）</p>
+</li>
+</ul>
+<h3 id="3-题目"><a href="#3-题目" class="headerlink" title="3.题目"></a>3.题目</h3><ol>
+<li><p>在“4+1”视图模型中，__的体系结构关注的是从软件到硬件的映射；__描述了系统的动态结构A.逻辑视图           B.开发视图    C.进(/过)程视图         D.场景视图        E.物理视图</p>
+<p>(E,C)</p>
+</li>
+<li><p>开发人员要从数以万计的小构件中选取要重用的构件(之前有过，X)</p>
+</li>
+<li><p>由于考虑到提升通用性，所以被重用的代码构件速度太低(√)</p>
+</li>
+<li><p>只要建立可重用构件库就会促使构件重用(X)</p>
+</li>
+</ol>
+<h3 id="4-XML"><a href="#4-XML" class="headerlink" title="4.XML"></a>4.XML</h3><h4 id="1-与HTML的区别"><a href="#1-与HTML的区别" class="headerlink" title="(1)与HTML的区别"></a>(1)与HTML的区别</h4><ul>
+<li>目标 :HTML的设计目标是显示数据，焦点是数据外观，而XML的设计目标是描述数据，焦点是数据的内容，它的显示形式靠CSS或XSL帮助完成。</li>
+<li>语法：HTML的标记不是所有的都需要成对出现，XML则要求所有的标记必须成对出现；HTML标记不区分大小写，XML则大小敏感，即区分大小写。</li>
+<li>更新：XML允许粒度更新，不必在XML文档每次有局部改变时都发送整个文档的内容，只有改变的元素才必须从服务器发送到客户机，而HTML却不支持这样的功能</li>
+<li>标签的定义：XML的标记由架构或文档的作者定义，并且是无限制的。HTML的标记则是预定义的;HTML 作者只能使用当前 HTML 标准所支持的标记。</li>
+</ul>
+<h4 id="2-语法"><a href="#2-语法" class="headerlink" title="(2)语法"></a>(2)语法</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>HTML的语法（较随意）</th>
+<th>XML的语法(简明)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有起始标签是否必须出现结束标签/关闭标签</td>
+<td>未必，例如HTML中的<img>标签</td>
+<td>是</td>
+</tr>
+<tr>
+<td>标签大小写意义是否相同</td>
+<td>相同</td>
+<td>不同</td>
+</tr>
+<tr>
+<td>标签嵌套顺序是否不能错</td>
+<td>无所谓</td>
+<td>是</td>
+</tr>
+<tr>
+<td>是否必须要有根元素</td>
+<td>无所谓</td>
+<td>是</td>
+</tr>
+<tr>
+<td>属性值是否必须加“”</td>
+<td>加不加都可以</td>
+<td>是</td>
+</tr>
+<tr>
+<td>空格是否被保留</td>
+<td>裁减为一个空格</td>
+<td>均被保留</td>
+</tr>
+<tr>
+<td>所有的特性是否必须有值</td>
+<td>未必，如nowrap特性</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-XML语法找错"><a href="#3-XML语法找错" class="headerlink" title="(3)XML语法找错"></a>(3)XML语法找错</h4><p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/4-2.png?raw=true" alt=""></p>
+<ul>
+<li><code>&lt;/vendor&gt;</code>大小写不对</li>
+<li>第五行没有关闭标签<code>&lt;/Name&gt;</code></li>
+<li><code>&lt;/Price&gt;</code>位置不对</li>
+</ul>
+<h2 id="五-SA设计"><a href="#五-SA设计" class="headerlink" title="五.SA设计"></a>五.SA设计</h2><h3 id="1-设计原理"><a href="#1-设计原理" class="headerlink" title="1.设计原理"></a>1.设计原理</h3><h4 id="1-耦合和内聚原理★★★"><a href="#1-耦合和内聚原理★★★" class="headerlink" title="(1)耦合和内聚原理★★★"></a>(1)耦合和内聚原理★★★</h4><ul>
+<li><p>模块间的耦合度是指模块之间的依赖关系，包括控制关系、调用关系、数据传递关系。</p>
+</li>
+<li><p>内聚性是模块内部的相互依赖程度</p>
+</li>
+<li><p>耦合度等级划分：</p>
+<p>|  耦合度  |             描述              |<br>| :—: | :————————-: |<br>| 非直接耦合 | 两模块之间的联系完全是通过主模块的控制和调用来实现的  |<br>| 数据耦合  |  一个模块访问另一模块，通过简单数据参数来交换信息   |<br>| 标记耦合  | 一组模块通过参数表传递记录信息，这个记录不是简单变量  |<br>| 控制耦合  | 一个模块通过传递开关、标志、名字等控制信息控制另一模块 |<br>| 外部耦合  |       一组模块都访问同一全局简单变量       |<br>| 公共耦合  |      一组模块都访问同一个公共数据环境       |<br>| 内容耦合  | 一个模块直接修改另一模块的数据，或直接转入另一个模块  |</p>
+</li>
+<li><p>内聚度等级划分：</p>
+<p>| 内聚类型 |             描述             |<br>| :–: | :————————: |<br>| 功能内聚 |   完成一个单一功能，各部分协同工作，缺一不可    |<br>| 顺序内聚 |       处理元素相关，必须顺序执行        |<br>| 通信内聚 |    所有处理元素集中在一个数据结构的区域上     |<br>| 过程内聚 |     处理元素相关，必须按照特定的次序执行     |<br>| 瞬时内聚 | 所包含的任务必须在同一时间间隔内执行(如初始化模块) |<br>| 逻辑内聚 |        完成逻辑上相关的一组任务        |<br>| 偶然内聚 |      完成一组没有关系或松散关系的任务      |</p>
+</li>
+</ul>
+<blockquote>
+<p>习题</p>
+<p>模块间的耦合度是指模块之间的依赖关系，其中不包括哪个关系？D</p>
+<p>A.控制关系                 B.调用关系        C.数据传递关系             D.继承关系</p>
+<p>耦合度最高的是内容耦合，应该尽量采用。(X尽量避免)</p>
+<p>使用设计模式，将不用再考虑软件体系结构的现有的解决方案，因为模式自身就包含解决方案。(X)</p>
+<p>SA设计的重要性体现在它包括了早期的设计决定，体现了系统的全局结构，极大地影响整个系统的质量。(√)</p>
+</blockquote>
+<h4 id="2-抽象原理★★"><a href="#2-抽象原理★★" class="headerlink" title="(2)抽象原理★★"></a>(2)抽象原理★★</h4><ul>
+<li>抽象是人们透过事务繁杂的表面现象，揭示事物本质特征的方法，也是软件体系结构设计中要用到的基本原理。</li>
+<li>抽象可分为两类：<ol>
+<li>过程抽象：任何一个具体的操作序列，若他们完成一项逻辑意义上的功能，则其使用者都可以把它看做一个单一的逻辑概念。</li>
+<li>数据抽象：将数据类型和施加于该类型对象的上的操作作为整体来定义，并限定了对象的值只能通过使用这些操作修改和观察。</li>
+</ol>
+</li>
+<li>抽象是封装的基础，有助于处理系统复杂性，有助于减少部件耦合，有助于接口与实现分离。</li>
+</ul>
+<h4 id="3-封装原理★★"><a href="#3-封装原理★★" class="headerlink" title="(3)封装原理★★"></a>(3)封装原理★★</h4><ul>
+<li>封装是将事物的属性和行为结合在一起，并且保护事物内部信息不受破坏的一种方式。封装使不同的抽象之间有了明确的界限。</li>
+<li>封装有助于非功能特性的实现，例如可变性和可重用性。</li>
+<li>封装由两方面组成：<ol>
+<li>内部构成</li>
+<li>操作服务</li>
+</ol>
+</li>
+<li>封装与信息隐藏之间有着密切的联系，封装为信息隐藏提供了支持。</li>
+</ul>
+<h4 id="4-信息隐藏原理★★"><a href="#4-信息隐藏原理★★" class="headerlink" title="(4)信息隐藏原理★★"></a>(4)信息隐藏原理★★</h4><ul>
+<li>信息隐藏对用户隐藏了部件的实现细节。因此，可以用来更好的处理系统的复杂性和减少各模块之间的耦合。</li>
+</ul>
+<h4 id="5-模块化原理★"><a href="#5-模块化原理★" class="headerlink" title="(5)模块化原理★"></a>(5)模块化原理★</h4><ul>
+<li>模块化主要关心的是如何将一个软件系统分解成多个子系统和部件。</li>
+<li>在体系结构设计中，如果注重了模块化的概念就可以限制更改设计所造成的影响范围。</li>
+</ul>
+<h4 id="6-注意点分离原理★"><a href="#6-注意点分离原理★" class="headerlink" title="(6)注意点分离原理★"></a>(6)注意点分离原理★</h4><ul>
+<li>不同的和无关联的责任应该出现在系统不同的部件中，让他们相互独立的分离开来。</li>
+<li>相互协作完成某一个特定任务的部件也应该和在其他任务中执行的计算部件分离开来。</li>
+<li>如果一个部件在不同的环境下扮演着不同的角色，在部件中这些角色应该独立且相互分离。</li>
+</ul>
+<h4 id="7-接口和实现分离原理★★"><a href="#7-接口和实现分离原理★★" class="headerlink" title="(7)接口和实现分离原理★★"></a>(7)接口和实现分离原理★★</h4><ul>
+<li>在软件体系结构中，任何一个部件都包括了两个部分：接口和实现。<ul>
+<li>接口部分给出了部件所提供的功能的定义，并对功能的使用方法进行了规范。部件的客户可以访问接口。</li>
+<li>实现部分包括了实际代码，对部件的客户不可用。</li>
+</ul>
+</li>
+<li>接口和实现分离的部件更容易在系统中进行改变，尤其是不影响接口的改变，比如性能的提升。</li>
+</ul>
+<h4 id="8-分而治之原理★"><a href="#8-分而治之原理★" class="headerlink" title="(8)分而治之原理★"></a>(8)分而治之原理★</h4><ul>
+<li>将大问题分解成小问题，经常用作注意点分离原理的方法。(横向分割)</li>
+</ul>
+<h4 id="9-层次化原理★"><a href="#9-层次化原理★" class="headerlink" title="(9)层次化原理★"></a>(9)层次化原理★</h4><ul>
+<li>纵向分割复杂的问题。原理和优缺点同层次系统风格。</li>
+</ul>
+<blockquote>
+<p>题目</p>
+<p>一个模块内包含的信息，对于不需要这些信息的模块是不能访问的，这体现了多个设计原理的共同要求。(√)</p>
+<p>耦合度最高的是内容耦合，应该尽量采用。(X)</p>
+<p>对接口和实现分离原理的贯彻，可以保证用户在使用方式与习惯不变的情况下，享受运行性能的提升。(√改实现不改接口)</p>
+</blockquote>
+<h3 id="2-元模型"><a href="#2-元模型" class="headerlink" title="2.元模型"></a>2.元模型</h3><ul>
+<li>元模型是对各种体系结构设计模型的抽象。</li>
+</ul>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/5-1.png?raw=true" alt=""></p>
+<ul>
+<li>需求规格说明用来表示规格说明，该规格说明描述了所要开发的体系结构的系统需求。</li>
+<li>解决方案抽象定义了体系结构中(子)结构的概念表示。</li>
+<li>体系结构描述定义了软件体系结构的规格说明。</li>
+</ul>
+<blockquote>
+<p>题目</p>
+<p>各种不同的体系结构设计方法都可以描述成元模型的实例，只是在过程的顺序及概念的特定内容上有所不同。(√)</p>
+<p>元模型中，需求规格说明关注SA中子系统和模块的需求，而解决方案抽象关注SA的系统需求。(X相反)需求规格说明关注SA的系统需求，解决方案抽象关注SA中子系统和模块的需求。</p>
+<p>用例的使用在IBM RUP中被推崇备至，整个RUP流程都被称作是“用例驱动”(Use-Case Driven)的。(√)</p>
+</blockquote>
+<h2 id="六-基于SA的软件开发过程"><a href="#六-基于SA的软件开发过程" class="headerlink" title="六.基于SA的软件开发过程"></a>六.基于SA的软件开发过程</h2><h3 id="1-SA设计在开发过程中的位置地位"><a href="#1-SA设计在开发过程中的位置地位" class="headerlink" title="1.SA设计在开发过程中的位置地位"></a>1.SA设计在开发过程中的位置地位</h3><ul>
+<li>软件体系结构设计是软件需求与软件设计之间的桥梁。</li>
+</ul>
+<h3 id="2-F16例子对导出SA需求有什么借鉴"><a href="#2-F16例子对导出SA需求有什么借鉴" class="headerlink" title="2.F16例子对导出SA需求有什么借鉴"></a>2.F16例子对导出SA需求有什么借鉴</h3><ol>
+<li>分析体系结构需求的三个来源，即系统的质量目标、系统的业务目标、将在该系统上工作的人员的业务目标（人员目标很重要）。</li>
+<li>需求来自于许多系统相关人员，尤其是直接使用者。</li>
+<li>应综合考虑质量属性（需求要具体）。</li>
+</ol>
+<h3 id="3-瓦萨号"><a href="#3-瓦萨号" class="headerlink" title="3.瓦萨号"></a>3.瓦萨号</h3><ul>
+<li>导出体系结构需求——<ul>
+<li>体系结构需求的三个来源——质量目标★、业务目标、人员目标</li>
+<li>特定质量场景</li>
+<li>系统相关人员中应有评估、监理专家团队</li>
+</ul>
+</li>
+<li>进行SA设计——<ul>
+<li>体系结构的构造（功能构造）</li>
+<li>验证——首选质量场景</li>
+<li>开发过程分析</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>基于体系结构的软件开发过程六个步骤：</p>
+<ol>
+<li><p>导出体系结构需求</p>
+</li>
+<li><p>==设计体系结构==</p>
+</li>
+<li><p>==文档化体系结构==</p>
+</li>
+<li><p>==分析体系结构==</p>
+</li>
+<li><p>实现体系结构</p>
+</li>
+<li><p>维护体系结构</p>
+<p>2 、 3 、 4步可以重复执行</p>
+<p>每个步骤都包括：输入（包括收集此信息的手段）、验证活动、输出。</p>
+</li>
+</ol>
+<p>瓦萨号的例子告诉我们——</p>
+<p>妄想实现所有需求，只会产生脆弱的一无是处的架构。另外，比起仅仅满足客户所要求的功能，软件的成功更为重要。    </p>
+<p>举例说明——设计出来的新系统虽然满足了技术上的规范，但并没有达到客户可接受的程度。用户总是抱怨用户界面运行缓慢，并且新的数据文件所占用的磁盘空间太大。是什么导致了用户期望与产品实际性能之间的期望差异？        ——==对质量属性的权衡取舍工作没做好==</p>
+</blockquote>
+<h2 id="七-SA评估"><a href="#七-SA评估" class="headerlink" title="七.SA评估"></a>七.SA评估</h2><h3 id="1-质量属性"><a href="#1-质量属性" class="headerlink" title="1.质量属性"></a>1.质量属性</h3><ul>
+<li>产品的易用程度，执行速度，可靠性；当发生异常情况时，系统如何处理。这些被称为==软件质量属性==(或质量因素)的特性，是系统非功能（也叫非行为）部分的需求。</li>
+<li>质量属性——是一个组件或一个系统的非功能性特征，提供了测量和分析质量的上下文。</li>
+<li>具体的质量属性包括了性能、可靠性、可用性、安全性、可修改性、功能性、可变性、可集成性、互操作性等等。</li>
+</ul>
+<blockquote>
+<p>对各质量属性的区分（用户）</p>
+<ul>
+<li><p>有效性——指的是在预定的启动时间中，系统真正可用并且完全运行时间所占的百分比</p>
+<ul>
+<li>工作日期间，在当地时间早上6点到午夜，系统的有效性至少达到9 9 . 5 %，在下午4点到6点，系统的有效性至少可达到9 9 . 9 5 %</li>
+</ul>
+</li>
+<li><p>效率——是用来衡量系统如何优化处理器、磁盘空间或通信带宽的（ Davis 1993）。如果系统用完了所有可用的资源，那么用户遇到的将是性能的下降，这是效率降低的一个表现。</p>
+<ul>
+<li>在预计的高峰负载条件下， 1 0 %处理器能力和1 5 %系统可用内存必须留出备用。</li>
+</ul>
+</li>
+<li><p>灵活性——就像我们所知道的可扩充性、增加性、可延伸性和可扩展性一样，灵活性表明了在产品中增加新功能时所需工作量的大小。</p>
+<ul>
+<li>一个至少具有6个月产品支持经验的软件维护程序员可以在一个小时之内为系统添加一个新的可支持硬拷贝的输出设备。</li>
+</ul>
+</li>
+<li><p>完整性——完整性（或安全性）主要涉及：防止非法访问系统功能、防止数据丢失、防止病毒入侵并防止私人数据进入系统。</p>
+<ul>
+<li>只有拥有查账员访问特权的用户才可以查看客户交易历史。</li>
+</ul>
+</li>
+<li><p>互操作性——表明了产品与其它系统交换数据和服务的难易程度。</p>
+<ul>
+<li>化学制品跟踪系统应该能够从C h e m i D r a w和C h e m - S t r u c t工具中导入任何有效化学制品结构图。</li>
+</ul>
+</li>
+<li><p>可靠性——是软件无故障执行一段时间的概率（Musa, Iannino and Okumoto 1987）。健壮性和有效性有时可看成是可靠性的一部分。</p>
+<ul>
+<li>由于软件失效引起实验失败的概率应不超过5‰</li>
+</ul>
+</li>
+<li><p>健壮性——指的是当系统或其组成部分遇到非法输入数据、相关软件或硬件组成部分的缺陷或异常的操作情况时，能继续正确运行功能的程度。</p>
+<ul>
+<li>所有的规划参数都要指定一个缺省值，当输入数据丢失或无效时，就使用缺省值数据。</li>
+</ul>
+</li>
+<li><p>可用性——也称为“易用性”和“人类工程”，它所描述的是许多组成“用户友好”的因素。可用性衡量准备输入、操作和理解产品输出所花费的努力。</p>
+<ul>
+<li>一个培训过的用户应该可以在平均3分钟或最多5分钟时间以内，完成从供应商目录表中请求一种化学制品的操作。</li>
+</ul>
+</li>
+</ul>
+<p>对各质量属性的区分（开发者和维护者）</p>
+<ul>
+<li>可维护性——表明了在软件中纠正一个缺陷或做一次更改的简易程度。可维护性取决于理解软件、更改软件和测试软件的简易程度，可维护性与灵活性密切相关。<ul>
+<li>在接到来自联邦政府修订的化学制品报告的规定后，对于现有报表的更改操作必须在一周内完成。</li>
+</ul>
+</li>
+<li>可移植性——是度量把一个软件从一种运行环境转移到另一种运行环境中所花费的工作量。<ul>
+<li>该应用软件系统各个模块都可以在x86机器上运行，且其中的大部分功能模块也可以在iMac机器上运行，剩下的少量功能模块经修改后，也可在iMac机器上运行。</li>
+</ul>
+</li>
+<li>可重用性——从软件开发的长远目标上看，可重用性表明了一个软件组件除了在最初开发的系统中使用之外，还可以在其它应用程序中使用的程度。<ul>
+<li>设计单机版媒体播放器系统时，还要保证核心的播放模块可以在将来开发的联机版媒体播放器系统中使用。</li>
+</ul>
+</li>
+<li>可测试性——指的是测试软件组件或集成产品时查找缺陷的简易程度。<ul>
+<li>随着图形引擎功能的不断增强，我们需要对它进行多次测试，所以作出了如下的设计目标：“一个模块的最大循环复杂度不能超过2 0。”</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="2-几种评估方式以及各自的特点"><a href="#2-几种评估方式以及各自的特点" class="headerlink" title="2.几种评估方式以及各自的特点"></a>2.几种评估方式以及各自的特点</h3><ol>
+<li>基于调查问卷、检查表<ul>
+<li>自由灵活，但因人而异——主观性强</li>
+</ul>
+</li>
+<li>基于场景★★<ul>
+<li>SEI at CMU的评估方法</li>
+</ul>
+</li>
+<li>基于度量★<ul>
+<li>能提供更为客观和量化的质量评估，不过需要在SA设计基本完成之后进行——较客观</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>==评估过程=论证SA对关键场景的支持程度==</li>
+</ul>
+<h3 id="3-SAAM-ATAM"><a href="#3-SAAM-ATAM" class="headerlink" title="3.SAAM/ATAM"></a>3.SAAM/ATAM</h3><h4 id="1-SAAM软件体系结构分析法"><a href="#1-SAAM软件体系结构分析法" class="headerlink" title="(1)SAAM软件体系结构分析法"></a>(1)SAAM软件体系结构分析法</h4><ul>
+<li>SAAM法仅仅考虑场景和体系结构的关系，也不涉及太多的步骤和独特的技术。是一种理想的入门方法。</li>
+<li>SAAM法实质上是对检查表法的进一步完善，它首先把要检查的事物的属性列举出来，再对各个属性进行”检查”，使思路更广，目标更明确。</li>
+<li>SAAM分析评估体系结构的过程包括6个步骤:<ol>
+<li>通过风险承担者协商讨论，开发一些任务场景，体现系统所支持的各种活动。(场景生成)</li>
+<li>用一种易于理解的、合乎语法规则的体系结构描述SA，体现系统的计算构件、数据构件以及构件之间的关系。(体系结构描述)</li>
+<li>区分直接场景（不需要修改SA的场景）和间接场景，设置优先级（从重要到次要）。(场景的分类和优先级确定)</li>
+<li>对于间接场景，要估计修改SA以实现它的代价。(间接场景的单独评估)</li>
+<li>通过对场景交互（多个间接场景要求更改同一个组件）的分析，能得出系统中所有场景对系统中的构件所产生的影响的列表。(对场景关联的评估)</li>
+<li>对场景和场景间的交互作一个总体的权衡和评价，设置权值，得出总体评价。(形成总体评估)</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-ATAM体系结构权衡分析法"><a href="#2-ATAM体系结构权衡分析法" class="headerlink" title="(2)ATAM体系结构权衡分析法"></a>(2)ATAM体系结构权衡分析法</h4><ul>
+<li><p>ATAM是评价软件构架的一种综合全面的方法。这种方法不仅可以揭示出构架满足特定质量目标的情况，而且（因为它认识到了构架决策会影响多个质量属性）可以使我们更清楚地认识到质量目标之间的联系——即如何权衡诸多质量目标。</p>
+</li>
+<li><p>体系结构的敏感点和权衡点</p>
+<ul>
+<li>敏感点：会被某些体系结构元素显著影响的系统模型的属性值。</li>
+<li>权衡点：系统内与几个敏感点都相关的地方。</li>
+</ul>
+</li>
+<li><p>ATAM的评估步骤</p>
+<p><img src="https://github.com/ZizhuoWang/ImageBed/blob/master/SA/7-1.png?raw=true" alt=""></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/26/算法作业三/" itemprop="url">
                   算法作业三
                 </a>
@@ -1440,139 +2357,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/09/归一化谷歌距离的计算方法/" itemprop="url">
-                  归一化谷歌距离的计算方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-09T00:07:33+08:00" content="2016-12-09">
-              2016-12-09
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/09/归一化谷歌距离的计算方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/归一化谷歌距离的计算方法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/09/归一化谷歌距离的计算方法/" class="leancloud_visitors" data-flag-title="归一化谷歌距离的计算方法">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="归一化谷歌距离的计算方法"><a href="#归一化谷歌距离的计算方法" class="headerlink" title="归一化谷歌距离的计算方法"></a><div align="middle"><font size="6">归一化谷歌距离的计算方法</font></div></h1><div align="middle"><font size="5">71115115 王子卓</font></div>
-
-<hr>
-<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><div align="middle">摘要</div></h3><p>&emsp;&emsp;归一化Google距离（Normalized Google Distance）是一种语义相似性的度量方法，由给定一组关键词集合的Google搜索引擎所返回的命中数量得出。<br>&emsp;&emsp;在自然语言中，具有相同或相似意思的两个关键字在以归一化谷歌距离为单位的情况下趋向于“接近”，意思不同的两个关键字则趋向于“疏远”。本文重点介绍如何使用Java语言和百度搜索引擎实现归一化谷歌距离的计算。<br>&emsp;&emsp;关键字：Normalized Google Distance 、 Java 、百度搜索</p>
-<h3 id="1-归一化谷歌距离"><a href="#1-归一化谷歌距离" class="headerlink" title="1.归一化谷歌距离"></a>1.归一化谷歌距离</h3><h4 id="1-1定义"><a href="#1-1定义" class="headerlink" title="1.1定义"></a>1.1定义</h4><p>&emsp;&emsp;归一化谷歌距离是以搜索引擎提供的关键字搜索结果数量为计算依据，对语义相似程度的度量方法。<br>&emsp;&emsp;具体而言，两个搜索关键词之间x和y之间的归一化谷歌距离可以用下式表示：<br><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/NGD/NGD1.png" alt=""><br>&emsp;&emsp;其中：f(x)表示在搜索引擎中搜索x时返回的匹配记录数;f(y)表示在搜索引擎中搜索y时返回的匹配记录数;f(x,y)表示在搜索引擎中搜索词组(x,y)时返回的匹配记录数;M表示搜索引擎总索引量。上式中<code>log</code>均表示自然对数。</p>
-<h4 id="1-2分析"><a href="#1-2分析" class="headerlink" title="1.2分析"></a>1.2分析</h4><h5 id="1-2-1取值范围"><a href="#1-2-1取值范围" class="headerlink" title="1.2.1取值范围"></a>1.2.1取值范围</h5><p>&emsp;&emsp;NGD(x,y)的取值范围为[0,∞]。如果两个搜索词x和y从未一起出现在同一网页上，而是单独出现时，则他们之间的归一化谷歌距离是无穷。如果两个词总是同时出现，则他们的归一化谷歌距离是0。<br>&emsp;&emsp;一般情况下，NGD(x,y)越接近于0，x、y越相似。如果NGD(x,y)大于等于1，则x、y之间区别很大。<br>&emsp;&emsp;特殊情况下，由于搜索引擎结果不准确，NGD(x,y)可能会小于0。</p>
-<h5 id="1-2-2满足规律"><a href="#1-2-2满足规律" class="headerlink" title="1.2.2满足规律"></a>1.2.2满足规律</h5><p>&emsp;&emsp;在搜索引擎足够准确的情况下</p>
-<ul>
-<li>NGD(x,x)等于0，满足同一律。</li>
-<li>NGD(x,y)等于NGD(y,x)，满足交换律。</li>
-</ul>
-<h5 id="1-2-3尺度不变性"><a href="#1-2-3尺度不变性" class="headerlink" title="1.2.3尺度不变性"></a>1.2.3尺度不变性</h5><p>&emsp;&emsp;归一化谷歌距离具有尺度不变性。设想如果搜索引擎总的索引量M增长了n倍，那么f(x)、f(y)、f(x,y)也应该增长n倍。这是因为归一化谷歌距离提供给我们搜索关键字之间客观语义联系，当M以一个不确定的比例增长时，NGD(x,y)应该保持稳定。</p>
-<h3 id="2-利用百度搜索引擎和Java语言实现谷歌距离的计算"><a href="#2-利用百度搜索引擎和Java语言实现谷歌距离的计算" class="headerlink" title="2.利用百度搜索引擎和Java语言实现谷歌距离的计算"></a>2.利用百度搜索引擎和Java语言实现谷歌距离的计算</h3><h4 id="2-1设计思路"><a href="#2-1设计思路" class="headerlink" title="2.1设计思路"></a>2.1设计思路</h4><ul>
-<li>NormalizedGoogleDistance类<ul>
-<li>公有静态函数NGD(String a,String b),返回值为Double类型。作用是获取网页的源代码，使用searchResult函数获得三种情况下搜索索引个数，并且将值传递给Calculate函数做计算。</li>
-<li>私有静态函数searchResult(String name)，返回值为Double类型。使用正则表达式得到索引个数。</li>
-<li>私有静态函数Calculate(Double numA,Double numB,Double numC)，返回值为Double类型。计算并返回归一化谷歌距离的计算结果。</li>
-<li>公有静态函数main(String[] args)，返回值为空。接受从命令行传来的两个关键字参数，调用NGD函数计算结果并输出。</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-2具体实现"><a href="#2-2具体实现" class="headerlink" title="2.2具体实现"></a>2.2具体实现</h4><h5 id="2-2-1主体实现"><a href="#2-2-1主体实现" class="headerlink" title="2.2.1主体实现"></a>2.2.1主体实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"><span class="keyword">import</span> java.net.URL;</div><div class="line"><span class="keyword">import</span> java.net.URLConnection;</div><div class="line"><span class="keyword">import</span> java.util.regex.*;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalizedGoogleDistance</span> </span>&#123;</div><div class="line">	<span class="keyword">static</span> String regex = <span class="string">"百度为您找到相关结果约(.*)个"</span>;</div><div class="line">	<span class="keyword">static</span> Pattern pattern = Pattern.compile(regex);</div><div class="line">	<span class="keyword">static</span> String url = <span class="string">"http://www.baidu.com/s?wd="</span>;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> name</div><div class="line">	 * <span class="doctag">@return</span> 搜索到的网页数量</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Double <span class="title">searchResult</span><span class="params">(String name)</span></span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			URL baiduURL = <span class="keyword">new</span> URL(url+name);</div><div class="line">			URLConnection connection = baiduURL.openConnection();</div><div class="line">			BufferedReader in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(connection.getInputStream()));</div><div class="line">			<span class="comment">//逐行筛选匹配正则表达式，并将结果中的逗号删除，之后转化成数字。</span></div><div class="line">			String html = in.readLine();</div><div class="line">			<span class="keyword">while</span>(html!=<span class="keyword">null</span>)&#123;</div><div class="line">				Matcher matcher = pattern.matcher(html);</div><div class="line">				<span class="keyword">while</span>(matcher.find())&#123;</div><div class="line">					System.out.println(name.replaceAll(<span class="string">"%20"</span>, <span class="string">" "</span>)+<span class="string">": "</span>+matcher.group(<span class="number">1</span>));<span class="comment">//格式优化</span></div><div class="line">					String temp = matcher.group(<span class="number">1</span>);</div><div class="line">					<span class="keyword">return</span> Double.parseDouble(temp.replaceAll(<span class="string">","</span>, <span class="string">""</span>));</div><div class="line">				&#125;</div><div class="line">				html = in.readLine();</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="number">0.0</span>;<span class="comment">//有可能没有返回值，所以默认写一个0.0</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> a</div><div class="line">	 * <span class="doctag">@param</span> b</div><div class="line">	 * <span class="doctag">@return</span> The result of NGD</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Double <span class="title">NGD</span><span class="params">(String a,String b)</span></span>&#123;</div><div class="line">		<span class="comment">//删去空格，以防搜索出错</span></div><div class="line">		a=a.replaceAll(<span class="string">" "</span>, <span class="string">""</span>);</div><div class="line">		b=b.replaceAll(<span class="string">" "</span>, <span class="string">""</span>);</div><div class="line">		<span class="comment">//正则表达式匹配个数</span></div><div class="line">		</div><div class="line">		<span class="comment">//用于存三次搜索各自的索引量</span></div><div class="line">		Double numA,numB,numC;</div><div class="line">		numA=<span class="number">1.0</span>;numB=<span class="number">1.0</span>;numC=<span class="number">1.0</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			numA = searchResult(a);</div><div class="line">			numB = searchResult(b);</div><div class="line">			numC = searchResult(a+<span class="string">"%20"</span>+b);</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		<span class="comment">//返回Calculate函数的计算结果</span></div><div class="line">		<span class="keyword">return</span> Calculate(numA, numB, numC);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> numA</div><div class="line">	 * <span class="doctag">@param</span> numB</div><div class="line">	 * <span class="doctag">@param</span> numC</div><div class="line">	 * <span class="doctag">@return</span> NGD公式计算结果</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Double <span class="title">Calculate</span><span class="params">(Double numA,Double numB,Double numC)</span></span>&#123;</div><div class="line">		Double lnx = Math.log(numA);</div><div class="line">		Double lny = Math.log(numB);</div><div class="line">		Double lnSum = Math.log(<span class="number">25270000000.0</span>);<span class="comment">//由于不知具体数值，这里取谷歌搜素最大索引限制</span></div><div class="line">		Double lnxy = Math.log(numC);</div><div class="line">		<span class="comment">//NGD公式</span></div><div class="line">		<span class="keyword">if</span> (lnx&gt;lny) &#123;</div><div class="line">			<span class="keyword">return</span> (lnx-lnxy)/(lnSum-lny);</div><div class="line">		&#125;<span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> (lny-lnxy)/(lnSum-lnx);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 * 从外部传进两个参数作为关键字，并将结果输出</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Double result = NGD(args[<span class="number">0</span>], args[<span class="number">1</span>]);</div><div class="line">		System.out.println(<span class="string">"NGD: "</span>+result);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="2-2-2界面实现"><a href="#2-2-2界面实现" class="headerlink" title="2.2.2界面实现"></a>2.2.2界面实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.awt.Dimension;</div><div class="line"><span class="keyword">import</span> java.awt.FlowLayout;</div><div class="line"><span class="keyword">import</span> java.awt.GridLayout;</div><div class="line"><span class="keyword">import</span> java.awt.Toolkit;</div><div class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</div><div class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.swing.JButton;</div><div class="line"><span class="keyword">import</span> javax.swing.JFrame;</div><div class="line"><span class="keyword">import</span> javax.swing.JLabel;</div><div class="line"><span class="keyword">import</span> javax.swing.JPanel;</div><div class="line"><span class="keyword">import</span> javax.swing.JTextField;</div><div class="line"><span class="keyword">import</span> javax.swing.UIManager;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NGDUI</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NGDUI</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">//初始化应用标题和标签</span></div><div class="line">		JFrame frame = <span class="keyword">new</span> JFrame(<span class="string">"Normalized Google Distance"</span>);</div><div class="line">		JLabel label1 = <span class="keyword">new</span> JLabel(<span class="string">"参数一"</span>);</div><div class="line">		JLabel label2 = <span class="keyword">new</span> JLabel(<span class="string">"参数二"</span>);</div><div class="line">		JLabel label3 = <span class="keyword">new</span> JLabel(<span class="string">"结果"</span>);</div><div class="line">		<span class="comment">//三行一列的网格布局</span></div><div class="line">		frame.setLayout(<span class="keyword">new</span> GridLayout(<span class="number">3</span>, <span class="number">1</span>));</div><div class="line">		<span class="comment">//第一行流式布局</span></div><div class="line">		JPanel panel1 = <span class="keyword">new</span> JPanel();</div><div class="line">		panel1.setLayout(<span class="keyword">new</span> FlowLayout());</div><div class="line">		panel1.add(label1);</div><div class="line">		JTextField textField1 = <span class="keyword">new</span> JTextField(<span class="number">20</span>);</div><div class="line">		panel1.add(textField1);</div><div class="line">		<span class="comment">//第二行流式布局</span></div><div class="line">		JPanel panel2 = <span class="keyword">new</span> JPanel();</div><div class="line">		panel2.setLayout(<span class="keyword">new</span> FlowLayout());</div><div class="line">		panel2.add(label2);</div><div class="line">		JTextField textField2 = <span class="keyword">new</span> JTextField(<span class="number">20</span>);</div><div class="line">		panel2.add(textField2);</div><div class="line">		<span class="comment">//第三行流式布局</span></div><div class="line">		JPanel panel3 = <span class="keyword">new</span> JPanel();</div><div class="line">		panel3.setLayout(<span class="keyword">new</span> FlowLayout());</div><div class="line">		panel3.add(label3);</div><div class="line">		JTextField textField3 = <span class="keyword">new</span> JTextField(<span class="number">20</span>);</div><div class="line">		textField3.setEditable(<span class="keyword">false</span>);<span class="comment">//结果框不可更改</span></div><div class="line">		panel3.add(textField3);</div><div class="line">		JButton query = <span class="keyword">new</span> JButton(<span class="string">"查询"</span>);<span class="comment">//查询按钮</span></div><div class="line">		<span class="comment">//给查询按钮加上事件监听器</span></div><div class="line">		query.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</div><div class="line">			</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</div><div class="line">				textField3.setText(String.valueOf(</div><div class="line">						NormalizedGoogleDistance.NGD(</div><div class="line">								textField1.getText(),textField2.getText() )));				</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">		panel3.add(query);</div><div class="line">		</div><div class="line">		frame.setSize(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">		<span class="comment">//设置窗口居中</span></div><div class="line">		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();</div><div class="line">		frame.setLocation((dimension.width-frame.getWidth())/<span class="number">2</span>, </div><div class="line">				(dimension.height-frame.getHeight())/<span class="number">2</span>);</div><div class="line">		<span class="comment">//添加到网格布局中</span></div><div class="line">		frame.add(panel1);frame.add(panel2);frame.add(panel3);</div><div class="line">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">		frame.setVisible(<span class="keyword">true</span>);</div><div class="line">		frame.setResizable(<span class="keyword">false</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="comment">//设置皮肤</span></div><div class="line">			UIManager.setLookAndFeel(<span class="string">"com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel"</span>);</div><div class="line">			NGDUI ui = <span class="keyword">new</span> NGDUI();</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>【1】RudiL.Cilibrasi and PaulM.B.Vitanyi. <em>The Google Similarity Distance</em> 【J】IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING, VOL.19, NO3, MARCH2007, P370–383<br>【2】张玉芳,艾东梅,黄 涛,熊忠阳.<em>结合编辑距离和Google距离的语义标注方法</em> 【A】计算机应用研究，2010年2月，第二期，第二十七卷<br>【3】匿名. <em>Normalized Google distance</em>，维基百科，<a href="https://en.wikipedia.org/wiki/Normalized_Google_distance" target="_blank" rel="external">https://en.wikipedia.org/wiki/Normalized_Google_distance</a><br>【4】pinyangtenglong的专栏. <em>归一化Google距离（Normalized Google Distance）</em>，CSDN博客，<a href="http://blog.csdn.net/pinyangtenglong/article/details/26963015" target="_blank" rel="external">http://blog.csdn.net/pinyangtenglong/article/details/26963015</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1618,7 +2402,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1628,7 +2412,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
