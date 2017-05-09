@@ -254,6 +254,173 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/09/操作系统实验二/" itemprop="url">
+                  操作系统实验二
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-09T13:00:30+08:00" content="2017-05-09">
+              2017-05-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/09/操作系统实验二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/09/操作系统实验二/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/09/操作系统实验二/" class="leancloud_visitors" data-flag-title="操作系统实验二">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="操作系统实验二"><a href="#操作系统实验二" class="headerlink" title="操作系统实验二"></a>操作系统实验二</h1><h1 id="生产者——消费者问题"><a href="#生产者——消费者问题" class="headerlink" title="生产者——消费者问题"></a>生产者——消费者问题</h1><h2 id="71115115-王子卓-2017年5月6日"><a href="#71115115-王子卓-2017年5月6日" class="headerlink" title="71115115 王子卓 2017年5月6日"></a>71115115 王子卓 2017年5月6日</h2><h2 id="一-实验目的"><a href="#一-实验目的" class="headerlink" title="一.实验目的"></a>一.实验目的</h2><ul>
+<li>通过实验,掌握 Windows 和 Linux 环境下互斥锁和信号量的实现方法,加深对临界区问题和进程同步机制的理解,同时熟悉利用 Windows API 和 Pthread API 进行多线程编程的方法。</li>
+</ul>
+<h2 id="二-实验内容"><a href="#二-实验内容" class="headerlink" title="二.实验内容"></a>二.实验内容</h2><ol>
+<li><p>在 Windows 操作系统上,利用 Win32 API 提供的信号量机制,编写应用程序实现生产者——消费者问题。</p>
+</li>
+<li><p>在 Linux 操作系统上,利用 Pthread API 提供的信号量机制,编写应用程序实现生产者——消费者问题。</p>
+</li>
+<li><p>两种环境下,生产者和消费者均作为独立线程,并通过 empty、 full、 mutex三个信号量实现对缓冲进行插入与删除。</p>
+</li>
+<li><p>通过打印缓冲区中的内容至屏幕,来验证应用程序的正确性。</p>
+<p>具体内容可参见“Operating System Concepts (Seventh Edition)” Chapter 6后的 Project(P236-241)。</p>
+</li>
+</ol>
+<h2 id="三-实验环境"><a href="#三-实验环境" class="headerlink" title="三.实验环境"></a>三.实验环境</h2><ul>
+<li>Windows XP + Ubuntu 16.04 LTS</li>
+</ul>
+<h2 id="四-实验步骤"><a href="#四-实验步骤" class="headerlink" title="四.实验步骤"></a>四.实验步骤</h2><h3 id="1-Linux"><a href="#1-Linux" class="headerlink" title="1.Linux"></a>1.Linux</h3><ul>
+<li><p>编写程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;semaphore.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFFER_SIZE 10</span></div><div class="line"><span class="keyword">char</span> *buffer;</div><div class="line"><span class="keyword">sem_t</span> mutex,empty,full;</div><div class="line"><span class="keyword">int</span> producer_count,consumer_count;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;BUFFER_SIZE;i++)&#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,buffer[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">producer</span><span class="params">(<span class="keyword">void</span> *ptr)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> count=<span class="number">0</span>;</div><div class="line">    <span class="keyword">do</span>&#123;</div><div class="line">        sem_wait(&amp;empty);</div><div class="line">        sem_wait(&amp;mutex);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"生产者线程编号:%lu%s%d%s\t"</span>,pthread_self(),<span class="string">"\t计数:"</span>,producer_count%BUFFER_SIZE,<span class="string">"\t\t\t"</span>);</div><div class="line">        buffer[(producer_count++)%BUFFER_SIZE]=<span class="string">'1'</span>;</div><div class="line">        output();</div><div class="line">        count++;</div><div class="line">        sem_post(&amp;mutex);</div><div class="line">        sem_post(&amp;full);</div><div class="line">    &#125;<span class="keyword">while</span>(count!=<span class="number">5</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> *<span class="title">consumer</span><span class="params">(<span class="keyword">void</span> *ptr)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> count=<span class="number">0</span>;</div><div class="line">    <span class="keyword">do</span>&#123;</div><div class="line">        sem_wait(&amp;full);</div><div class="line">        sem_wait(&amp;mutex);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"消费者线程编号:%lu%s%d%s\t"</span>,pthread_self(),<span class="string">"\t计数:"</span>,consumer_count%BUFFER_SIZE,<span class="string">"\t\t\t"</span>);</div><div class="line">        buffer[(consumer_count++)%BUFFER_SIZE]=<span class="string">'0'</span>;</div><div class="line">        output();</div><div class="line">        count++;</div><div class="line">        sem_post(&amp;mutex);</div><div class="line">        sem_post(&amp;empty);</div><div class="line">    &#125;<span class="keyword">while</span>(count!=<span class="number">5</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span>&#123;</div><div class="line">    producer_count=<span class="number">0</span>;</div><div class="line">    consumer_count=<span class="number">0</span>;</div><div class="line">    buffer = (<span class="keyword">char</span>*) <span class="built_in">malloc</span>(BUFFER_SIZE*<span class="keyword">sizeof</span>(<span class="keyword">char</span>*));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;BUFFER_SIZE;i++)&#123;</div><div class="line">        buffer[i]=<span class="string">'0'</span>;</div><div class="line">    &#125;</div><div class="line">    sem_init(&amp;mutex,<span class="number">1</span>,<span class="number">1</span>);</div><div class="line">    sem_init(&amp;empty,<span class="number">0</span>,BUFFER_SIZE);</div><div class="line">    sem_init(&amp;full,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">    <span class="keyword">pthread_t</span> tid[<span class="number">10</span>];</div><div class="line">    <span class="keyword">pthread_attr_t</span> attr;</div><div class="line">    pthread_attr_init(&amp;attr);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</div><div class="line">        pthread_create(&amp;tid[i],&amp;attr,consumer,<span class="literal">NULL</span>);</div><div class="line">        pthread_create(&amp;tid[i+<span class="number">5</span>],&amp;attr,producer,<span class="literal">NULL</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">10</span>;j++)&#123;</div><div class="line">        pthread_join(tid[j],<span class="literal">NULL</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译配置：</p>
+<p>由于我用Qt Creator编写程序，所以需要在<code>.pro</code>文件中加入特定参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">TEMPLATE = app</div><div class="line">CONFIG += console</div><div class="line">CONFIG -= app_bundle</div><div class="line">CONFIG -= qt</div><div class="line"></div><div class="line">SOURCES += main.c</div><div class="line">LIBS += -lpthread</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-Windows"><a href="#2-Windows" class="headerlink" title="2.Windows"></a>2.Windows</h3><ul>
+<li><p>编写程序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> buffer_item;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFFER_SIZE 5</span></div><div class="line"></div><div class="line">buffer_item buffer[BUFFER_SIZE];</div><div class="line">HANDLE mutex,empty,full;</div><div class="line"><span class="keyword">int</span> producer_count=<span class="number">0</span>,consumer_count=<span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;buffer[i]&lt;&lt;<span class="string">"\t"</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">insert_item</span><span class="params">(buffer_item item)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> state=<span class="number">0</span>;</div><div class="line">	WaitForSingleObject(empty,INFINITE);</div><div class="line">	WaitForSingleObject(mutex,INFINITE);</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"现在producer_count是%d,正在生产\n"</span>,producer_count);</div><div class="line">	<span class="keyword">if</span>(buffer[producer_count]!=<span class="number">-1</span>)&#123;</div><div class="line">		state = <span class="number">-1</span>;</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		buffer[producer_count] = item;</div><div class="line">		producer_count = (producer_count++)%BUFFER_SIZE;</div><div class="line">	&#125;</div><div class="line">	Sleep(<span class="number">500</span>);</div><div class="line">	output();</div><div class="line">	ReleaseMutex(mutex);</div><div class="line">	ReleaseSemaphore(full,<span class="number">1</span>,<span class="literal">NULL</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"生产释放\n"</span>);</div><div class="line">	<span class="keyword">return</span> state;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">remove_item</span><span class="params">(buffer_item *item)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> state = <span class="number">0</span>;</div><div class="line">	WaitForSingleObject(full,INFINITE);</div><div class="line">	WaitForSingleObject(mutex,INFINITE);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"现在consumer_count是%d,正在消费\n"</span>,consumer_count);</div><div class="line">	<span class="keyword">if</span>(buffer[consumer_count]!=<span class="number">-1</span>)&#123;</div><div class="line">		*item = buffer[consumer_count];</div><div class="line">		buffer[consumer_count] = <span class="number">-1</span>;</div><div class="line">		consumer_count = (consumer_count++)%BUFFER_SIZE;</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		state = <span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">	Sleep(<span class="number">500</span>);</div><div class="line">	output();</div><div class="line">	ReleaseMutex(mutex);</div><div class="line">	ReleaseSemaphore(empty,<span class="number">1</span>,<span class="literal">NULL</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"消费释放\n"</span>);</div><div class="line">	<span class="keyword">return</span> state;</div><div class="line">&#125;</div><div class="line"><span class="function">DWORD WINAPI <span class="title">producer</span><span class="params">(<span class="keyword">void</span> *ptr)</span></span>&#123;</div><div class="line">	buffer_item randb;</div><div class="line">	srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));</div><div class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">		randb = rand();</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"现在生产者准备生产%d\n"</span>,randb);</div><div class="line">		<span class="keyword">if</span>(insert_item(randb))&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"生产者出了问题\n"</span>);</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"生产者生产了%d\n\n"</span>,randb);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function">DWORD WINAPI <span class="title">consumer</span><span class="params">(<span class="keyword">void</span> *ptr)</span></span>&#123;</div><div class="line">	buffer_item item;</div><div class="line">	srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));</div><div class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"现在消费者准备消费\n"</span>);</div><div class="line">		<span class="keyword">if</span>(remove_item(&amp;item))&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"消费者出了问题\n"</span>);</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"消费者消费了%d\n\n"</span>,item);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	mutex = CreateMutex(<span class="literal">NULL</span>,<span class="literal">false</span>,<span class="literal">NULL</span>);</div><div class="line">	empty = CreateSemaphore(<span class="literal">NULL</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="literal">NULL</span>);</div><div class="line">	full = CreateSemaphore(<span class="literal">NULL</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="literal">NULL</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;BUFFER_SIZE;i++)&#123;</div><div class="line">		buffer[i]=<span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">	DWORD ConsumerTid,ProducerTid;</div><div class="line">	HANDLE ConsumerTH,ProducerTH;</div><div class="line">	<span class="keyword">int</span> Param = <span class="number">10</span>;</div><div class="line">	ConsumerTH = CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,&amp;consumer,&amp;Param,<span class="number">0</span>,&amp;ConsumerTid);</div><div class="line">	ProducerTH = CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,&amp;producer,&amp;Param,<span class="number">0</span>,&amp;ProducerTid);</div><div class="line">	</div><div class="line">	Sleep(<span class="number">5000</span>);</div><div class="line">	TerminateThread(ConsumerTH,<span class="number">0</span>);</div><div class="line">	TerminateThread(ProducerTH,<span class="number">0</span>);</div><div class="line">	CloseHandle(ConsumerTH);</div><div class="line">	CloseHandle(ProducerTH);</div><div class="line">	</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="五-主要数据结构及其说明"><a href="#五-主要数据结构及其说明" class="headerlink" title="五.主要数据结构及其说明"></a>五.主要数据结构及其说明</h2><ol>
+<li>定义BUFFER_SIZE：<code>#define BUFFER_SIZE 10</code></li>
+<li>定义互斥信号量mutex，用于保证生产者生产的时候消费者不能消费，消费者消费的时候生产者不能生产。</li>
+<li>定义信号量empty，代表缓冲区中空格子的个数。</li>
+<li>定义信号量full，代表缓冲区中满格子的个数。</li>
+<li>定义整型变量producer_count，用来表示生产者在缓冲区中的游标位置。</li>
+<li>定义整型变量consumer_count，用来表示消费者在缓冲区中的游标位置。</li>
+</ol>
+<h2 id="六-程序运行结果"><a href="#六-程序运行结果" class="headerlink" title="六.程序运行结果"></a>六.程序运行结果</h2><ul>
+<li>Linux运行结果：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/OSExperiment/pthread.png" alt=""></p>
+<ul>
+<li><p>Windows运行结果：</p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/OSExperiment/winThread.bmp" alt=""></p>
+</li>
+</ul>
+<h2 id="七-实验体会"><a href="#七-实验体会" class="headerlink" title="七.实验体会"></a>七.实验体会</h2><ul>
+<li><p>在Linux系统中pthread库不是默认的库，连接时需要使用静态库 libpthread.a，在编译中要加 -pthread参数。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -pthread ./main.c</div></pre></td></tr></table></figure>
+<p>然而我使用了Qt Creator编写程序，直接在<code>.pro</code>文件中加入<code>LIBS += -lpthread</code>即可。</p>
+</li>
+<li><p>在具体实现时，需要注意信号量的顺序，比如生产者线程中：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sem_wait(&amp;empty);</div><div class="line">sem_wait(&amp;mutex);</div></pre></td></tr></table></figure>
+<p>如果顺序相反，将会导致死锁。生产者经过<code>sem_wait(&amp;mutex)</code>之后，如果信号量empty的值等于零，也就是说缓冲区中没有空格子，将无法继续生产，然而此时消费者也没有办法消费，从而死锁。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/10/软件体系结构复习/" itemprop="url">
                   软件体系结构复习
                 </a>
@@ -2211,152 +2378,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/13/使用阿里云服务器搭建PPTP协议的VPN/" itemprop="url">
-                  使用阿里云服务器搭建PPTP协议的VPN
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-13T16:13:02+08:00" content="2016-12-13">
-              2016-12-13
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/13/使用阿里云服务器搭建PPTP协议的VPN/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/使用阿里云服务器搭建PPTP协议的VPN/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/13/使用阿里云服务器搭建PPTP协议的VPN/" class="leancloud_visitors" data-flag-title="使用阿里云服务器搭建PPTP协议的VPN">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>作为运维，我手上现在有一个位于美国硅谷的阿里云ECS服务器。秉承物尽其用的原则，正好搭建一个VPN服务器。</p>
-<h1 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h1><ul>
-<li>CPU：1核心Haswell架构的处理器</li>
-<li>内存：1GB+自己配置的4GB的Swapfile(相当于虚拟内存)</li>
-<li>操作系统：Ubuntu14.04LTS 64位</li>
-</ul>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="Linux平台准备"><a href="#Linux平台准备" class="headerlink" title="Linux平台准备"></a>Linux平台准备</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//安装openssh-client</div><div class="line">sudo apt install openssh-client</div><div class="line">//连接服务器</div><div class="line">//例如</div><div class="line">ssh root@127.0.0.1 //ssh 用户名@服务器的公网IP</div></pre></td></tr></table></figure>
-<h2 id="Windows平台准备"><a href="#Windows平台准备" class="headerlink" title="Windows平台准备"></a>Windows平台准备</h2><ol>
-<li>安装PuTTY或者XShell，想要更傻瓜操作一点可以安装WinSCP供后续使用</li>
-<li>使用PuTTY或者XShell连接服务器</li>
-</ol>
-<h2 id="安卓平台准备"><a href="#安卓平台准备" class="headerlink" title="安卓平台准备"></a>安卓平台准备</h2><p>我就是用我的小米4C上软工课无聊配置得VPN哈哈哈哈，所以我也写一下好了</p>
-<ol>
-<li>安装connectBot(详见<a href="https://github.com/connectbot/connectbot" target="_blank" rel="external">GitHub</a>)</li>
-<li>使用connectBot连接服务器</li>
-</ol>
-<h1 id="安装有关软件"><a href="#安装有关软件" class="headerlink" title="安装有关软件"></a>安装有关软件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//服务器上</div><div class="line">sudo apt install ppp iptables pptpd</div></pre></td></tr></table></figure>
-<p>炒鸡简单是吧</p>
-<h1 id="更改相关配置"><a href="#更改相关配置" class="headerlink" title="更改相关配置"></a>更改相关配置</h1><h2 id="更改使用的工具"><a href="#更改使用的工具" class="headerlink" title="更改使用的工具"></a>更改使用的工具</h2><h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vi /file //或者vim</div><div class="line">//用上下键移动光标到需要修改的那一行，按“i”键进入插入编辑状态，修改完成之后，按“esc”键退出编辑，直接在键盘上输入“:wq&quot;即可保存退出。</div><div class="line"></div><div class="line">//好在不一定要用vi/vim，用nano也OK</div><div class="line">nano /file</div><div class="line">//上下左右都能移动光标，除了不能用鼠标以外没什么难度。修改完成按Ctrl+X，问是否保存按Y，之后保存名称不用改直接回车。找不到就按Ctrl+W查找就是。</div></pre></td></tr></table></figure>
-<p>nano的具体操作可以看<a href="http://codingstandards.iteye.com/blog/802593" target="_blank" rel="external">我使用过的Linux命令之nano - 比vi简单易用的文本编辑器</a></p>
-<h3 id="图形化"><a href="#图形化" class="headerlink" title="图形化"></a>图形化</h3><p>使用WinSCP以root用户登录，使用WinSCP提供的文本编辑功能双击修改即可。修改完成之后Ctrl+S保存，问你是否覆盖，选是即可。</p>
-<h2 id="修改配置文件-以使用nano为例"><a href="#修改配置文件-以使用nano为例" class="headerlink" title="修改配置文件(以使用nano为例)"></a>修改配置文件(以使用nano为例)</h2><h3 id="编辑pptpd-conf"><a href="#编辑pptpd-conf" class="headerlink" title="编辑pptpd.conf"></a>编辑pptpd.conf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nano /etc/pptpd.conf</div><div class="line">//找到#localip 192.168.0.1</div><div class="line">//   #remoteip 192.168.0.234-238,192.168.0.245</div><div class="line">//删去#号即可</div></pre></td></tr></table></figure>
-<h3 id="编辑options"><a href="#编辑options" class="headerlink" title="编辑options"></a>编辑options</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nano /etc/ppp/options</div><div class="line"></div><div class="line">//搜索ms-dns，去掉搜索到的两行ms-dns前面的#，并修改为下面的字段</div><div class="line">//ms-dns 8.8.8.8</div><div class="line">//ms-dns 8.8.4.4</div></pre></td></tr></table></figure>
-<h3 id="编辑chap-secrets"><a href="#编辑chap-secrets" class="headerlink" title="编辑chap-secrets"></a>编辑chap-secrets</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nano /etc/ppp/chap-secrets</div><div class="line">//添加一行，按照下面格式输入：</div><div class="line">//用户名 pptpd 密码 *</div><div class="line">//比如 zizhuo pptpd zizhuo *</div><div class="line">//*的含义是不限制连接者的IP地址，想要限制的话改成那个IP即可</div></pre></td></tr></table></figure>
-<h3 id="编辑sysctl-conf-内核文件"><a href="#编辑sysctl-conf-内核文件" class="headerlink" title="编辑sysctl.conf(内核文件)"></a>编辑sysctl.conf(内核文件)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nano /etc/sysctl.conf</div><div class="line"></div><div class="line">//将net.ipv4.ip_forward=0</div><div class="line">//改成net.ipv4.ip_forward=1</div></pre></td></tr></table></figure>
-<h2 id="添加iptables转发规则"><a href="#添加iptables转发规则" class="headerlink" title="添加iptables转发规则"></a>添加iptables转发规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth1 -j MASQUERADE</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<ul>
-<li>--table    -t table    table to manipulate (default: `filter’)</li>
-<li>--append  -A chain        Append to chain</li>
-<li>--source    -s address[/mask][…] source specification</li>
-<li>--out-interface -o output name[+] &emsp;network interface name &emsp;eth1是阿里云服务器的连接外网的网卡，可以用ifconfig看一下哪一块网卡是外网IP就可以</li>
-<li>–jump    -j target &emsp;&emsp;target for rule (may load target extension)</li>
-</ul>
-<h2 id="启动pptpd"><a href="#启动pptpd" class="headerlink" title="启动pptpd"></a>启动pptpd</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo service pptpd restart</div><div class="line">//或者</div><div class="line">/etc/init.d/pptpd restart</div></pre></td></tr></table></figure>
-<h2 id="设置开机自启"><a href="#设置开机自启" class="headerlink" title="设置开机自启"></a>设置开机自启</h2><p>貌似现在默认就可以，不过我还是说一下吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//Ubutnu没有chkconfig，可以用rcconf</div><div class="line">sudo apt install rcconf</div><div class="line">rcconf on</div><div class="line">//之后会看到菜单，按空格选择开启/关闭，Tab键跳出选择OK/Cancel</div></pre></td></tr></table></figure></p>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>去看看所谓的“真实世界”吧2333，下篇文章再见。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2402,7 +2423,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2412,7 +2433,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
