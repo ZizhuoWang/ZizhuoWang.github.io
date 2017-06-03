@@ -1,0 +1,1101 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="IO," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="实验一    汇编语言程序上机过程一）实验目的
+学会安装“16位汇编程序开发软件”的安装，完成将汇编语言源程序录入进计算机、利用ml.exe进行汇编，LINK进行链接，并用DEBUG调试16位程序的全部过程。本实验大家不必了解程序细节，只是为了熟悉开发环境和上机过程。
+
+二）实验内容
+写16位汇编程序，从键盘输入一个字符串，然后换行后将该字符串输出到屏幕。
+
+
+源程序
+
+1234567891011">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机输入输出系统汇编实验报告">
+<meta property="og:url" content="http://yoursite.com/2017/06/03/计算机输入输出系统汇编实验报告/index.html">
+<meta property="og:site_name" content="为学日益，为道日损">
+<meta property="og:description" content="实验一    汇编语言程序上机过程一）实验目的
+学会安装“16位汇编程序开发软件”的安装，完成将汇编语言源程序录入进计算机、利用ml.exe进行汇编，LINK进行链接，并用DEBUG调试16位程序的全部过程。本实验大家不必了解程序细节，只是为了熟悉开发环境和上机过程。
+
+二）实验内容
+写16位汇编程序，从键盘输入一个字符串，然后换行后将该字符串输出到屏幕。
+
+
+源程序
+
+1234567891011">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/2/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/3/31.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/4/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/5/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/6/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/7/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/81.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/82.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/83.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/84.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/85.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/86.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/87.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/88.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/89.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/810.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/811.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/812.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/813.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/814.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/815.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/816.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/9/9.png">
+<meta property="og:updated_time" content="2017-06-03T07:19:14.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机输入输出系统汇编实验报告">
+<meta name="twitter:description" content="实验一    汇编语言程序上机过程一）实验目的
+学会安装“16位汇编程序开发软件”的安装，完成将汇编语言源程序录入进计算机、利用ml.exe进行汇编，LINK进行链接，并用DEBUG调试16位程序的全部过程。本实验大家不必了解程序细节，只是为了熟悉开发环境和上机过程。
+
+二）实验内容
+写16位汇编程序，从键盘输入一个字符串，然后换行后将该字符串输出到屏幕。
+
+
+源程序
+
+1234567891011">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/2/2.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/03/计算机输入输出系统汇编实验报告/"/>
+
+
+  <title> 计算机输入输出系统汇编实验报告 | 为学日益，为道日损 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">为学日益，为道日损</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">欲路上事，勿乐其便而姑为染指，一染指便深入万仞。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                计算机输入输出系统汇编实验报告
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-03T15:13:14+08:00" content="2017-06-03">
+              2017-06-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/03/计算机输入输出系统汇编实验报告/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/03/计算机输入输出系统汇编实验报告/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/06/03/计算机输入输出系统汇编实验报告/" class="leancloud_visitors" data-flag-title="计算机输入输出系统汇编实验报告">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="实验一-汇编语言程序上机过程"><a href="#实验一-汇编语言程序上机过程" class="headerlink" title="实验一    汇编语言程序上机过程"></a><strong>实验一    汇编语言程序上机过程</strong></h1><h2 id="一）实验目的"><a href="#一）实验目的" class="headerlink" title="一）实验目的"></a>一）实验目的</h2><ul>
+<li>学会安装“16位汇编程序开发软件”的安装，完成将汇编语言源程序录入进计算机、利用ml.exe进行汇编，LINK进行链接，并用DEBUG调试16位程序的全部过程。本实验大家不必了解程序细节，只是为了熟悉开发环境和上机过程。</li>
+</ul>
+<h2 id="二）实验内容"><a href="#二）实验内容" class="headerlink" title="二）实验内容"></a>二）实验内容</h2><blockquote>
+<p>写16位汇编程序，从键盘输入一个字符串，然后换行后将该字符串输出到屏幕。</p>
+</blockquote>
+<ol>
+<li>源程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.DATA</div><div class="line">ORG 100H;CS起始地址</div><div class="line">STR DB 20,0,20 DUP(20H);字符串STR</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX;数据段地址</div><div class="line">	LEA DX,STR;将STR的相对于数据段首地址的偏移地址放进DX</div><div class="line">	MOV AH,0AH</div><div class="line">	INT 21H;从键盘输入一个字符串</div><div class="line">	</div><div class="line">	MOV DL,0AH</div><div class="line">	MOV AH,02</div><div class="line">	INT 21H;输出DL中的换行</div><div class="line">	MOV DL,0DH</div><div class="line">	MOV AH,02</div><div class="line">	INT 21H;输出回车</div><div class="line">	</div><div class="line">	MOV BL,STR[1]</div><div class="line">	MOV BH,0;BX=20</div><div class="line">	MOV BYTE PTR STR[BX+2],&apos;$&apos;;末尾加&apos;$&apos;</div><div class="line">	LEA DX,STR+2</div><div class="line">	MOV AH,9</div><div class="line">	INT 21H;输出这一句话</div><div class="line">	MOV AH,4CH</div><div class="line">	INT 21H;返回DOS</div><div class="line">END START</div></pre></td></tr></table></figure>
+<ol>
+<li>运行结果贴图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/2/2.png" alt=""></p>
+<ol>
+<li>编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</li>
+</ol>
+<blockquote>
+<p><code>INT 21</code>的9号调用输出以DS:DX为首地址，”\$”为结尾的字符串到显示器中。若要在显示字符串光标自动回车换行，则在”$”字符前面加上0DH(回车),0AH(换行)字符。</p>
+</blockquote>
+<h1 id="实验二-顺序程序设计"><a href="#实验二-顺序程序设计" class="headerlink" title="实验二    顺序程序设计"></a><strong>实验二    顺序程序设计</strong></h1><h2 id="一）实验目的-1"><a href="#一）实验目的-1" class="headerlink" title="一）实验目的"></a>一）实验目的</h2><blockquote>
+<p>通过这一部分的实验，进一步熟悉汇编过程和DEBUG调试过程；掌握用汇编语言编写顺序程序。</p>
+</blockquote>
+<h2 id="二）实验内容-1"><a href="#二）实验内容-1" class="headerlink" title="二）实验内容"></a>二）实验内容</h2><blockquote>
+<p>写完整程序16位程序，在内存中从Table开始的10个单元中连续存放0到9的平方值，任给一个0到9的数X，该数存放在内存单元XX中，用XLAT指令查表求X的平方值，并将结果存于内存YY单元中。编写程序，并在DEBUG中进行调试和验证结果。(X，XX，YY都是内存中的变量）</p>
+</blockquote>
+<ol>
+<li>源程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">    Table BYTE 0,1,4,9,16,25,36,49,64,81</div><div class="line">    XX BYTE 9</div><div class="line">    YY BYTE ?</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AX,@DATA</div><div class="line">    MOV DS,AX</div><div class="line">    LEA BX,Table</div><div class="line">    MOV AL,XX</div><div class="line">    XLAT;以DS:[BX+AL]为地址，提取存储器中的一个字节再送入AL。</div><div class="line">    MOV YY,AL</div><div class="line">END START</div></pre></td></tr></table></figure>
+<ol>
+<li>运行结果贴图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/3/31.png" alt=""></p>
+<p>可以看到DS:000A放的是09H，查找后AL中放的是51H=81D，存入YY=DS:000B中。</p>
+<ol>
+<li>编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</li>
+</ol>
+<blockquote>
+<p>XLAT的指令功能：把待查表格的一个字节内容送到AL累加器中。在执行该指令前，应将Table先送至BX寄存器中，然后将待查字节与其在表格中距表首地址位移量送AL,即AL&lt;–((BX)+(AL)). 执行XLAT将使待查内容送到累加器。</p>
+</blockquote>
+<h1 id="实验三-分支程序设计"><a href="#实验三-分支程序设计" class="headerlink" title="实验三    分支程序设计"></a><strong>实验三    分支程序设计</strong></h1><h2 id="一）实验目的-2"><a href="#一）实验目的-2" class="headerlink" title="一）实验目的"></a>一）实验目的</h2><blockquote>
+<p>通过本实验，熟练运算类指令对标志位状态的影响，以及标志位状态的表示方法；掌握无条件转移、条件转移指令的使用方法；掌握分支程序设计和调试方法。</p>
+</blockquote>
+<h2 id="二）实验内容-2"><a href="#二）实验内容-2" class="headerlink" title="二）实验内容"></a>二）实验内容</h2><blockquote>
+<p>所谓回文字符串是指一个字符串正读和倒读都是一样的，例如字符串‘ABCDEFFEDCBA’就是一个回文字符串，而字符串‘ABCFDDCAB’就不是回文字符串。现在编写完整的16位汇编程序，输入一个字符串，判断该字符串是否为回文字符串，并用“It is a palindrome”或“It is NOT a palindrome”作为输出。</p>
+</blockquote>
+<ol>
+<li>源程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">    N EQU 20</div><div class="line">    MAXLEN BYTE N</div><div class="line">    ACTLEN BYTE ?</div><div class="line">    STRING BYTE N DUP(&apos;$&apos;)</div><div class="line">    TRUE BYTE 0AH,0DH,&apos;It is a palindrome&apos;,0AH,0DH,&apos;$&apos;	;开头加0AH、0DH是为了防止回车把输入冲掉</div><div class="line">    FALSE BYTE 0AH,0DH,&apos;It is NOT a palindrome&apos;,0AH,0DH,&apos;$&apos;</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AX,@DATA</div><div class="line">    MOV DS,AX</div><div class="line">    MOV AH,0AH</div><div class="line">    MOV DX,OFFSET MAXLEN</div><div class="line">    INT 21H;缓冲区的第一个字节指定容纳的最大字符个数，由用户给出；第二个字节存放实际的最大字符个数，由系统最后填入；从第三个字节开始存放从键盘接受的字符，直到ENTER键结束。</div><div class="line">    MOV AL,ACTLEN</div><div class="line">    MOV AH,0</div><div class="line">    MOV BL,2</div><div class="line">    DIV BL</div><div class="line">    CMP AH,1</div><div class="line">    JE ITSODD;如果是奇数字数的字符串，跳到&quot;It&apos;s odd&quot;</div><div class="line">    CMP AL,1</div><div class="line">    JE ITSTWO;如果是两个字符的字符串，跳到&quot;It&apos;s two&quot;</div><div class="line">    ADD AL,AH;奇数个数和偶数个数的区别就在这句话</div><div class="line">    MOV AH,0</div><div class="line">    MOV BL,ACTLEN</div><div class="line">    MOV BH,0</div><div class="line">    MOV SI,BX</div><div class="line">    MOV BX,OFFSET STRING</div><div class="line">    DEC SI</div><div class="line">ITSEVEN:</div><div class="line">    CMP SI,AX</div><div class="line">    JNA T</div><div class="line">    MOV DL,[BX+SI]</div><div class="line">    MOV DH,[BX]</div><div class="line">    CMP DL,DH</div><div class="line">    JNZ F</div><div class="line">    INC BX</div><div class="line">    SUB SI,2;因为BX加了一，所以BX+SI要想减一，就需要SI减二</div><div class="line">    JMP ITSEVEN</div><div class="line">ITSODD:</div><div class="line">    MOV AH,0</div><div class="line">    MOV BL,ACTLEN</div><div class="line">    MOV BH,0</div><div class="line">    MOV SI,BX</div><div class="line">    MOV BX,OFFSET STRING</div><div class="line">    DEC SI</div><div class="line">JUDGEODD:</div><div class="line">    CMP SI,AX</div><div class="line">    JNA T</div><div class="line">    MOV DL,[BX+SI]</div><div class="line">    MOV DH,[BX]</div><div class="line">    CMP DL,DH</div><div class="line">    JNZ F</div><div class="line">    INC BX</div><div class="line">    SUB SI,2</div><div class="line">    JMP JUDGEODD</div><div class="line">ITSTWO:</div><div class="line">    MOV BX,OFFSET STRING</div><div class="line">    MOV DL,[BX+1]</div><div class="line">    MOV DH,[BX]</div><div class="line">    CMP DL,DH</div><div class="line">    JNE F;如果这两个字符不相同，就不是。否则直接向下执行T</div><div class="line">T:  MOV DX,OFFSET TRUE</div><div class="line">    JMP QUIT</div><div class="line">F:  MOV DX,OFFSET FALSE</div><div class="line">    JMP QUIT</div><div class="line">QUIT:</div><div class="line">    MOV AH,09H</div><div class="line">    INT 21H</div><div class="line">    MOV AH,4CH</div><div class="line">    INT 21H</div><div class="line">END START</div></pre></td></tr></table></figure>
+<ol>
+<li>运行结果贴图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/4/4.png" alt=""></p>
+<ol>
+<li>编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</li>
+</ol>
+<blockquote>
+<ol>
+<li>TRUE和FALSE字符串开头加0AH、0DH可以防止回车把输入冲掉</li>
+<li>奇偶情况不同，并且两个字符的情况与其他的偶数情况不同</li>
+</ol>
+</blockquote>
+<h1 id="实验四-循环程序设计"><a href="#实验四-循环程序设计" class="headerlink" title="实验四    循环程序设计"></a><strong>实验四    循环程序设计</strong></h1><h2 id="一）实验目的-3"><a href="#一）实验目的-3" class="headerlink" title="一）实验目的"></a>一）实验目的</h2><blockquote>
+<p>通过实验，可以掌握循环结构的各种实现方法，进一步了解循环结构中初始化部分、循环体部分、循环控制部分的功能以及他们彼此之间的关系。尤其是多重循环中外层循环和内层循环之间的关系。</p>
+</blockquote>
+<h2 id="二）实验内容-3"><a href="#二）实验内容-3" class="headerlink" title="二）实验内容"></a>二）实验内容</h2><blockquote>
+<p>请编写16位完整汇编程序，在一个升序字节数组BUFF中查找数N，找到后将此数从数组中删除，并使得CF=0；没找到返回CF＝1。</p>
+</blockquote>
+<ol>
+<li>源程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">    BUFF BYTE 0,1,2,3,4,5,6,7,8,9</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AX,@DATA</div><div class="line">    MOV DS,AX</div><div class="line">    MOV CX,10;计数初始化为10</div><div class="line">    LEA SI,BUFF;BUFF首地址给SI</div><div class="line">    MOV AH,01H</div><div class="line">    INT 21H;从键盘输入一个字符</div><div class="line">    SUB AL,30H;将ASCII码变成数字</div><div class="line">    MOV AH,0</div><div class="line">NEXT:</div><div class="line">    MOV BL,[SI]</div><div class="line">    MOV BH,0</div><div class="line">    CMP AX,BX</div><div class="line">    JE DEL;找到了就跳至删除</div><div class="line">    INC SI</div><div class="line">    LOOP NEXT</div><div class="line">    JMP STOP;找不到就停</div><div class="line">DEL:</div><div class="line">    MOV DI,SI;记住当前元素的位置</div><div class="line">    INC SI</div><div class="line">    MOV AL,[SI]</div><div class="line">    MOV AH,0</div><div class="line">    MOV [DI],AX;后面的内容前移</div><div class="line">    LOOP DEL</div><div class="line">    MOV [SI],0;找到的最后一位换成0</div><div class="line">    LEA SI,BUFF;SI指向BUFF首地址</div><div class="line">    MOV CX,9;设计数器为9</div><div class="line">    MOV AH,02H</div><div class="line">    MOV DL,0DH</div><div class="line">    INT 21H;回车</div><div class="line">    MOV DL,0AH</div><div class="line">    INT 21H;换行</div><div class="line">DO:</div><div class="line">    MOV DL,[SI]</div><div class="line">    MOV DH,0</div><div class="line">    ADD DX,3030H;十六进制转ASCII</div><div class="line">    INC SI</div><div class="line">    INT 21H;一个个输出此时BUFF内容</div><div class="line">    LOOP DO</div><div class="line">STOP:</div><div class="line">    MOV AH,4CH</div><div class="line">    INT 21H;退回DOS</div><div class="line">END START</div></pre></td></tr></table></figure>
+<ol>
+<li>运行结果截图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/5/5.png" alt=""></p>
+<ol>
+<li>编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</li>
+</ol>
+<blockquote>
+<p>八位寄存器中的两位十六进制数可以加减30H变成想要的ASCII码或者数字，十六位寄存器中的四位十六进制数可以加减3030H变成想要的ASCII码或者数字。</p>
+</blockquote>
+<h1 id="实验五-子程序设计"><a href="#实验五-子程序设计" class="headerlink" title="实验五    子程序设计"></a><strong>实验五    子程序设计</strong></h1><h2 id="一）实验目的-4"><a href="#一）实验目的-4" class="headerlink" title="一）实验目的"></a>一）实验目的</h2><blockquote>
+<p>通过本实验，掌握子程序的定义和调用方法。通过程序调试，进一步理解CALL指令和RET指令的功能，掌握子程序调用时参数传递的方法。</p>
+</blockquote>
+<h2 id="二）实验内容-4"><a href="#二）实验内容-4" class="headerlink" title="二）实验内容"></a>二）实验内容</h2><blockquote>
+<ol>
+<li>请编写完整16位汇编程序从键盘读取字符，如果是十进制的‘0’～‘9’则在屏幕上输出该数的8位二进制码，并将数字依次存放到BUF开头的数组中，如果读入的字符是’Q’或者‘q’，则程序退出，其他情况在屏幕上打印“You must input 0~9, or ‘q’ or ‘Q’”。（如输入的字符是‘9’，则输出“00001001”）.提示：输出一个数的2进制形式应该从最高位开始输出。要求打印一个数的2进制形式和输出回车换行分别定义成一个子程序可以将此段程序定义成一个过程。</li>
+</ol>
+</blockquote>
+<ol>
+<li>源程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">    STRING DB &apos;You must input 0~9, OR `Q` OR `q`&apos;,0AH,0DH,&apos;$&apos;</div><div class="line">    BUF DB 8 DUP(30H),&apos;$&apos;</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AX,@DATA</div><div class="line">    MOV DS,AX</div><div class="line">    MOV AH,01H</div><div class="line">    INT 21H</div><div class="line">    CMP AL,&apos;q&apos;</div><div class="line">    JE EXIT</div><div class="line">    CMP AL,&apos;Q&apos;</div><div class="line">    JE EXIT;输入&apos;q&apos;或&apos;Q&apos;时退出</div><div class="line">    CMP AL,&apos;0&apos;</div><div class="line">    JL WRONG</div><div class="line">    CMP AL,&apos;9&apos;</div><div class="line">    JG WRONG;输入小于零或者大于九时错误</div><div class="line">    </div><div class="line">    MOV BL,AL</div><div class="line">    MOV AH,02H</div><div class="line">    MOV DL,0DH</div><div class="line">    INT 21H</div><div class="line">    MOV DL,0AH</div><div class="line">    INT 21H;回车换行</div><div class="line">    </div><div class="line">    MOV AL,BL</div><div class="line">    SUB AL,30H;ASCII码转数字</div><div class="line">    MOV DX,0</div><div class="line">    MOV AH,0</div><div class="line">    MOV BX,OFFSET BUF+7</div><div class="line">AGAIN:</div><div class="line">    MOV DX,0;余数清零</div><div class="line">    MOV CX,2</div><div class="line">    DIV CX</div><div class="line">    ADD DL,30H;转ASCII码</div><div class="line">    MOV [BX],DL;将零或一附给BX所指内存中的元素</div><div class="line">    DEC BX;向左移一位</div><div class="line">    AND AX,AX</div><div class="line">    JNE AGAIN;AX不为零就继续循环</div><div class="line">    JMP RIGHT;其实这句可有可无，当时随便就写上了</div><div class="line">RIGHT:</div><div class="line">    MOV AH,09H</div><div class="line">    LEA DX,BUF</div><div class="line">    INT 21H;输出BUF内容</div><div class="line">    JMP EXIT</div><div class="line">WRONG:</div><div class="line">    MOV AH,09H</div><div class="line">    LEA DX,STRING</div><div class="line">    INT 21H;输出STRING内容</div><div class="line">    JMP EXIT</div><div class="line">EXIT:</div><div class="line">    MOV AH,4CH</div><div class="line">    INT 21H;退出到DOS</div><div class="line">END START</div></pre></td></tr></table></figure>
+<ol>
+<li>运行结果截图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/6/6.png" alt=""></p>
+<ol>
+<li>编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</li>
+</ol>
+<blockquote>
+<p>刚开始没想取余数从十六进制转到二进制，后来发现我也不知道什么太好的办法-_-|||</p>
+<p>通过写这个程序，我对DIV有了更深的认识。</p>
+</blockquote>
+<p><br><br></p>
+<blockquote>
+<ol>
+<li>Programming a sub routine to calculate N!. Specific requirements：Read a number N(1~6) from keyboard，programming a sub routine named DAC to calcute N！, then print the result to screen in decimal form.</li>
+</ol>
+</blockquote>
+<ol>
+<li>源程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">    STRING BYTE 6 DUP(20H),&apos;$&apos;</div><div class="line">    ENDL BYTE 0AH,0DH,&apos;$&apos;</div><div class="line">    ERRMSG BYTE &apos;You must input a number from 1~6&apos;,0AH,0DH,&apos;$&apos;</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MAIN PROC</div><div class="line">    MOV AX,@DATA</div><div class="line">    MOV DS,AX</div><div class="line">    MOV AH,01H</div><div class="line">    INT 21H</div><div class="line">    CMP AL,&apos;1&apos;</div><div class="line">    JL ERR;小于1的ASCII码错误</div><div class="line">    CMP AL,&apos;6&apos;</div><div class="line">    JG ERR;大于6的ASCII码错误</div><div class="line">    SUB AL,30H</div><div class="line">    MOV CL,AL</div><div class="line">    LEA DX,ENDL</div><div class="line">    MOV AH,09H</div><div class="line">    INT 21H</div><div class="line">    MOV DX,0</div><div class="line">    LEA BX,STRING+5</div><div class="line">    MOV AL,01H</div><div class="line">    MOV AH,0</div><div class="line">    MOV CH,0</div><div class="line">    CALL DAC</div><div class="line">    CALL PRINT</div><div class="line">    MAIN ENDP</div><div class="line">    </div><div class="line">    DAC PROC</div><div class="line">AGAIN:</div><div class="line">    MOV DX,CX</div><div class="line">    MUL DX</div><div class="line">    LOOP AGAIN</div><div class="line">    DAC ENDP</div><div class="line">    </div><div class="line">    PRINT PROC</div><div class="line">    MOV CX,10</div><div class="line">DO:</div><div class="line">    MOV DX,0</div><div class="line">    DIV CX</div><div class="line">    ADD DL,30H</div><div class="line">    DEC BX</div><div class="line">    MOV [BX],DL</div><div class="line">    AND AX,AX</div><div class="line">    JNE DO</div><div class="line">    MOV DX,BX</div><div class="line">    MOV AH,09H</div><div class="line">    INT 21H</div><div class="line">    MOV AH,4CH</div><div class="line">    INT 21H</div><div class="line">    PRINT ENDP</div><div class="line">    </div><div class="line">ERR:</div><div class="line">    LEA DX,ENDL</div><div class="line">    MOV AH,09H</div><div class="line">    INT 21H</div><div class="line">    LEA DX,ERRMSG</div><div class="line">    MOV AH,09H</div><div class="line">    INT 21H</div><div class="line">    MOV AH,4CH</div><div class="line">    INT 21H</div><div class="line">END START</div></pre></td></tr></table></figure>
+<ol>
+<li>运行结果截图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/7/7.png" alt=""></p>
+<ol>
+<li>编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</li>
+</ol>
+<blockquote>
+<p>通过写这个程序，我对子程序设计更加熟悉。</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<ol>
+<li>在附加段中有一个从小到大排序的无符号数字数组，其首地址在DI中，数组的第一个单元存放数组长度。要求用折半查找法在数组中查找数N，假设该数已在AX中，如找到，CF=0，并在SI中给出该元素在数组中的偏移地址；如未找到，CF=1。</li>
+</ol>
+</blockquote>
+<ol>
+<li>源程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">EXTRA SEGMENT</div><div class="line">    ARRAY BYTE 10,1,2,3,4,5,6,7,8,9,10</div><div class="line">EXTRA ENDS</div><div class="line">.CODE</div><div class="line">ASSUME ES:EXTRA</div><div class="line">START:</div><div class="line">    MOV BX,EXTRA</div><div class="line">    MOV ES,BX</div><div class="line">    LEA DI,ES:ARRAY</div><div class="line">    </div><div class="line">    MOV AL,7</div><div class="line">    </div><div class="line">    MOV CX,0</div><div class="line">    MOV CL,ES:[DI]</div><div class="line">    INC DI</div><div class="line">    MOV DX,DI</div><div class="line">    ADD DX,CX</div><div class="line">    MOV SI,DX</div><div class="line">    MOV DX,0</div><div class="line">    </div><div class="line">    CMP AL,ES:[DI]</div><div class="line">    MOV BX,DI</div><div class="line">    JB NOTFOUND</div><div class="line">    JE FOUND</div><div class="line">    CMP AL,ES:[SI-1]</div><div class="line">    MOV BX,SI</div><div class="line">    JA NOTFOUND</div><div class="line">    JE FOUND</div><div class="line"></div><div class="line">WORK:</div><div class="line">    MOV BX,DI</div><div class="line">    ADD BX,SI</div><div class="line">    SHR BX,1</div><div class="line">    CMP AL,ES:[BX]</div><div class="line">    JZ FOUND</div><div class="line">    PUSHF</div><div class="line">    CMP BX,DI</div><div class="line">    JZ NOTFOUND</div><div class="line">    POPF</div><div class="line">    JL LESS</div><div class="line">    MOV DI,BX</div><div class="line">    JMP WORK</div><div class="line">LESS:</div><div class="line">    MOV SI,BX</div><div class="line">    JMP WORK</div><div class="line">NOTFOUND:</div><div class="line">    STC</div><div class="line">    JMP EXIT</div><div class="line">FOUND:</div><div class="line">    CLC</div><div class="line">    MOV BX,SI</div><div class="line">    JMP EXIT</div><div class="line">EXIT:</div><div class="line">    MOV AH,4CH</div><div class="line">    INT 21H</div><div class="line">END START</div></pre></td></tr></table></figure>
+<ol>
+<li>运行结果截图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/81.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/82.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/83.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/84.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/85.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/86.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/87.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/88.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/89.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/810.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/811.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/812.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/813.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/814.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/815.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/8/816.png" alt=""></p>
+<ol>
+<li>编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</li>
+</ol>
+<blockquote>
+<p>我对二分查找的本质有了更深刻的理解，了解了ES的声明方式。</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<ol>
+<li>在内存中有一个数组，里面是放着10个学生的某科的成绩，分别是：85,73,92,66,91,98,52,87,83,68， 请用冒泡排序法将这10个数从大到小排序，并将排序的结果在屏幕上打印出来，要求一个数一行的格式输出。</li>
+</ol>
+</blockquote>
+<ol>
+<li>源程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">    SCORE DB 85,73,92,66,91,98,52,87,83,68</div><div class="line">    ENDL DB 0AH,0DH,&apos;$&apos;</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AX,@DATA</div><div class="line">    MOV DS,AX</div><div class="line">    MOV DI,OFFSET SCORE</div><div class="line">    MOV AX,0</div><div class="line">    MOV BX,0</div><div class="line">    MOV CX,09H</div><div class="line">    MOV DX,0</div><div class="line">C1:</div><div class="line">    MOV DX,CX</div><div class="line">    MOV DI,OFFSET SCORE</div><div class="line">C2:</div><div class="line">    MOV AL,[DI]</div><div class="line">    MOV BL,[DI+1]</div><div class="line">    CMP AL,BL</div><div class="line">    JB CHANGE</div><div class="line">    JMP NEXT</div><div class="line">CHANGE:</div><div class="line">    MOV [DI],BL</div><div class="line">    MOV [DI+1],AL</div><div class="line">NEXT:</div><div class="line">    INC DI</div><div class="line">    LOOP C2</div><div class="line">    MOV CX,DX</div><div class="line">    LOOP C1</div><div class="line">    </div><div class="line">    MOV CX,10</div><div class="line">    MOV DI,OFFSET SCORE</div><div class="line">PRINT:</div><div class="line">    MOV AH,0</div><div class="line">    MOV AL,[DI]</div><div class="line">    MOV BL,10</div><div class="line">    DIV BL</div><div class="line">    MOV DX,AX</div><div class="line">    ADD DX,3030H</div><div class="line">    MOV AH,02H</div><div class="line">    INT 21H</div><div class="line">    MOV DL,DH</div><div class="line">    INT 21H</div><div class="line">    MOV DX,OFFSET ENDL</div><div class="line">    MOV AH,09H</div><div class="line">    INT 21H</div><div class="line">    INC DI</div><div class="line">    LOOP PRINT</div><div class="line">    MOV AH,4CH</div><div class="line">    INT 21H</div><div class="line">END START</div></pre></td></tr></table></figure>
+<ol>
+<li>运行结果贴图</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/AssemblyExperiment/master/汇编/9/9.png" alt=""></p>
+<ol>
+<li>编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</li>
+</ol>
+<blockquote>
+<p>要注意在排序的过程中对CX值的保存。以及数组元素大小比较。</p>
+<p>但是很奇怪的是在我的==WindowsXP上的CMD中无法正确执行，但是在DOSBOX中可以执行==，所以。。。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IO/" rel="tag">#IO</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/09/操作系统实验二/" rel="next" title="操作系统实验二">
+                <i class="fa fa-chevron-left"></i> 操作系统实验二
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/06/03/计算机输入输出系统汇编实验报告/"
+           data-title="计算机输入输出系统汇编实验报告" data-url="http://yoursite.com/2017/06/03/计算机输入输出系统汇编实验报告/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/22298419?v=3&u=12cc559f5bea926634e500e76e8e3da9b699c959&s=400"
+               alt="王子卓" />
+          <p class="site-author-name" itemprop="name">王子卓</p>
+          <p class="site-description motion-element" itemprop="description">理路上事，勿惮其难而稍为退步，一退步便远隔千山。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实验一-汇编语言程序上机过程"><span class="nav-number">1.</span> <span class="nav-text">实验一    汇编语言程序上机过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一）实验目的"><span class="nav-number">1.1.</span> <span class="nav-text">一）实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二）实验内容"><span class="nav-number">1.2.</span> <span class="nav-text">二）实验内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验二-顺序程序设计"><span class="nav-number">2.</span> <span class="nav-text">实验二    顺序程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一）实验目的-1"><span class="nav-number">2.1.</span> <span class="nav-text">一）实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二）实验内容-1"><span class="nav-number">2.2.</span> <span class="nav-text">二）实验内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验三-分支程序设计"><span class="nav-number">3.</span> <span class="nav-text">实验三    分支程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一）实验目的-2"><span class="nav-number">3.1.</span> <span class="nav-text">一）实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二）实验内容-2"><span class="nav-number">3.2.</span> <span class="nav-text">二）实验内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验四-循环程序设计"><span class="nav-number">4.</span> <span class="nav-text">实验四    循环程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一）实验目的-3"><span class="nav-number">4.1.</span> <span class="nav-text">一）实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二）实验内容-3"><span class="nav-number">4.2.</span> <span class="nav-text">二）实验内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验五-子程序设计"><span class="nav-number">5.</span> <span class="nav-text">实验五    子程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一）实验目的-4"><span class="nav-number">5.1.</span> <span class="nav-text">一）实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二）实验内容-4"><span class="nav-number">5.2.</span> <span class="nav-text">二）实验内容</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王子卓</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zizhuowang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("oNJjTL7jM33iRBxHld63N3z1-gzGzoHsz", "uqK0i0RTln8eoNQgV71yGxLy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
