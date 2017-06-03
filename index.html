@@ -254,6 +254,170 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/03/计算机输入输出系统接口实验报告/" itemprop="url">
+                  计算机输入输出系统接口实验报告
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-03T15:26:29+08:00" content="2017-06-03">
+              2017-06-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/03/计算机输入输出系统接口实验报告/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/03/计算机输入输出系统接口实验报告/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/06/03/计算机输入输出系统接口实验报告/" class="leancloud_visitors" data-flag-title="计算机输入输出系统接口实验报告">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="实验一-环境熟悉与I-O地址译码"><a href="#实验一-环境熟悉与I-O地址译码" class="headerlink" title="实验一    环境熟悉与I/O地址译码"></a>实验一    环境熟悉与I/O地址译码</h1><h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>​    掌握I/O地址译码电路的工作原理。</p>
+<h2 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><ol>
+<li>连接AD4~AD9等几根线，使得138译码器Y0#~Y7#译码出的地址依次分别是Y0#：200H~20FH; Y1#：210H~21FH；……；Y7#：270h~27FH</li>
+<li>利用Source-&gt;Add/Remove Source files中添加源程序EX-138.ASM（在实验包中已提供），该程序向240H端口写任意数据。如果是第一次运行，Source Code Filename这一项选New来调入源程序。</li>
+<li>在Source菜单下点击“Build All”，汇编源代码（全部编译）；执行程序，查看Y0~Y7中是否Y4#脚输出为有效（管脚出的有颜色的小方块为红色是高电平，蓝色为低电平）.</li>
+<li>改变程序中的输出地址，使得Y0#, Y1#,Y6#,Y7#分别有效。</li>
+<li>改变A9~A3的接线方法，从而得到Y0；388H~38FH；Y1：398H～39FH; ……；Y7：3F8H~3FFH。并修改上一问的程序，以同样使得Y4#有效。</li>
+</ol>
+<h3 id="1）源程序"><a href="#1）源程序" class="headerlink" title="1）源程序"></a>1）源程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">	ADDRESS  WORD 3C8H; 此值会变</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AX,@DATA</div><div class="line">    MOV DS,AX</div><div class="line">    MOV DX,ADDRESS</div><div class="line">    MOV AL,0</div><div class="line">    OUT DX,AL</div><div class="line">    JMP $</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h3 id="2）电路原理图（138译码部分）"><a href="#2）电路原理图（138译码部分）" class="headerlink" title="2）电路原理图（138译码部分）"></a>2）电路原理图（138译码部分）</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.0.1.png" alt=""></p>
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.0.2.png" alt=""></p>
+<h3 id="3）运行结果贴图（138译码及上面两个273的输出）"><a href="#3）运行结果贴图（138译码及上面两个273的输出）" class="headerlink" title="3）运行结果贴图（138译码及上面两个273的输出）"></a>3）运行结果贴图（138译码及上面两个273的输出）</h3><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.1.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.2.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.3.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.4.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.5.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.6.png" alt=""></p>
+<h1 id="实验二-可编程中断控制器8259"><a href="#实验二-可编程中断控制器8259" class="headerlink" title="实验二    可编程中断控制器8259"></a>实验二    可编程中断控制器8259</h1><h2 id="一、实验目的-1"><a href="#一、实验目的-1" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>1． 掌握8259的基本工作原理和编程方法。</p>
+<p>2． 深入了解中断的概念和实地址模式下中断处理程序的编写方法。</p>
+<h2 id="二、实验内容-1"><a href="#二、实验内容-1" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><p>​    将接口实验包中所带的EX-8259.DSN文件用ISIS 7打开。按手册接线并执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">.MODEL SMALL</div><div class="line">.8086</div><div class="line">.stack</div><div class="line">.data</div><div class="line">come byte 00000000B   ; 计算中断到来次数的变量</div><div class="line">.code</div><div class="line">start:</div><div class="line">    mov ax,@data</div><div class="line">    mov ds,ax</div><div class="line">    cli</div><div class="line">    mov ax,0        ; init interrupt vector TABLE</div><div class="line">    mov es,ax</div><div class="line">    mov si,0         ; 由于模拟器的错误，所有中断向量需要指向同一个地址</div><div class="line">    mov cx,255</div><div class="line">l:  mov ax,offset int0</div><div class="line">    mov es:[si],ax</div><div class="line">    mov ax,seg int0</div><div class="line">    mov es:[si+2],ax</div><div class="line">    add si,4</div><div class="line">    loop l</div><div class="line">    mov ax,offset int0</div><div class="line">    mov es:[si],ax</div><div class="line">    mov ax,seg int0</div><div class="line">    mov es:[si+2],ax</div><div class="line">    mov ax,@data</div><div class="line">    mov ds,ax</div><div class="line">    mov al,00010011b  ;  init  8259</div><div class="line">    mov dx,210h</div><div class="line">    out dx,al         ; ICW1</div><div class="line">    mov al,60h</div><div class="line">    mov dx,212h</div><div class="line">    out dx,al         ; ICW2</div><div class="line">    mov ax,00000001h</div><div class="line">    out dx,al         ; ICW4</div><div class="line">    mov ax,0</div><div class="line">    out dx,al         ; OCW1</div><div class="line">    sti</div><div class="line">    jmp $</div><div class="line">int0  proc</div><div class="line">    push ax</div><div class="line">    push dx</div><div class="line">    push ds</div><div class="line">    mov ax,@data</div><div class="line">    mov ds,ax   </div><div class="line">    mov ax,0</div><div class="line">    mov al, come     ; 中断到来，计数器+1</div><div class="line">    inc al</div><div class="line">    mov come, al</div><div class="line">    mov al,20h       ; 发EOI命令</div><div class="line">    mov dx,210h</div><div class="line">    out dx,al</div><div class="line">    pop ds</div><div class="line">    pop dx</div><div class="line">    pop ax</div><div class="line">    iret</div><div class="line">int0 endp</div><div class="line">END start</div></pre></td></tr></table></figure>
+<h2 id="三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）"><a href="#三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）" class="headerlink" title="三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）"></a>三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）</h2><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.1.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.2.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.3.png" alt=""></p>
+<h1 id="实验三-可编程定时器计数器8253"><a href="#实验三-可编程定时器计数器8253" class="headerlink" title="实验三    可编程定时器计数器8253"></a>实验三    可编程定时器计数器8253</h1><h2 id="一、实验目的-2"><a href="#一、实验目的-2" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>​    掌握8253的基本工作原理、编程方法及其应用。</p>
+<h2 id="二、实验内容-2"><a href="#二、实验内容-2" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><h3 id="一）-研究定时计数器（选）"><a href="#一）-研究定时计数器（选）" class="headerlink" title="一） 研究定时计数器（选）"></a>一） 研究定时计数器（选）</h3><h4 id="1）源程序-1"><a href="#1）源程序-1" class="headerlink" title="1）源程序"></a>1）源程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AL,00010001B; 使用计数器0，只写低八位，模式0，BCD码</div><div class="line">    MOV DX,226H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AL,10H</div><div class="line">    MOV DX,220H</div><div class="line">    OUT DX,AL</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h4 id="2）讨论题"><a href="#2）讨论题" class="headerlink" title="2）讨论题"></a>2）讨论题</h4><p>​    如果把方式0改成方式1，电路不动，则按下BUTTON后，计数器值会否减1？为什么？</p>
+<ul>
+<li>不会，因为模式一计数是从gate处于上升沿时开始，而这里gate连接电源，始终保持高电平，不会出现上升沿。</li>
+</ul>
+<h4 id="3）接线原理图和运行结果图"><a href="#3）接线原理图和运行结果图" class="headerlink" title="3）接线原理图和运行结果图"></a>3）接线原理图和运行结果图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.1.png" alt=""></p>
+<h3 id="二）信号发生器"><a href="#二）信号发生器" class="headerlink" title="二）信号发生器"></a>二）信号发生器</h3><h4 id="1）源程序-2"><a href="#1）源程序-2" class="headerlink" title="1）源程序"></a>1）源程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AL,00110111B; 使用计数器0，先写低八位，后写高八位，使用模式三，BCD码</div><div class="line">    MOV DX,226H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AX,1000H</div><div class="line">    MOV DX,220H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AL,AH</div><div class="line">    OUT DX,AL; 计数器初始值为1000</div><div class="line">    </div><div class="line">    MOV AL,01110111B; 使用计数器1，先写低八位，后写高八位，使用模式三，BCD码</div><div class="line">    MOV DX,226H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AX,1000H</div><div class="line">    MOV DX,222H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AL,AH</div><div class="line">    OUT DX,AL; 计数器初始值为1000</div><div class="line">    </div><div class="line">    MOV AL,10010111B; 使用计数器2，只使用低八位，使用模式三，BCD码</div><div class="line">    MOV DX,226H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AL,5H</div><div class="line">    MOV DX,224H</div><div class="line">    OUT DX,AL; 计数器初始值为5</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h4 id="2）接线原理图"><a href="#2）接线原理图" class="headerlink" title="2）接线原理图"></a>2）接线原理图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.3.png" alt=""></p>
+<h4 id="3）运行结果图"><a href="#3）运行结果图" class="headerlink" title="3）运行结果图"></a>3）运行结果图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.2.png" alt=""></p>
+<h4 id="4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"><a href="#4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）" class="headerlink" title="4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"></a>4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</h4><p>​    对于OUT2口的波形如果不取反的话就会得到占空比为3:5的方波。</p>
+<h1 id="实验五-七段数码管实验"><a href="#实验五-七段数码管实验" class="headerlink" title="实验五    七段数码管实验"></a>实验五    七段数码管实验</h1><h2 id="一、实验目的-3"><a href="#一、实验目的-3" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>​    掌握数码管显示数字的原理，进一步复习8255的应用。</p>
+<h2 id="二、实验内容-3"><a href="#二、实验内容-3" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><h3 id="1-静态显示（选）"><a href="#1-静态显示（选）" class="headerlink" title="1.静态显示（选）"></a>1.静态显示（选）</h3><h4 id="1）源程序-3"><a href="#1）源程序-3" class="headerlink" title="1）源程序"></a>1）源程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">	ARR BYTE 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH,77H,7CH,39H,5EH,79H,71H</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX</div><div class="line">	MOV AL,10000001B; A组模式0，A口和C口高四位为输出。B组模式0，B口为输出，C口低四位为输入。</div><div class="line">	MOV DX,206H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV DX,204H</div><div class="line">	IN AL,DX</div><div class="line">	NOT AL</div><div class="line">	MOV AH,0H</div><div class="line">	MOV DL,16</div><div class="line">	DIV DL</div><div class="line">	MOV AL,AH</div><div class="line">	MOV AH,0H</div><div class="line">	MOV BX,AX</div><div class="line">	LEA DI,ARR</div><div class="line">	MOV AL,[DI+BX]</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP $</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h4 id="2）接线原理图和运行结果图"><a href="#2）接线原理图和运行结果图" class="headerlink" title="2）接线原理图和运行结果图"></a>2）接线原理图和运行结果图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/5.1.png" alt=""></p>
+<h3 id="2-动态展示"><a href="#2-动态展示" class="headerlink" title="2.动态展示"></a>2.动态展示</h3><h4 id="1）源程序-4"><a href="#1）源程序-4" class="headerlink" title="1）源程序"></a>1）源程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">	ARR BYTE 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH,77H,7CH,39H,5EH,79H,71H</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX</div><div class="line">	MOV AL,10001001B</div><div class="line">	MOV DX,206H</div><div class="line">	OUT DX,AL</div><div class="line">	LEA DI,ARR</div><div class="line">LP:</div><div class="line">	MOV DX,204H</div><div class="line">	IN AL,DX</div><div class="line">	NOT AL</div><div class="line">	MOV AH,0</div><div class="line">	MOV DL,16</div><div class="line">	DIV DL</div><div class="line">	MOV SI,AX</div><div class="line">	MOV AL,01H</div><div class="line">	MOV DX,202H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV BX,SI</div><div class="line">	MOV BH,0</div><div class="line">	MOV DX,200H</div><div class="line">	MOV AL,[DI+BX]</div><div class="line">	OUT DX,AL</div><div class="line">	MOV CX,64H</div><div class="line">	LOOP $</div><div class="line">	MOV AL,02H</div><div class="line">	MOV DX,202H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV BX,SI</div><div class="line">	MOV BL,BH</div><div class="line">	MOV BH,0</div><div class="line">	MOV DX,200H</div><div class="line">	MOV AL,[DI+BX]</div><div class="line">	OUT DX,AL</div><div class="line">	MOV CX,64H</div><div class="line">	LOOP $</div><div class="line">	JMP LP</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h4 id="2）接线原理图和运行结果图-1"><a href="#2）接线原理图和运行结果图-1" class="headerlink" title="2）接线原理图和运行结果图"></a>2）接线原理图和运行结果图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/5.2.png" alt=""></p>
+<h4 id="3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"><a href="#3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）" class="headerlink" title="3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"></a>3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</h4><p>​    刚开始只有一个数字有显示，后来才想到通过PB0/1片选高位还是低位亮。其实是高位和低位交替亮。这个实验让我对8255的使用有了更深的体会。</p>
+<h1 id="实验六-交通灯控制实验"><a href="#实验六-交通灯控制实验" class="headerlink" title="实验六    交通灯控制实验"></a>实验六    交通灯控制实验</h1><h2 id="一、实验目的-4"><a href="#一、实验目的-4" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>​    通过并行接口8255实现十字路口交通灯的模拟控制,进一步掌握对并行口的使用和中断的使用。</p>
+<h2 id="二、交通灯变化规律"><a href="#二、交通灯变化规律" class="headerlink" title="二、交通灯变化规律"></a>二、交通灯变化规律</h2><p>十字路口交通灯的变化规律要求</p>
+<p>1） 南北路口的绿灯、东西路口的红灯同时亮10秒，然后</p>
+<p>2） 南北路口的黄灯闪烁2次（闪烁周期2秒），同时东西路口的红灯继续亮，然后</p>
+<p>3） 南北路口的红灯、东西路口的绿灯同时亮10秒，然后</p>
+<p>4） 南北路口的红灯继续亮，同时东西路口的黄灯2次（闪烁周期2秒），然后</p>
+<p>5） 转1重复。</p>
+<h2 id="三、实验内容"><a href="#三、实验内容" class="headerlink" title="三、实验内容"></a>三、实验内容</h2><p>​    红黄绿三色交通灯控制。将接口实验包中所带的EX-825X-1.DSN文件用ISIS 7打开，将D6、D5、D4作为南北路口的交通灯与PA7、PA6、PA5相连；D3、D2、D1作为东西路口的交通灯与PA2、PA1、PA0相连(方式0)。利用8253产生1秒的中断信号(系统已经为CLK0提供了一个1MHz的时钟输入)，在中断处理程序中用程序处理10秒延迟和两次黄灯闪烁的问题。编程使六个灯按交通灯变化规律燃灭。</p>
+<h3 id="1）源程序-5"><a href="#1）源程序-5" class="headerlink" title="1）源程序"></a>1）源程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div></pre></td><td class="code"><pre><div class="line"> .8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">	COUNT BYTE 0H</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX</div><div class="line">	MOV DX,226H</div><div class="line">	MOV AL,00110111B</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AX,1000H</div><div class="line">	MOV DX,220H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,AH</div><div class="line">	OUT DX,AL  ;C0</div><div class="line">	MOV DX,226H</div><div class="line">	MOV AL,01110111B</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AX,1000H</div><div class="line">	MOV DX,222H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,AH</div><div class="line">	OUT DX,AL  ;C1</div><div class="line">	MOV AL,10000000B</div><div class="line">	MOV DX,206H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,10000001B</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	CLI</div><div class="line">	MOV AX,0</div><div class="line">	MOV ES,AX</div><div class="line">	MOV SI,0</div><div class="line">	MOV CX,255</div><div class="line">L:  MOV AX,OFFSET INT0</div><div class="line">	MOV ES:[SI],AX</div><div class="line">	MOV AX, SEG INT0</div><div class="line">	MOV ES:[SI+2],AX</div><div class="line">	ADD SI,4</div><div class="line">	LOOP L</div><div class="line">	MOV AX,OFFSET INT0</div><div class="line">	MOV ES:[SI],AX</div><div class="line">	MOV AX,SEG INT0</div><div class="line">	MOV ES:[SI+2],AX</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX </div><div class="line">	STI</div><div class="line">	MOV AL,00010011B  ;  INIT  8259</div><div class="line">	MOV DX,210H</div><div class="line">	OUT DX,AL         ; ICW1</div><div class="line">	MOV AL,00001000B</div><div class="line">	MOV DX,212H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,01H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP $</div><div class="line">	INT0 PROC</div><div class="line">	PUSH SI</div><div class="line">	PUSH AX</div><div class="line">	PUSH DX</div><div class="line">	PUSH DS</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX</div><div class="line">	MOV AL,COUNT</div><div class="line">	INC AL</div><div class="line">	MOV COUNT,AL</div><div class="line">	CMP AL,10</div><div class="line">	JZ DO1</div><div class="line">	CMP AL,11</div><div class="line">	JZ DO2</div><div class="line">	CMP AL,12</div><div class="line">	JZ DO1</div><div class="line">	CMP AL,13</div><div class="line">	JZ DO2</div><div class="line">	CMP AL,14</div><div class="line">	JZ DO3</div><div class="line">	CMP AL,24</div><div class="line">	JZ DO4</div><div class="line">	CMP AL,25</div><div class="line">	JZ DO5</div><div class="line">	CMP AL,26</div><div class="line">	JZ DO4</div><div class="line">	CMP AL,27</div><div class="line">	JZ DO5</div><div class="line">	CMP AL,28</div><div class="line">	JZ DO6</div><div class="line">	JMP EXIT</div><div class="line">DO6:</div><div class="line">	MOV AL,10000001B ;左绿右红</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,0</div><div class="line">	MOV COUNT,AL</div><div class="line">	JMP EXIT</div><div class="line">DO1:</div><div class="line">	MOV AL,01000001B ;左黄灯亮</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">DO2:</div><div class="line">	MOV AL,00000001B ;左黄灯暗</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">DO3:</div><div class="line">	MOV AL,00100100B ;左红右绿</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">DO4:</div><div class="line">	MOV AL,00100010B;右黄灯亮</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">DO5:</div><div class="line">	MOV AL,00100000B ;右黄灯暗</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">EXIT:</div><div class="line">	MOV AL,20H</div><div class="line">	MOV DX,210H</div><div class="line">	OUT DX,AL</div><div class="line">	POP DS</div><div class="line">	POP DX</div><div class="line">	POP AX</div><div class="line">	POP SI</div><div class="line">	IRET</div><div class="line">	INT0 ENDP</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h3 id="2）接线原理图-1"><a href="#2）接线原理图-1" class="headerlink" title="2）接线原理图"></a>2）接线原理图</h3><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.1.png" alt=""></p>
+<h3 id="3）运行结果截图"><a href="#3）运行结果截图" class="headerlink" title="3）运行结果截图"></a>3）运行结果截图</h3><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.2.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.4.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.3.png" alt=""></p>
+<h3 id="4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）-1"><a href="#4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）-1" class="headerlink" title="4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"></a>4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</h3><p>​    循环很多，一不小心就会写错。如何让黄灯闪烁也想了很久。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/03/计算机输入输出系统汇编实验报告/" itemprop="url">
                   计算机输入输出系统汇编实验报告
                 </a>
@@ -2444,116 +2608,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/17/AMD-New-Horizon/" itemprop="url">
-                  AMD New Horizon
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-17T08:30:28+08:00" content="2016-12-17">
-              2016-12-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/17/AMD-New-Horizon/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/17/AMD-New-Horizon/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/17/AMD-New-Horizon/" class="leancloud_visitors" data-flag-title="AMD New Horizon">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>AMD New Horizon:</p>
-<embed type="video/mp4" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" quality="high" height="300" width="480" src="https://youtu.be/fMr68XznYac"><br><br><a href="https://www.youtube.com/watch?v=fMr68XznYac" target="_blank" rel="external">打不开点这里</a><br><br><embed src="http://player.youku.com/player.php/sid/XMTg2NzE1NzU4NA==/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash">
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2599,7 +2653,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

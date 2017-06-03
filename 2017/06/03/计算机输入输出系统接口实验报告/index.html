@@ -1,0 +1,952 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="IO," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="实验一    环境熟悉与I/O地址译码一、实验目的​    掌握I/O地址译码电路的工作原理。
+二、实验内容
+连接AD4~AD9等几根线，使得138译码器Y0#~Y7#译码出的地址依次分别是Y0#：200H~20FH; Y1#：210H~21FH；……；Y7#：270h~27FH
+利用Source-&amp;gt;Add/Remove Source files中添加源程序EX-138.ASM（在实验包中已">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机输入输出系统接口实验报告">
+<meta property="og:url" content="http://yoursite.com/2017/06/03/计算机输入输出系统接口实验报告/index.html">
+<meta property="og:site_name" content="为学日益，为道日损">
+<meta property="og:description" content="实验一    环境熟悉与I/O地址译码一、实验目的​    掌握I/O地址译码电路的工作原理。
+二、实验内容
+连接AD4~AD9等几根线，使得138译码器Y0#~Y7#译码出的地址依次分别是Y0#：200H~20FH; Y1#：210H~21FH；……；Y7#：270h~27FH
+利用Source-&amp;gt;Add/Remove Source files中添加源程序EX-138.ASM（在实验包中已">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.0.1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.0.2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/5.1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/5.2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.3.png">
+<meta property="og:updated_time" content="2017-06-03T07:27:37.821Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机输入输出系统接口实验报告">
+<meta name="twitter:description" content="实验一    环境熟悉与I/O地址译码一、实验目的​    掌握I/O地址译码电路的工作原理。
+二、实验内容
+连接AD4~AD9等几根线，使得138译码器Y0#~Y7#译码出的地址依次分别是Y0#：200H~20FH; Y1#：210H~21FH；……；Y7#：270h~27FH
+利用Source-&amp;gt;Add/Remove Source files中添加源程序EX-138.ASM（在实验包中已">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.0.1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/03/计算机输入输出系统接口实验报告/"/>
+
+
+  <title> 计算机输入输出系统接口实验报告 | 为学日益，为道日损 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">为学日益，为道日损</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">欲路上事，勿乐其便而姑为染指，一染指便深入万仞。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                计算机输入输出系统接口实验报告
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-03T15:26:29+08:00" content="2017-06-03">
+              2017-06-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/06/03/计算机输入输出系统接口实验报告/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/03/计算机输入输出系统接口实验报告/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/06/03/计算机输入输出系统接口实验报告/" class="leancloud_visitors" data-flag-title="计算机输入输出系统接口实验报告">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="实验一-环境熟悉与I-O地址译码"><a href="#实验一-环境熟悉与I-O地址译码" class="headerlink" title="实验一    环境熟悉与I/O地址译码"></a>实验一    环境熟悉与I/O地址译码</h1><h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>​    掌握I/O地址译码电路的工作原理。</p>
+<h2 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><ol>
+<li>连接AD4~AD9等几根线，使得138译码器Y0#~Y7#译码出的地址依次分别是Y0#：200H~20FH; Y1#：210H~21FH；……；Y7#：270h~27FH</li>
+<li>利用Source-&gt;Add/Remove Source files中添加源程序EX-138.ASM（在实验包中已提供），该程序向240H端口写任意数据。如果是第一次运行，Source Code Filename这一项选New来调入源程序。</li>
+<li>在Source菜单下点击“Build All”，汇编源代码（全部编译）；执行程序，查看Y0~Y7中是否Y4#脚输出为有效（管脚出的有颜色的小方块为红色是高电平，蓝色为低电平）.</li>
+<li>改变程序中的输出地址，使得Y0#, Y1#,Y6#,Y7#分别有效。</li>
+<li>改变A9~A3的接线方法，从而得到Y0；388H~38FH；Y1：398H～39FH; ……；Y7：3F8H~3FFH。并修改上一问的程序，以同样使得Y4#有效。</li>
+</ol>
+<h3 id="1）源程序"><a href="#1）源程序" class="headerlink" title="1）源程序"></a>1）源程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">	ADDRESS  WORD 3C8H; 此值会变</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AX,@DATA</div><div class="line">    MOV DS,AX</div><div class="line">    MOV DX,ADDRESS</div><div class="line">    MOV AL,0</div><div class="line">    OUT DX,AL</div><div class="line">    JMP $</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h3 id="2）电路原理图（138译码部分）"><a href="#2）电路原理图（138译码部分）" class="headerlink" title="2）电路原理图（138译码部分）"></a>2）电路原理图（138译码部分）</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.0.1.png" alt=""></p>
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.0.2.png" alt=""></p>
+<h3 id="3）运行结果贴图（138译码及上面两个273的输出）"><a href="#3）运行结果贴图（138译码及上面两个273的输出）" class="headerlink" title="3）运行结果贴图（138译码及上面两个273的输出）"></a>3）运行结果贴图（138译码及上面两个273的输出）</h3><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.1.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.2.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.3.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.4.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.5.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/1.6.png" alt=""></p>
+<h1 id="实验二-可编程中断控制器8259"><a href="#实验二-可编程中断控制器8259" class="headerlink" title="实验二    可编程中断控制器8259"></a>实验二    可编程中断控制器8259</h1><h2 id="一、实验目的-1"><a href="#一、实验目的-1" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>1． 掌握8259的基本工作原理和编程方法。</p>
+<p>2． 深入了解中断的概念和实地址模式下中断处理程序的编写方法。</p>
+<h2 id="二、实验内容-1"><a href="#二、实验内容-1" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><p>​    将接口实验包中所带的EX-8259.DSN文件用ISIS 7打开。按手册接线并执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">.MODEL SMALL</div><div class="line">.8086</div><div class="line">.stack</div><div class="line">.data</div><div class="line">come byte 00000000B   ; 计算中断到来次数的变量</div><div class="line">.code</div><div class="line">start:</div><div class="line">    mov ax,@data</div><div class="line">    mov ds,ax</div><div class="line">    cli</div><div class="line">    mov ax,0        ; init interrupt vector TABLE</div><div class="line">    mov es,ax</div><div class="line">    mov si,0         ; 由于模拟器的错误，所有中断向量需要指向同一个地址</div><div class="line">    mov cx,255</div><div class="line">l:  mov ax,offset int0</div><div class="line">    mov es:[si],ax</div><div class="line">    mov ax,seg int0</div><div class="line">    mov es:[si+2],ax</div><div class="line">    add si,4</div><div class="line">    loop l</div><div class="line">    mov ax,offset int0</div><div class="line">    mov es:[si],ax</div><div class="line">    mov ax,seg int0</div><div class="line">    mov es:[si+2],ax</div><div class="line">    mov ax,@data</div><div class="line">    mov ds,ax</div><div class="line">    mov al,00010011b  ;  init  8259</div><div class="line">    mov dx,210h</div><div class="line">    out dx,al         ; ICW1</div><div class="line">    mov al,60h</div><div class="line">    mov dx,212h</div><div class="line">    out dx,al         ; ICW2</div><div class="line">    mov ax,00000001h</div><div class="line">    out dx,al         ; ICW4</div><div class="line">    mov ax,0</div><div class="line">    out dx,al         ; OCW1</div><div class="line">    sti</div><div class="line">    jmp $</div><div class="line">int0  proc</div><div class="line">    push ax</div><div class="line">    push dx</div><div class="line">    push ds</div><div class="line">    mov ax,@data</div><div class="line">    mov ds,ax   </div><div class="line">    mov ax,0</div><div class="line">    mov al, come     ; 中断到来，计数器+1</div><div class="line">    inc al</div><div class="line">    mov come, al</div><div class="line">    mov al,20h       ; 发EOI命令</div><div class="line">    mov dx,210h</div><div class="line">    out dx,al</div><div class="line">    pop ds</div><div class="line">    pop dx</div><div class="line">    pop ax</div><div class="line">    iret</div><div class="line">int0 endp</div><div class="line">END start</div></pre></td></tr></table></figure>
+<h2 id="三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）"><a href="#三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）" class="headerlink" title="三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）"></a>三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）</h2><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.1.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.2.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/2.3.png" alt=""></p>
+<h1 id="实验三-可编程定时器计数器8253"><a href="#实验三-可编程定时器计数器8253" class="headerlink" title="实验三    可编程定时器计数器8253"></a>实验三    可编程定时器计数器8253</h1><h2 id="一、实验目的-2"><a href="#一、实验目的-2" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>​    掌握8253的基本工作原理、编程方法及其应用。</p>
+<h2 id="二、实验内容-2"><a href="#二、实验内容-2" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><h3 id="一）-研究定时计数器（选）"><a href="#一）-研究定时计数器（选）" class="headerlink" title="一） 研究定时计数器（选）"></a>一） 研究定时计数器（选）</h3><h4 id="1）源程序-1"><a href="#1）源程序-1" class="headerlink" title="1）源程序"></a>1）源程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AL,00010001B; 使用计数器0，只写低八位，模式0，BCD码</div><div class="line">    MOV DX,226H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AL,10H</div><div class="line">    MOV DX,220H</div><div class="line">    OUT DX,AL</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h4 id="2）讨论题"><a href="#2）讨论题" class="headerlink" title="2）讨论题"></a>2）讨论题</h4><p>​    如果把方式0改成方式1，电路不动，则按下BUTTON后，计数器值会否减1？为什么？</p>
+<ul>
+<li>不会，因为模式一计数是从gate处于上升沿时开始，而这里gate连接电源，始终保持高电平，不会出现上升沿。</li>
+</ul>
+<h4 id="3）接线原理图和运行结果图"><a href="#3）接线原理图和运行结果图" class="headerlink" title="3）接线原理图和运行结果图"></a>3）接线原理图和运行结果图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.1.png" alt=""></p>
+<h3 id="二）信号发生器"><a href="#二）信号发生器" class="headerlink" title="二）信号发生器"></a>二）信号发生器</h3><h4 id="1）源程序-2"><a href="#1）源程序-2" class="headerlink" title="1）源程序"></a>1）源程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">    MOV AL,00110111B; 使用计数器0，先写低八位，后写高八位，使用模式三，BCD码</div><div class="line">    MOV DX,226H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AX,1000H</div><div class="line">    MOV DX,220H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AL,AH</div><div class="line">    OUT DX,AL; 计数器初始值为1000</div><div class="line">    </div><div class="line">    MOV AL,01110111B; 使用计数器1，先写低八位，后写高八位，使用模式三，BCD码</div><div class="line">    MOV DX,226H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AX,1000H</div><div class="line">    MOV DX,222H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AL,AH</div><div class="line">    OUT DX,AL; 计数器初始值为1000</div><div class="line">    </div><div class="line">    MOV AL,10010111B; 使用计数器2，只使用低八位，使用模式三，BCD码</div><div class="line">    MOV DX,226H</div><div class="line">    OUT DX,AL</div><div class="line">    MOV AL,5H</div><div class="line">    MOV DX,224H</div><div class="line">    OUT DX,AL; 计数器初始值为5</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h4 id="2）接线原理图"><a href="#2）接线原理图" class="headerlink" title="2）接线原理图"></a>2）接线原理图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.3.png" alt=""></p>
+<h4 id="3）运行结果图"><a href="#3）运行结果图" class="headerlink" title="3）运行结果图"></a>3）运行结果图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/3.2.png" alt=""></p>
+<h4 id="4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"><a href="#4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）" class="headerlink" title="4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"></a>4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</h4><p>​    对于OUT2口的波形如果不取反的话就会得到占空比为3:5的方波。</p>
+<h1 id="实验五-七段数码管实验"><a href="#实验五-七段数码管实验" class="headerlink" title="实验五    七段数码管实验"></a>实验五    七段数码管实验</h1><h2 id="一、实验目的-3"><a href="#一、实验目的-3" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>​    掌握数码管显示数字的原理，进一步复习8255的应用。</p>
+<h2 id="二、实验内容-3"><a href="#二、实验内容-3" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><h3 id="1-静态显示（选）"><a href="#1-静态显示（选）" class="headerlink" title="1.静态显示（选）"></a>1.静态显示（选）</h3><h4 id="1）源程序-3"><a href="#1）源程序-3" class="headerlink" title="1）源程序"></a>1）源程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">	ARR BYTE 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH,77H,7CH,39H,5EH,79H,71H</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX</div><div class="line">	MOV AL,10000001B; A组模式0，A口和C口高四位为输出。B组模式0，B口为输出，C口低四位为输入。</div><div class="line">	MOV DX,206H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV DX,204H</div><div class="line">	IN AL,DX</div><div class="line">	NOT AL</div><div class="line">	MOV AH,0H</div><div class="line">	MOV DL,16</div><div class="line">	DIV DL</div><div class="line">	MOV AL,AH</div><div class="line">	MOV AH,0H</div><div class="line">	MOV BX,AX</div><div class="line">	LEA DI,ARR</div><div class="line">	MOV AL,[DI+BX]</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP $</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h4 id="2）接线原理图和运行结果图"><a href="#2）接线原理图和运行结果图" class="headerlink" title="2）接线原理图和运行结果图"></a>2）接线原理图和运行结果图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/5.1.png" alt=""></p>
+<h3 id="2-动态展示"><a href="#2-动态展示" class="headerlink" title="2.动态展示"></a>2.动态展示</h3><h4 id="1）源程序-4"><a href="#1）源程序-4" class="headerlink" title="1）源程序"></a>1）源程序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">.8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">	ARR BYTE 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH,77H,7CH,39H,5EH,79H,71H</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX</div><div class="line">	MOV AL,10001001B</div><div class="line">	MOV DX,206H</div><div class="line">	OUT DX,AL</div><div class="line">	LEA DI,ARR</div><div class="line">LP:</div><div class="line">	MOV DX,204H</div><div class="line">	IN AL,DX</div><div class="line">	NOT AL</div><div class="line">	MOV AH,0</div><div class="line">	MOV DL,16</div><div class="line">	DIV DL</div><div class="line">	MOV SI,AX</div><div class="line">	MOV AL,01H</div><div class="line">	MOV DX,202H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV BX,SI</div><div class="line">	MOV BH,0</div><div class="line">	MOV DX,200H</div><div class="line">	MOV AL,[DI+BX]</div><div class="line">	OUT DX,AL</div><div class="line">	MOV CX,64H</div><div class="line">	LOOP $</div><div class="line">	MOV AL,02H</div><div class="line">	MOV DX,202H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV BX,SI</div><div class="line">	MOV BL,BH</div><div class="line">	MOV BH,0</div><div class="line">	MOV DX,200H</div><div class="line">	MOV AL,[DI+BX]</div><div class="line">	OUT DX,AL</div><div class="line">	MOV CX,64H</div><div class="line">	LOOP $</div><div class="line">	JMP LP</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h4 id="2）接线原理图和运行结果图-1"><a href="#2）接线原理图和运行结果图-1" class="headerlink" title="2）接线原理图和运行结果图"></a>2）接线原理图和运行结果图</h4><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/5.2.png" alt=""></p>
+<h4 id="3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"><a href="#3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）" class="headerlink" title="3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"></a>3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</h4><p>​    刚开始只有一个数字有显示，后来才想到通过PB0/1片选高位还是低位亮。其实是高位和低位交替亮。这个实验让我对8255的使用有了更深的体会。</p>
+<h1 id="实验六-交通灯控制实验"><a href="#实验六-交通灯控制实验" class="headerlink" title="实验六    交通灯控制实验"></a>实验六    交通灯控制实验</h1><h2 id="一、实验目的-4"><a href="#一、实验目的-4" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><p>​    通过并行接口8255实现十字路口交通灯的模拟控制,进一步掌握对并行口的使用和中断的使用。</p>
+<h2 id="二、交通灯变化规律"><a href="#二、交通灯变化规律" class="headerlink" title="二、交通灯变化规律"></a>二、交通灯变化规律</h2><p>十字路口交通灯的变化规律要求</p>
+<p>1） 南北路口的绿灯、东西路口的红灯同时亮10秒，然后</p>
+<p>2） 南北路口的黄灯闪烁2次（闪烁周期2秒），同时东西路口的红灯继续亮，然后</p>
+<p>3） 南北路口的红灯、东西路口的绿灯同时亮10秒，然后</p>
+<p>4） 南北路口的红灯继续亮，同时东西路口的黄灯2次（闪烁周期2秒），然后</p>
+<p>5） 转1重复。</p>
+<h2 id="三、实验内容"><a href="#三、实验内容" class="headerlink" title="三、实验内容"></a>三、实验内容</h2><p>​    红黄绿三色交通灯控制。将接口实验包中所带的EX-825X-1.DSN文件用ISIS 7打开，将D6、D5、D4作为南北路口的交通灯与PA7、PA6、PA5相连；D3、D2、D1作为东西路口的交通灯与PA2、PA1、PA0相连(方式0)。利用8253产生1秒的中断信号(系统已经为CLK0提供了一个1MHz的时钟输入)，在中断处理程序中用程序处理10秒延迟和两次黄灯闪烁的问题。编程使六个灯按交通灯变化规律燃灭。</p>
+<h3 id="1）源程序-5"><a href="#1）源程序-5" class="headerlink" title="1）源程序"></a>1）源程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div></pre></td><td class="code"><pre><div class="line"> .8086</div><div class="line">.MODEL SMALL</div><div class="line">.STACK</div><div class="line">.DATA</div><div class="line">	COUNT BYTE 0H</div><div class="line">.CODE</div><div class="line">START:</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX</div><div class="line">	MOV DX,226H</div><div class="line">	MOV AL,00110111B</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AX,1000H</div><div class="line">	MOV DX,220H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,AH</div><div class="line">	OUT DX,AL  ;C0</div><div class="line">	MOV DX,226H</div><div class="line">	MOV AL,01110111B</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AX,1000H</div><div class="line">	MOV DX,222H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,AH</div><div class="line">	OUT DX,AL  ;C1</div><div class="line">	MOV AL,10000000B</div><div class="line">	MOV DX,206H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,10000001B</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	CLI</div><div class="line">	MOV AX,0</div><div class="line">	MOV ES,AX</div><div class="line">	MOV SI,0</div><div class="line">	MOV CX,255</div><div class="line">L:  MOV AX,OFFSET INT0</div><div class="line">	MOV ES:[SI],AX</div><div class="line">	MOV AX, SEG INT0</div><div class="line">	MOV ES:[SI+2],AX</div><div class="line">	ADD SI,4</div><div class="line">	LOOP L</div><div class="line">	MOV AX,OFFSET INT0</div><div class="line">	MOV ES:[SI],AX</div><div class="line">	MOV AX,SEG INT0</div><div class="line">	MOV ES:[SI+2],AX</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX </div><div class="line">	STI</div><div class="line">	MOV AL,00010011B  ;  INIT  8259</div><div class="line">	MOV DX,210H</div><div class="line">	OUT DX,AL         ; ICW1</div><div class="line">	MOV AL,00001000B</div><div class="line">	MOV DX,212H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,01H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP $</div><div class="line">	INT0 PROC</div><div class="line">	PUSH SI</div><div class="line">	PUSH AX</div><div class="line">	PUSH DX</div><div class="line">	PUSH DS</div><div class="line">	MOV AX,@DATA</div><div class="line">	MOV DS,AX</div><div class="line">	MOV AL,COUNT</div><div class="line">	INC AL</div><div class="line">	MOV COUNT,AL</div><div class="line">	CMP AL,10</div><div class="line">	JZ DO1</div><div class="line">	CMP AL,11</div><div class="line">	JZ DO2</div><div class="line">	CMP AL,12</div><div class="line">	JZ DO1</div><div class="line">	CMP AL,13</div><div class="line">	JZ DO2</div><div class="line">	CMP AL,14</div><div class="line">	JZ DO3</div><div class="line">	CMP AL,24</div><div class="line">	JZ DO4</div><div class="line">	CMP AL,25</div><div class="line">	JZ DO5</div><div class="line">	CMP AL,26</div><div class="line">	JZ DO4</div><div class="line">	CMP AL,27</div><div class="line">	JZ DO5</div><div class="line">	CMP AL,28</div><div class="line">	JZ DO6</div><div class="line">	JMP EXIT</div><div class="line">DO6:</div><div class="line">	MOV AL,10000001B ;左绿右红</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	MOV AL,0</div><div class="line">	MOV COUNT,AL</div><div class="line">	JMP EXIT</div><div class="line">DO1:</div><div class="line">	MOV AL,01000001B ;左黄灯亮</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">DO2:</div><div class="line">	MOV AL,00000001B ;左黄灯暗</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">DO3:</div><div class="line">	MOV AL,00100100B ;左红右绿</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">DO4:</div><div class="line">	MOV AL,00100010B;右黄灯亮</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">DO5:</div><div class="line">	MOV AL,00100000B ;右黄灯暗</div><div class="line">	MOV DX,200H</div><div class="line">	OUT DX,AL</div><div class="line">	JMP EXIT</div><div class="line">EXIT:</div><div class="line">	MOV AL,20H</div><div class="line">	MOV DX,210H</div><div class="line">	OUT DX,AL</div><div class="line">	POP DS</div><div class="line">	POP DX</div><div class="line">	POP AX</div><div class="line">	POP SI</div><div class="line">	IRET</div><div class="line">	INT0 ENDP</div><div class="line">END START</div></pre></td></tr></table></figure>
+<h3 id="2）接线原理图-1"><a href="#2）接线原理图-1" class="headerlink" title="2）接线原理图"></a>2）接线原理图</h3><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.1.png" alt=""></p>
+<h3 id="3）运行结果截图"><a href="#3）运行结果截图" class="headerlink" title="3）运行结果截图"></a>3）运行结果截图</h3><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.2.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.4.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/IO/6.3.png" alt=""></p>
+<h3 id="4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）-1"><a href="#4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）-1" class="headerlink" title="4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"></a>4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</h3><p>​    循环很多，一不小心就会写错。如何让黄灯闪烁也想了很久。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IO/" rel="tag">#IO</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/03/计算机输入输出系统汇编实验报告/" rel="next" title="计算机输入输出系统汇编实验报告">
+                <i class="fa fa-chevron-left"></i> 计算机输入输出系统汇编实验报告
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/06/03/计算机输入输出系统接口实验报告/"
+           data-title="计算机输入输出系统接口实验报告" data-url="http://yoursite.com/2017/06/03/计算机输入输出系统接口实验报告/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/22298419?v=3&u=12cc559f5bea926634e500e76e8e3da9b699c959&s=400"
+               alt="王子卓" />
+          <p class="site-author-name" itemprop="name">王子卓</p>
+          <p class="site-description motion-element" itemprop="description">理路上事，勿惮其难而稍为退步，一退步便远隔千山。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实验一-环境熟悉与I-O地址译码"><span class="nav-number">1.</span> <span class="nav-text">实验一    环境熟悉与I/O地址译码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、实验目的"><span class="nav-number">1.1.</span> <span class="nav-text">一、实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、实验内容"><span class="nav-number">1.2.</span> <span class="nav-text">二、实验内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）源程序"><span class="nav-number">1.2.1.</span> <span class="nav-text">1）源程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）电路原理图（138译码部分）"><span class="nav-number">1.2.2.</span> <span class="nav-text">2）电路原理图（138译码部分）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）运行结果贴图（138译码及上面两个273的输出）"><span class="nav-number">1.2.3.</span> <span class="nav-text">3）运行结果贴图（138译码及上面两个273的输出）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验二-可编程中断控制器8259"><span class="nav-number">2.</span> <span class="nav-text">实验二    可编程中断控制器8259</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、实验目的-1"><span class="nav-number">2.1.</span> <span class="nav-text">一、实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、实验内容-1"><span class="nav-number">2.2.</span> <span class="nav-text">二、实验内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）"><span class="nav-number">2.3.</span> <span class="nav-text">三、运行结果贴图（执行三次中断，每次中断后的8086寄存器的截图）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验三-可编程定时器计数器8253"><span class="nav-number">3.</span> <span class="nav-text">实验三    可编程定时器计数器8253</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、实验目的-2"><span class="nav-number">3.1.</span> <span class="nav-text">一、实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、实验内容-2"><span class="nav-number">3.2.</span> <span class="nav-text">二、实验内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一）-研究定时计数器（选）"><span class="nav-number">3.2.1.</span> <span class="nav-text">一） 研究定时计数器（选）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）源程序-1"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">1）源程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）讨论题"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">2）讨论题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）接线原理图和运行结果图"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">3）接线原理图和运行结果图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二）信号发生器"><span class="nav-number">3.2.2.</span> <span class="nav-text">二）信号发生器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）源程序-2"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">1）源程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）接线原理图"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">2）接线原理图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）运行结果图"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">3）运行结果图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"><span class="nav-number">3.2.2.4.</span> <span class="nav-text">4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验五-七段数码管实验"><span class="nav-number">4.</span> <span class="nav-text">实验五    七段数码管实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、实验目的-3"><span class="nav-number">4.1.</span> <span class="nav-text">一、实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、实验内容-3"><span class="nav-number">4.2.</span> <span class="nav-text">二、实验内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-静态显示（选）"><span class="nav-number">4.2.1.</span> <span class="nav-text">1.静态显示（选）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）源程序-3"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">1）源程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）接线原理图和运行结果图"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">2）接线原理图和运行结果图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-动态展示"><span class="nav-number">4.2.2.</span> <span class="nav-text">2.动态展示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）源程序-4"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">1）源程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）接线原理图和运行结果图-1"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">2）接线原理图和运行结果图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">3）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实验六-交通灯控制实验"><span class="nav-number">5.</span> <span class="nav-text">实验六    交通灯控制实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、实验目的-4"><span class="nav-number">5.1.</span> <span class="nav-text">一、实验目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、交通灯变化规律"><span class="nav-number">5.2.</span> <span class="nav-text">二、交通灯变化规律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、实验内容"><span class="nav-number">5.3.</span> <span class="nav-text">三、实验内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）源程序-5"><span class="nav-number">5.3.1.</span> <span class="nav-text">1）源程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）接线原理图-1"><span class="nav-number">5.3.2.</span> <span class="nav-text">2）接线原理图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）运行结果截图"><span class="nav-number">5.3.3.</span> <span class="nav-text">3）运行结果截图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）-1"><span class="nav-number">5.3.4.</span> <span class="nav-text">4）编程与调试心得（遇到的问题和解决的办法，以及获得的收获）</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王子卓</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zizhuowang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("oNJjTL7jM33iRBxHld63N3z1-gzGzoHsz", "uqK0i0RTln8eoNQgV71yGxLy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
