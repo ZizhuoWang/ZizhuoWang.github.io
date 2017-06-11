@@ -254,140 +254,6 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/07/Java大作业说明文档/" itemprop="url">
-                  Java大作业说明文档
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-07T19:49:49+08:00" content="2017-01-07">
-              2017-01-07
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/01/07/Java大作业说明文档/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/07/Java大作业说明文档/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/07/Java大作业说明文档/" class="leancloud_visitors" data-flag-title="Java大作业说明文档">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://github.com/ZizhuoWang/JavaATM" target="_blank" rel="external">GitHub</a></p>
-<h1 id="ATM机设计文档"><a href="#ATM机设计文档" class="headerlink" title="ATM机设计文档"></a><div align="middle"><font size="7">ATM机设计文档</font></div></h1><div align="middle"><font size="5">71115115 王子卓</font></div>
-
-<hr>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a><div align="middle">效果</div></h1><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/JavaATM/ATM1.png" alt=""><br><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/JavaATM/ATM2.png" alt=""></p>
-<p>&emsp;&emsp;服务器的守护进程启动之后可以显示在线人数和各个用户的账户总金额。<br>&emsp;&emsp;ATM机界面在没有登录的时候不可以点击存取款、查询等按钮，金额、编号文本框不可编辑。登陆之后，注册和登录按钮不可点击，用户名、密码文本框不可编辑。</p>
-<hr>
-<h1 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a><div align="middle">测试方法</div></h1><p>&emsp;&emsp;修改Server.java中getConnection函数中的dbURL，将&amp;user=root&amp;password=<code>******</code>修改成您的MySQL用户名和密码。</p>
-<hr>
-<h1 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a><div align="middle">程序结构</div></h1><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/JavaATM/MYATM.png" alt=""></p>
-<p>&emsp;&emsp;这不是一个标准的UML类图。<br>&emsp;&emsp;活期账户、半年期、一年期、五年期存款和贷款都实现了同一个Balance接口，Balance接口继承了Runnable类。活期账户、半年期、一年期、五年期存款和贷款都聚合到User类中。客户端Client和服务器Server都有User类的成员对象。<br>&emsp;&emsp;客户端Client和服务器守护进程ServerDaemon连接，由ServerDaemon动态创建Server线程。<br>&emsp;&emsp;每一笔存款自身都是线程，服务器打开之后，线程自动运行，实现加息。利息每季度结算，每季度利息是年利率开四次方。<br>&emsp;&emsp;客户端和服务器之间信息传递依靠对象输入输出流，信息载体是Command类对象和User类对象。<br>&emsp;&emsp;数据库的操作由Server类完成。<br>&emsp;&emsp;大部分对象都实现了可序列化Serializable接口，以便存入数据库。<br>&emsp;&emsp;采用了UTF-8编解码，所以<strong>支持中文</strong>。</p>
-<hr>
-<h1 id="数据库结构"><a href="#数据库结构" class="headerlink" title="数据库结构"></a><div align="middle">数据库结构</div></h1><ol>
-<li>数据库名：atm</li>
-<li>数据表名：user</li>
-<li>数据表字段：<ul>
-<li>name：varchar(200),非空，不可重复</li>
-<li>object：longblob，非空</li>
-</ul>
-</li>
-<li>字段作用：name负责存储用户的用户名。object负责存储用户类的对象，该对象中保存有包括用户密码在内的各种用户信息。</li>
-<li>优点：在一定程度上减少数据库的读取、写入次数。用户的信息并不以明文方式呈现，在一定程度上有加密的作用。</li>
-</ol>
-<hr>
-<h1 id="程序使用流程"><a href="#程序使用流程" class="headerlink" title="程序使用流程"></a><div align="middle">程序使用流程</div></h1><p><img src="https://raw.githubusercontent.com/ZizhuoWang/ImageBed/master/JavaATM/ATM.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/12/17/AMD-New-Horizon/" itemprop="url">
                   AMD New Horizon
                 </a>
@@ -1568,6 +1434,135 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/30/Linux命令-3-chgrp/" itemprop="url">
+                  Linux命令(3) chgrp
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-30T19:46:52+08:00" content="2016-10-30">
+              2016-10-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/30/Linux命令-3-chgrp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/30/Linux命令-3-chgrp/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/30/Linux命令-3-chgrp/" class="leancloud_visitors" data-flag-title="Linux命令(3) chgrp">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Linux-chgrp命令"><a href="#Linux-chgrp命令" class="headerlink" title="Linux chgrp命令"></a>Linux chgrp命令</h1><p>Linux chgrp命令用于变更文件或目录的所属群组。</p>
+<p>在UNIX系统家族里，文件或目录权限的掌控以拥有者及所属群组来管理。您可以使用chgrp指令去变更文件与目录的所属群组，设置方式采用群组名称或群组识别码皆可。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><code>chgrp [-cfhRv][--help][--version][所属群组][文件或目录...] 或 chgrp [-cfhRv][--help][--reference=&lt;参考文件或目录&gt;][--version][文件或目录...]</code></p>
+<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><p>　　-c或–changes 效果类似”-v”参数，但仅回报更改的部分。<br>　　-f或–quiet或–silent 　不显示错误信息。<br>　　-h或–no-dereference 　只对符号连接的文件作修改，而不更动其他任何相关文件。<br>　　-R或–recursive 　递归处理，将指定目录下的所有文件及子目录一并处理。<br>　　-v或–verbose 　显示指令执行过程。<br>　　–help 　在线帮助。<br>　　–reference=&lt;参考文件或目录&gt; 　把指定文件或目录的所属群组全部设成和参考文件或目录的所属群组相同。<br>　　–version 　显示版本信息。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="实例1：改变文件的群组属性："><a href="#实例1：改变文件的群组属性：" class="headerlink" title="实例1：改变文件的群组属性："></a>实例1：改变文件的群组属性：</h3><p><code>chgrp -v bin log2012.log</code></p>
+<pre><code>[root@localhost test]# ll
+---xrw-r-- 1 root root 302108 11-13 06:03 log2012.log
+[root@localhost test]# chgrp -v bin log2012.log
+[root@localhost test]# ll
+---xrw-r-- 1 root bin  302108 11-13 06:03 log2012.log
+</code></pre><p>说明： 将log2012.log文件由root群组改为bin群组 </p>
+<h3 id="实例2：根据指定文件改变文件的群组属性"><a href="#实例2：根据指定文件改变文件的群组属性" class="headerlink" title="实例2：根据指定文件改变文件的群组属性"></a>实例2：根据指定文件改变文件的群组属性</h3><p><code>chgrp --reference=log2012.log log2013.log</code></p>
+<pre><code>[root@localhost test]# ll
+---xrw-r-- 1 root bin  302108 11-13 06:03 log2012.log
+-rw-r--r-- 1 root root     61 11-13 06:03 log2013.log
+[root@localhost test]#  chgrp --reference=log2012.log log2013.log 
+[root@localhost test]# ll
+---xrw-r-- 1 root bin  302108 11-13 06:03 log2012.log
+-rw-r--r-- 1 root bin      61 11-13 06:03 log2013.log
+</code></pre><p>说明： 改变文件log2013.log 的群组属性，使得文件log2013.log的群组属性和参考文件log2012.log的群组属性相同 </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1613,7 +1608,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
